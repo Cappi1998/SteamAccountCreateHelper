@@ -59,6 +59,7 @@ namespace SteamAccountCreateSelenium
                 Main._Form1.Invoke(new Action(() => Main._Form1.lbl_Email.Text = mail.EMAIL));
                 Main._Form1.Invoke(new Action(() => Main._Form1.lbl_EmailPass.Text = mail.PASS));
                 Main._Form1.Invoke(new Action(() => Main._Form1.btn_GetEmail.Enabled = true));
+                Main._Form1.Invoke(new Action(() => Main._Form1.btn_ConfirLink.Enabled = true));
             }
             else
             {

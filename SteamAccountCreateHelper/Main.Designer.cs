@@ -538,7 +538,6 @@ namespace SteamAccountCreateSelenium
         public System.Windows.Forms.Label lbl_Email_Load;
         public System.Windows.Forms.RichTextBox txtConsole;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_ConfirLink;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -577,6 +576,7 @@ namespace SteamAccountCreateSelenium
         private System.Windows.Forms.Button btn_OpenCriationPage;
         public System.Windows.Forms.Button btn_SaveAcc;
         public System.Windows.Forms.Button btn_GetEmail;
+        public System.Windows.Forms.Button btn_ConfirLink;
     }
 }
 
