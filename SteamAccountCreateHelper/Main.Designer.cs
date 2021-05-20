@@ -43,13 +43,14 @@ namespace SteamAccountCreateSelenium
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ConfirLink = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_OpenCriationPage = new System.Windows.Forms.Button();
             this.btn_CopyEmail = new System.Windows.Forms.Button();
             this.btn_CopyPass = new System.Windows.Forms.Button();
             this.btn_CopyLogin = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.lbl_OpenAccFile = new System.Windows.Forms.LinkLabel();
             this.btn_SaveAcc = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_GetEmail = new System.Windows.Forms.Button();
             this.lbl_EmailPass = new System.Windows.Forms.TextBox();
             this.lbl_Email = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@ namespace SteamAccountCreateSelenium
             this.ck_use_custom_avatar = new System.Windows.Forms.CheckBox();
             this.ck_Set_NickNameRandom = new System.Windows.Forms.CheckBox();
             this.ck_GameAndInventory_Public = new System.Windows.Forms.CheckBox();
-            this.btn_OpenCriationPage = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -216,7 +216,7 @@ namespace SteamAccountCreateSelenium
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.lbl_OpenAccFile);
             this.groupBox3.Controls.Add(this.btn_SaveAcc);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btn_GetEmail);
             this.groupBox3.Controls.Add(this.lbl_EmailPass);
             this.groupBox3.Controls.Add(this.lbl_Email);
             this.groupBox3.Controls.Add(this.label7);
@@ -232,6 +232,16 @@ namespace SteamAccountCreateSelenium
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acc Info";
+            // 
+            // btn_OpenCriationPage
+            // 
+            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 181);
+            this.btn_OpenCriationPage.Name = "btn_OpenCriationPage";
+            this.btn_OpenCriationPage.Size = new System.Drawing.Size(109, 47);
+            this.btn_OpenCriationPage.TabIndex = 18;
+            this.btn_OpenCriationPage.Text = "Open Criation Page";
+            this.btn_OpenCriationPage.UseVisualStyleBackColor = true;
+            this.btn_OpenCriationPage.Click += new System.EventHandler(this.btn_OpenCriationPage_Click);
             // 
             // btn_CopyEmail
             // 
@@ -295,15 +305,15 @@ namespace SteamAccountCreateSelenium
             this.btn_SaveAcc.UseVisualStyleBackColor = true;
             this.btn_SaveAcc.Click += new System.EventHandler(this.btn_SaveAcc_Click);
             // 
-            // button1
+            // btn_GetEmail
             // 
-            this.button1.Location = new System.Drawing.Point(340, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 47);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Get Email";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_GetEmail.Location = new System.Drawing.Point(340, 91);
+            this.btn_GetEmail.Name = "btn_GetEmail";
+            this.btn_GetEmail.Size = new System.Drawing.Size(97, 47);
+            this.btn_GetEmail.TabIndex = 11;
+            this.btn_GetEmail.Text = "Get Email";
+            this.btn_GetEmail.UseVisualStyleBackColor = true;
+            this.btn_GetEmail.Click += new System.EventHandler(this.btn_GetEmail_Click);
             // 
             // lbl_EmailPass
             // 
@@ -491,16 +501,6 @@ namespace SteamAccountCreateSelenium
             this.ck_GameAndInventory_Public.Text = "Set Games And Inventory Public";
             this.ck_GameAndInventory_Public.UseVisualStyleBackColor = true;
             // 
-            // btn_OpenCriationPage
-            // 
-            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 181);
-            this.btn_OpenCriationPage.Name = "btn_OpenCriationPage";
-            this.btn_OpenCriationPage.Size = new System.Drawing.Size(109, 47);
-            this.btn_OpenCriationPage.TabIndex = 18;
-            this.btn_OpenCriationPage.Text = "Open Criation Page";
-            this.btn_OpenCriationPage.UseVisualStyleBackColor = true;
-            this.btn_OpenCriationPage.Click += new System.EventHandler(this.btn_OpenCriationPage_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -548,12 +548,10 @@ namespace SteamAccountCreateSelenium
         public System.Windows.Forms.TextBox lbl_Login;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox lbl_EmailPass;
         public System.Windows.Forms.TextBox lbl_Email;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btn_SaveAcc;
         public System.Windows.Forms.LinkLabel lbl_OpenAccFile;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_CopyEmail;
@@ -577,6 +575,8 @@ namespace SteamAccountCreateSelenium
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btn_OpenCriationPage;
+        public System.Windows.Forms.Button btn_SaveAcc;
+        public System.Windows.Forms.Button btn_GetEmail;
     }
 }
 

@@ -36,7 +36,7 @@ namespace SteamAccountCreateSelenium
             }
         }
 
-        public static E_Mail Get_Mail(int max_acc_Por_Email)
+        public static void Get_Mail(int max_acc_Por_Email)
         {
             inicio:
             E_Mail mail = Main.EMAIl_LIST[RandomUtils.GetRandomInt(0, Main.EMAIl_LIST.Count)];
@@ -45,15 +45,20 @@ namespace SteamAccountCreateSelenium
 
             while (contas_Vinculada > max_acc_Por_Email)
             {
+                // TODO - Atention Infinite Loop Error
                 mail = Main.EMAIl_LIST[RandomUtils.GetRandomInt(0, Main.EMAIl_LIST.Count)];
                 contas_Vinculada = ManageEmails.Check_amount_accs_on_Email(mail.EMAIL);
             }
 
-            bool Email_funciona = AccessEmailPop3Client.CheckEmailAccess(mail);
+            bool working = AccessEmailPop3Client.CheckEmailAccess(mail);
 
-            if(Email_funciona == true)
+            if(working == true)
             {
-                return mail;
+                Main._Form1.Invoke(new Action(() => Main.email = mail));
+
+                Main._Form1.Invoke(new Action(() => Main._Form1.lbl_Email.Text = mail.EMAIL));
+                Main._Form1.Invoke(new Action(() => Main._Form1.lbl_EmailPass.Text = mail.PASS));
+                Main._Form1.Invoke(new Action(() => Main._Form1.btn_GetEmail.Enabled = true));
             }
             else
             {

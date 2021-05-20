@@ -14,37 +14,21 @@ namespace Steam_ACC_Create
         {
             Random random = new Random();
             return random.Next(1234, 314123423);
-
         }
 
         public static int RandomNumPequeno()
         {
             Random random = new Random();
             return random.Next(1930, 2040);
-
         }
 
-
-        public static ulong RandomULONG()
-        {
-
-            ulong  SteamID64 = Convert.ToUInt64(RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber() + RandomNumber());
-
-
-            return SteamID64;
-        }
-
-        public static string RandomLogin(int size, bool lowerCase)
+        public static string RandomLogin()
         {
             //namefake
             var request = new RequestBuilder("https://api.namefake.com/").GET()
                        .Execute();
-
             Root response = JsonConvert.DeserializeObject<Root>(request.Content);
-
-
-           string name =  response.name.ToLower().Replace(".", " ").Replace(" ", "");
-
+            string name =  response.name.ToLower().Replace(".", " ").Replace(" ", "");
             name = $"{name}_{RandomNumPequeno()}";
 
             return name;

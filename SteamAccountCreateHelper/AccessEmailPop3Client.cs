@@ -70,7 +70,7 @@ namespace SteamAccountCreateSelenium
             }
         }
 
-        public static string Get_URL_Confirm(E_Mail mail)
+        public static void Get_URL_Confirm(E_Mail mail)
         {
             int tentativas_get_code = 0;
 
@@ -150,6 +150,8 @@ namespace SteamAccountCreateSelenium
                                 myProcess.StartInfo.FileName = Confirm_Link;
                                 myProcess.Start();
 
+                                Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+                                
                                 lock (locker)
                                 {
                                     CreationID_DB.ADD_TO_DB(creationid);
@@ -158,7 +160,7 @@ namespace SteamAccountCreateSelenium
                         }
                         catch
                         {
-                            Log.error("Erro To get Guard Code. Try Again!!");
+                            Log.error("Erro To get Confirm URL. Try Again!!");
                             Thread.Sleep(TimeSpan.FromSeconds(15));
                             tentativas_get_code = tentativas_get_code + 1;
                             client.Disconnect(true);
@@ -167,14 +169,11 @@ namespace SteamAccountCreateSelenium
                     }
                     else
                     {
-                        Log.error("Erro To get Guard Code From Email!");
-                        return Confirm_Link;
+                        Log.error("Erro To get Confirm URL From Email!");
                     }
                 }
                 client.Disconnect(true);
             }
-
-            return Confirm_Link;
         }
     }
 }

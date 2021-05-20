@@ -142,36 +142,33 @@ namespace SteamAccountCreateSelenium
                 return;
             }
 
-            //Get_Email_Confirmation.GetLinkFromEmail(Main.email);
-            string URL = AccessEmailPop3Client.Get_URL_Confirm(Main.email);
-
-            if(!string.IsNullOrWhiteSpace(URL))
-            Main._Form1.btn_SaveAcc.Enabled = true;
+            btn_ConfirLink.Enabled = false;
+            Thread th = new Thread(() => AccessEmailPop3Client.Get_URL_Confirm(Main.email));
+            th.IsBackground = true;
+            th.Start();
         }
-
 
         private void btn_GenLoginPass_Click(object sender, EventArgs e)
         {
-            Main.Login = Get_Random.RandomLogin(15, false);
+            Main.Login = Get_Random.RandomLogin();
             Main.Pass = Get_Random.RandomPassword();
 
             lbl_Login.Text = Main.Login;
             lbl_Pass.Text = Main.Pass;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_GetEmail_Click(object sender, EventArgs e)
         {
-
             if (EMAIl_LIST.Count == 0)
             {
                 MessageBox.Show("E-Mail List is empty!!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            btn_GetEmail.Enabled = false;
 
-            Main.email = ManageEmails.Get_Mail(Main.Max_Acc_Por_Email);//pegar um e-mail funcionando e que esteja sem o limite de contas vinculadas ultrapassado no db
-
-            lbl_Email.Text = email.EMAIL;
-            lbl_EmailPass.Text = email.PASS;
+            Thread th = new Thread(() => ManageEmails.Get_Mail(Main.Max_Acc_Por_Email));
+            th.IsBackground = true;
+            th.Start();
         }
 
         private void btn_SaveAcc_Click(object sender, EventArgs e)
@@ -235,17 +232,20 @@ namespace SteamAccountCreateSelenium
 
         private void btn_CopyLogin_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(lbl_Login.Text);
+            if (!string.IsNullOrWhiteSpace(lbl_Login.Text))
+                Clipboard.SetText(lbl_Login.Text);
         }
 
         private void btn_CopyPass_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(lbl_Pass.Text);
+            if (!string.IsNullOrWhiteSpace(lbl_Pass.Text))
+                Clipboard.SetText(lbl_Pass.Text);
         }
 
         private void btn_CopyEmail_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(lbl_Email.Text);
+            if(!string.IsNullOrWhiteSpace(lbl_Email.Text))
+               Clipboard.SetText(lbl_Email.Text);
         }
 
         private void btn_open_File_avatarURL_Click(object sender, EventArgs e)
