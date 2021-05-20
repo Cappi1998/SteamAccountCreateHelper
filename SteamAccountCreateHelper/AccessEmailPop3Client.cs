@@ -135,7 +135,7 @@ namespace SteamAccountCreateSelenium
 
                             var stoken = new Regex("(?<=stoken\\=)\\w+").Match(message1.Body.ToString()).Value;
 
-                            bool ja_usado = CreationID_DB.creationid_JaUSADO(creationid);
+                            bool ja_usado = CreationID_DB.Check_AlreadyUsed(creationid);
 
                             if (ja_usado == true)
                             {
@@ -150,10 +150,9 @@ namespace SteamAccountCreateSelenium
                                 myProcess.StartInfo.FileName = Confirm_Link;
                                 myProcess.Start();
 
-
                                 lock (locker)
                                 {
-                                    CreationID_DB.creationid_ADD_TO_DB(creationid);
+                                    CreationID_DB.ADD_TO_DB(creationid);
                                 }
                             }
                         }

@@ -11,7 +11,7 @@ namespace SteamAccountCreateSelenium
     class CreationID_DB
     {
         private static readonly object locker = new object();
-        public static bool creationid_JaUSADO(string creationid)
+        public static bool Check_AlreadyUsed(string creationid)
         {
             creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.creationid_DB_READ));
 
@@ -25,9 +25,8 @@ namespace SteamAccountCreateSelenium
             }
         }
 
-        public static void creationid_ADD_TO_DB(string creationid)
+        public static void ADD_TO_DB(string creationid)
         {
-
             lock (locker)
             {
                 creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.creationid_DB_READ));
