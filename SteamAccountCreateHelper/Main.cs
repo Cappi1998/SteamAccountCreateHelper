@@ -66,7 +66,7 @@ namespace SteamAccountCreateSelenium
                     foreach (var email in lista)
                     {
                         var split = email.Split(':');
-                        E_Mail mail = new E_Mail { EMAIL = split[0], EMAIL_PASS = split[1] };
+                        E_Mail mail = new E_Mail { EMAIL = split[0], PASS = split[1] };
                         EMAIl_LIST.Add(mail);
                     }
 
@@ -171,7 +171,7 @@ namespace SteamAccountCreateSelenium
             Main.email = ManageEmails.Get_Mail(Main.Max_Acc_Por_Email);//pegar um e-mail funcionando e que esteja sem o limite de contas vinculadas ultrapassado no db
 
             lbl_Email.Text = email.EMAIL;
-            lbl_EmailPass.Text = email.EMAIL_PASS;
+            lbl_EmailPass.Text = email.PASS;
         }
 
         private void btn_SaveAcc_Click(object sender, EventArgs e)
@@ -197,7 +197,7 @@ namespace SteamAccountCreateSelenium
 
                 sw.WriteLine(Main.Login + ":" + Main.Pass +
                     "\r\n\r\nEmail: " + Main.email.EMAIL +
-                    "\r\nEMail Password: " + Main.email.EMAIL_PASS);
+                    "\r\nEMail Password: " + Main.email.PASS);
 
                 sw.Close();
                 sw.Dispose();
@@ -343,7 +343,7 @@ namespace SteamAccountCreateSelenium
                     foreach (var email in lista)
                     {
                         var split = email.Split(':');
-                        E_Mail mail = new E_Mail { EMAIL = split[0], EMAIL_PASS = split[1] };
+                        E_Mail mail = new E_Mail { EMAIL = split[0], PASS = split[1] };
                         EMAIl_LIST.Add(mail);
                     }
 

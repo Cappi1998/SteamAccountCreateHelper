@@ -10,6 +10,6 @@ namespace SteamAccountCreateSelenium.Models
     {
         public string EMAIL { get; set; }
 
-        public string EMAIL_PASS { get; set; }
+        public string PASS { get; set; }
     }
 }

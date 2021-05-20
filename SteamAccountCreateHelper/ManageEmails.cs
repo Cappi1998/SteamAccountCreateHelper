@@ -17,24 +17,24 @@ namespace SteamAccountCreateSelenium
         private static readonly object locker = new object();
         public static int Check_amount_accs_on_Email(string e_mail)
         {
-            int contas_ja_Vinculadas = 0;
-
+            
             MAIL_DATABASE mAIL_DATABASE = JsonConvert.DeserializeObject<MAIL_DATABASE>(File.ReadAllText(Main.Used_Mail_DB_Path));
 
             if (mAIL_DATABASE.usados == null)
             {
-                return contas_ja_Vinculadas;
+                return 0;
             }
-            foreach (Usados email in mAIL_DATABASE.usados)
+
+            Usados UsedMail = mAIL_DATABASE.usados.Where(a => a.EMAIL == e_mail).FirstOrDefault();
+
+            if(UsedMail != null)
             {
-
-                if (email.EMAIL == e_mail)
-                {
-                    contas_ja_Vinculadas = email.ACCS_VINCULADAS;
-                }
+                return UsedMail.ACCS_VINCULADAS;
             }
-
-            return contas_ja_Vinculadas;
+            else
+            {
+                return 0;
+            }
         }
 
         public static E_Mail Get_Mail(int max_acc_Por_Email)
@@ -43,7 +43,6 @@ namespace SteamAccountCreateSelenium
             E_Mail mail = Main.EMAIl_LIST[RandomUtils.GetRandomInt(0, Main.EMAIl_LIST.Count)];
 
             int contas_Vinculada = ManageEmails.Check_amount_accs_on_Email(mail.EMAIL);
-
 
             while (contas_Vinculada > max_acc_Por_Email)
             {
@@ -84,8 +83,7 @@ namespace SteamAccountCreateSelenium
                 hostname = "imap.yandex.ru";
             }
 
-            string username = mail.EMAIL, password = mail.EMAIL_PASS;
-
+            string username = mail.EMAIL, password = mail.PASS;
 
             try
             {
@@ -112,45 +110,34 @@ namespace SteamAccountCreateSelenium
             lock (locker)
             {
                 MAIL_DATABASE mAIL_DATABASE = JsonConvert.DeserializeObject<MAIL_DATABASE>(File.ReadAllText(Main.Used_Mail_DB_Path));
+                Usados UsedMail = mAIL_DATABASE.usados.Where(a => a.EMAIL == mail).FirstOrDefault();
 
-                bool ja_no_DB = false;
-
-                foreach (var conta in mAIL_DATABASE.usados)
+                if(UsedMail != null)
                 {
-                    if (conta.EMAIL == mail)
-                    {
-                        conta.ACCS_VINCULADAS = conta.ACCS_VINCULADAS + 1;
-                        ja_no_DB = true;
-                    }
+                    UsedMail.ACCS_VINCULADAS ++;
                 }
-
-                if (ja_no_DB == false)
+                else
                 {
-                    Usados usado = new Usados { ACCS_VINCULADAS = 1, EMAIL = mail };
-                    mAIL_DATABASE.usados.Add(usado);
-
+                    Usados Used = new Usados { ACCS_VINCULADAS = 1, EMAIL = mail };
+                    mAIL_DATABASE.usados.Add(Used);
                 }
-
                 File.WriteAllText(Main.Used_Mail_DB_Path, JsonConvert.SerializeObject(mAIL_DATABASE, Formatting.Indented));
             }
         }
 
         public static string Get_Mail_Pass(string mail)
         {
-            string senha = "";
+            E_Mail e_Mail =  Main.EMAIl_LIST.Where(a => a.EMAIL == mail).FirstOrDefault();
 
-            foreach (var email in Main.EMAIl_LIST)
+            if(e_Mail != null)
             {
-
-                if (email.EMAIL == mail)
-                {
-                    senha = email.EMAIL_PASS;
-                }
+                return e_Mail.PASS;
             }
-
-            return senha;
+            else
+            {
+                return null;
+            }
         }
-
 
         public class MAIL_DATABASE
         {
