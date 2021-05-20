@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using S22.Imap;
 using Steam_ACC_Create;
 using SteamAccountCreateSelenium.Models;
 using SteamAccountCreateSelenium.Utils;
@@ -17,19 +16,19 @@ namespace SteamAccountCreateSelenium
         private static readonly object locker = new object();
         public static int Check_amount_accs_on_Email(string e_mail)
         {
-            
-            MAIL_DATABASE mAIL_DATABASE = JsonConvert.DeserializeObject<MAIL_DATABASE>(File.ReadAllText(Main.Used_Mail_DB_Path));
 
-            if (mAIL_DATABASE.usados == null)
+            UsedEmailDatabase mAIL_DATABASE = JsonConvert.DeserializeObject<UsedEmailDatabase>(File.ReadAllText(Main.Used_Mail_DB_Path));
+
+            if (mAIL_DATABASE.AlreadyUsed == null)
             {
                 return 0;
             }
 
-            Usados UsedMail = mAIL_DATABASE.usados.Where(a => a.EMAIL == e_mail).FirstOrDefault();
+            AlreadyUsed UsedMail = mAIL_DATABASE.AlreadyUsed.Where(a => a.EMAIL == e_mail).FirstOrDefault();
 
             if(UsedMail != null)
             {
-                return UsedMail.ACCS_VINCULADAS;
+                return UsedMail.BINDING_ACCS;
             }
             else
             {
@@ -50,7 +49,7 @@ namespace SteamAccountCreateSelenium
                 contas_Vinculada = ManageEmails.Check_amount_accs_on_Email(mail.EMAIL);
             }
 
-            bool Email_funciona = Check_E_Mail(mail);
+            bool Email_funciona = AccessEmailPop3Client.CheckEmailAccess(mail);
 
             if(Email_funciona == true)
             {
@@ -62,64 +61,21 @@ namespace SteamAccountCreateSelenium
             }
         }
 
-        public static bool Check_E_Mail(E_Mail mail)
-        {
-            string hostname = "imap.gmail.com";
-
-            var devide = mail.EMAIL.Split('@');
-
-            if (devide[1] == "rambler.ru")
-            {
-                hostname = "imap.rambler.ru";
-            }
-
-            if (devide[1] == "ro.ru")
-            {
-                hostname = "imap.rambler.ru";
-            }
-
-            if (devide[1] == "yandex.ru")
-            {
-                hostname = "imap.yandex.ru";
-            }
-
-            string username = mail.EMAIL, password = mail.PASS;
-
-            try
-            {
-                // The default port for IMAP over SSL is 993.
-                ImapClient client = new ImapClient(hostname, 993, username, password, AuthMethod.Login, true);
-
-                if (client.Authed == true)
-                {
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.error("Error to acess E-mail: " + username);
-                Log.error(ex.Message);
-                return false;
-            }
-
-            return false;
-        }
-
         public static void Add_Mail_To_DB(string mail)
         {
             lock (locker)
             {
-                MAIL_DATABASE mAIL_DATABASE = JsonConvert.DeserializeObject<MAIL_DATABASE>(File.ReadAllText(Main.Used_Mail_DB_Path));
-                Usados UsedMail = mAIL_DATABASE.usados.Where(a => a.EMAIL == mail).FirstOrDefault();
+                UsedEmailDatabase mAIL_DATABASE = JsonConvert.DeserializeObject<UsedEmailDatabase>(File.ReadAllText(Main.Used_Mail_DB_Path));
+                AlreadyUsed UsedMail = mAIL_DATABASE.AlreadyUsed.Where(a => a.EMAIL == mail).FirstOrDefault();
 
                 if(UsedMail != null)
                 {
-                    UsedMail.ACCS_VINCULADAS ++;
+                    UsedMail.BINDING_ACCS ++;
                 }
                 else
                 {
-                    Usados Used = new Usados { ACCS_VINCULADAS = 1, EMAIL = mail };
-                    mAIL_DATABASE.usados.Add(Used);
+                    AlreadyUsed Used = new AlreadyUsed { BINDING_ACCS = 1, EMAIL = mail };
+                    mAIL_DATABASE.AlreadyUsed.Add(Used);
                 }
                 File.WriteAllText(Main.Used_Mail_DB_Path, JsonConvert.SerializeObject(mAIL_DATABASE, Formatting.Indented));
             }
@@ -139,15 +95,15 @@ namespace SteamAccountCreateSelenium
             }
         }
 
-        public class MAIL_DATABASE
+        public class UsedEmailDatabase
         {
-            public List<Usados> usados { get; set; }
+            public List<AlreadyUsed> AlreadyUsed { get; set; }
         }
-        public class Usados
+        public class AlreadyUsed
         {
             public string EMAIL { get; set; }
 
-            public int ACCS_VINCULADAS { get; set; }
+            public int BINDING_ACCS { get; set; }
         }
     }
 }

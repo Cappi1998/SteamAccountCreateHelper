@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace SteamAccountCreateSelenium
 {
-    class CreationID_DB_Check
+    class CreationID_DB
     {
         private static readonly object locker = new object();
-
         public static bool creationid_JaUSADO(string creationid)
         {
             creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.creationid_DB_READ));
@@ -24,7 +23,6 @@ namespace SteamAccountCreateSelenium
             {
                 return false;
             }
-
         }
 
         public static void creationid_ADD_TO_DB(string creationid)
@@ -40,8 +38,6 @@ namespace SteamAccountCreateSelenium
             }
         }
     }
-
-
 
     public class creationid_DB
     {

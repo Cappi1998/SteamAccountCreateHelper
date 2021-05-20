@@ -15,19 +15,13 @@ using System.Diagnostics;
 
 namespace SteamAccountCreateSelenium
 {
-    class Get_Email_Code_Pop3
+    class AccessEmailPop3Client
     {
         private static readonly object locker = new object();
         public static Pop3Client Pop3Client;
 
-        public static string Get_code_mail(E_Mail mail)
+        public static bool CheckEmailAccess(E_Mail mail)
         {
-            int tentativas_get_code = 0;
-
-            INICIO:
-
-            string Guard_Code = "";
-
             string hostname = "pop.gmail.com";
 
             var devide = mail.EMAIL.Split('@');
@@ -48,68 +42,32 @@ namespace SteamAccountCreateSelenium
             }
 
             string username = mail.EMAIL;
-            string password = mail.EMAIL_PASS;
-
+            string password = mail.PASS;
 
             using (var client = new Pop3Client())
-			{
-
-                
+            {
                 try
                 {
-                    
                     client.Connect(hostname, 995, true);
 
                     client.Authenticate(username, password);
 
                     if (client.IsAuthenticated == true)
                     {
-                        Pop3Client = client;
-                    }
-                }
-                catch(Exception ex)
-                {
-                    Log.error("Error to acess E-mail: " + username);
-                    Log.error(ex.Message);
-
-                }
-
-                while (Guard_Code == "")
-                {
-
-                    if (tentativas_get_code < 6)
-                    {
-                        try
-                        {
-
-                            var message1 = client.GetMessage(client.Count - 1);
-
-                            Guard_Code = new Regex("												(\\w+)").Match(message1.Body.ToString()).Groups[1].Value;
-
-                        }
-                        catch
-                        {
-                            Log.error("Erro To get Guard Code. Try Again!!");
-                            Thread.Sleep(TimeSpan.FromSeconds(15));
-                            tentativas_get_code = tentativas_get_code + 1;
-                            client.Disconnect(true);
-                            goto INICIO;
-                        }
+                        return true;
                     }
                     else
                     {
-                        Log.error("Erro To get Guard Code From Email!");
-                        return Guard_Code;
+                        return false;
                     }
-                    tentativas_get_code++;
                 }
-
-                client.Disconnect(true);
-
-
-			}
-
-            return Guard_Code;
+                catch (Exception ex)
+                {
+                    Log.error("Error to acess E-mail: " + username);
+                    Log.error(ex.Message);
+                    return false;
+                }
+            }
         }
 
         public static string Get_URL_Confirm(E_Mail mail)
@@ -140,7 +98,7 @@ namespace SteamAccountCreateSelenium
             }
 
             string username = mail.EMAIL;
-            string password = mail.EMAIL_PASS;
+            string password = mail.PASS;
 
 
             using (var client = new Pop3Client())
@@ -177,7 +135,7 @@ namespace SteamAccountCreateSelenium
 
                             var stoken = new Regex("(?<=stoken\\=)\\w+").Match(message1.Body.ToString()).Value;
 
-                            bool ja_usado = CreationID_DB_Check.creationid_JaUSADO(creationid);
+                            bool ja_usado = CreationID_DB.creationid_JaUSADO(creationid);
 
                             if (ja_usado == true)
                             {
@@ -195,7 +153,7 @@ namespace SteamAccountCreateSelenium
 
                                 lock (locker)
                                 {
-                                    CreationID_DB_Check.creationid_ADD_TO_DB(creationid);
+                                    CreationID_DB.creationid_ADD_TO_DB(creationid);
                                 }
                             }
                         }

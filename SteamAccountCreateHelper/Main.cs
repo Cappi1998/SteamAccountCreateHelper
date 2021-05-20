@@ -99,13 +99,13 @@ namespace SteamAccountCreateSelenium
 
             if (!File.Exists(Used_Mail_DB_Path))
             {
-                Usados usado = new Usados { EMAIL = "No_delete@mail.cappi", ACCS_VINCULADAS = 0 };
-                List<Usados> usados = new List<Usados>();
+                AlreadyUsed usado = new AlreadyUsed { EMAIL = "No_delete@mail.cappi", BINDING_ACCS = 0 };
+                List<AlreadyUsed> usados = new List<AlreadyUsed>();
                 usados.Add(usado);
 
-                MAIL_DATABASE e_MAIL_USADO_DATABASE = new MAIL_DATABASE { usados = usados };
+                UsedEmailDatabase usedEmailDatabase = new UsedEmailDatabase { AlreadyUsed = usados };
 
-                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(e_MAIL_USADO_DATABASE, Formatting.Indented));
+                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(usedEmailDatabase, Formatting.Indented));
             }
 
             if (!File.Exists(creationid_DB_READ))
@@ -143,7 +143,7 @@ namespace SteamAccountCreateSelenium
             }
 
             //Get_Email_Confirmation.GetLinkFromEmail(Main.email);
-            string URL = Get_Email_Code_Pop3.Get_URL_Confirm(Main.email);
+            string URL = AccessEmailPop3Client.Get_URL_Confirm(Main.email);
 
             if(!string.IsNullOrWhiteSpace(URL))
             Main._Form1.btn_SaveAcc.Enabled = true;
@@ -267,8 +267,6 @@ namespace SteamAccountCreateSelenium
                         Avatar_URL_List.Add(email);
                     }
 
-
-
                     lbl_Avatar_Load.Text = Avatar_URL_List.Count.ToString();
                     lbl_Avatar_Load.ForeColor = Color.DarkCyan;
                     lbl_Avatar_Load.Font = new Font("Arial", 10, FontStyle.Bold);
@@ -282,8 +280,6 @@ namespace SteamAccountCreateSelenium
                 lbl_Email_Load.Text = "ERROR";
                 lbl_Email_Load.ForeColor = Color.Red;
             }
-
-            
         }
 
         private void ck_use_custom_avatar_CheckedChanged(object sender, EventArgs e)
@@ -313,44 +309,51 @@ namespace SteamAccountCreateSelenium
         {
             if(File.Exists(Database_Path + "Config.json"))
             {
-                Config config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(Database_Path + "Config.json"));
-                if (config.AvatarImageFilePath != "")
+                try
                 {
-                    Main._Form1.AvatarImageFilePath = config.AvatarImageFilePath;
-
-                    Avatar_URL_List.Clear();
-                    var lista = File.ReadAllLines(config.AvatarImageFilePath);
-                    foreach (var email in lista)
+                    Config config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(Database_Path + "Config.json"));
+                    if (config.AvatarImageFilePath != "")
                     {
-                        Avatar_URL_List.Add(email);
+                        Main._Form1.AvatarImageFilePath = config.AvatarImageFilePath;
+
+                        Avatar_URL_List.Clear();
+                        var lista = File.ReadAllLines(config.AvatarImageFilePath);
+                        foreach (var email in lista)
+                        {
+                            Avatar_URL_List.Add(email);
+                        }
+
+                        Main._Form1.lbl_Avatar_Load.Text = Avatar_URL_List.Count.ToString();
+                        Main._Form1.lbl_Avatar_Load.ForeColor = Color.DarkCyan;
+                        Main._Form1.lbl_Avatar_Load.Font = new Font("Arial", 10, FontStyle.Bold);
+                        Log.info(Avatar_URL_List.Count + " Avatars Load!");
+                        Main._Form1.ck_use_custom_avatar.Checked = true;
                     }
 
-                    Main._Form1.lbl_Avatar_Load.Text = Avatar_URL_List.Count.ToString();
-                    Main._Form1.lbl_Avatar_Load.ForeColor = Color.DarkCyan;
-                    Main._Form1.lbl_Avatar_Load.Font = new Font("Arial", 10, FontStyle.Bold);
-                    Log.info(Avatar_URL_List.Count + " Avatars Load!");
-                    Main._Form1.ck_use_custom_avatar.Checked = true;
+                    if (config.EmailFilePath != "")
+                    {
+
+                        Main._Form1.EmailFilePath = config.EmailFilePath;
+
+                        EMAIl_LIST.Clear();
+                        var lista = File.ReadAllLines(config.EmailFilePath);
+
+                        foreach (var email in lista)
+                        {
+                            var split = email.Split(':');
+                            E_Mail mail = new E_Mail { EMAIL = split[0], PASS = split[1] };
+                            EMAIl_LIST.Add(mail);
+                        }
+
+                        Main._Form1.lbl_Email_Load.Text = EMAIl_LIST.Count.ToString();
+                        Main._Form1.lbl_Email_Load.ForeColor = Color.DarkCyan;
+                        Main._Form1.lbl_Email_Load.Font = new Font("Arial", 10, FontStyle.Bold);
+                        Log.info(EMAIl_LIST.Count + " E-Mails Load!");
+                    }
                 }
-
-                if(config.EmailFilePath != "")
+                catch(Exception ex)
                 {
-
-                    Main._Form1.EmailFilePath = config.EmailFilePath;
-
-                    EMAIl_LIST.Clear();
-                    var lista = File.ReadAllLines(config.EmailFilePath);
-
-                    foreach (var email in lista)
-                    {
-                        var split = email.Split(':');
-                        E_Mail mail = new E_Mail { EMAIL = split[0], PASS = split[1] };
-                        EMAIl_LIST.Add(mail);
-                    }
-
-                    Main._Form1.lbl_Email_Load.Text = EMAIl_LIST.Count.ToString();
-                    Main._Form1.lbl_Email_Load.ForeColor = Color.DarkCyan;
-                    Main._Form1.lbl_Email_Load.Font = new Font("Arial", 10, FontStyle.Bold);
-                    Log.info(EMAIl_LIST.Count + " E-Mails Load!");
+                    Log.error($"Error to load Config: {ex.Message}");
                 }
             }
         }
