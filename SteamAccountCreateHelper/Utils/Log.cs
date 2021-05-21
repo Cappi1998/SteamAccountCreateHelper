@@ -19,7 +19,6 @@ namespace SteamAccountCreateHelper.Utils
 
             lock (locker)
             {
-
                 msg = DateTime.Now + " - " + msg;
 
                 Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionColor = Color.Lime));
@@ -29,7 +28,7 @@ namespace SteamAccountCreateHelper.Utils
                 Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.ScrollToCaret()));
 
                 StreamWriter sw;
-                sw = File.AppendText("log.txt");
+                sw = File.AppendText(Path.Combine(Main.Database_Path, "log.txt"));
                 sw.WriteLine(msg);
                 sw.Close();
                 sw.Dispose();
@@ -39,7 +38,6 @@ namespace SteamAccountCreateHelper.Utils
 
         public static void error(string msg)
         {
-
             msg = DateTime.Now + " - " + msg;
 
             Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionColor = Color.DarkRed));
@@ -48,7 +46,7 @@ namespace SteamAccountCreateHelper.Utils
             Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionStart = Main._Form1.txtConsole.Text.Length));
             Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.ScrollToCaret()));
 
-            File.AppendAllText("log.txt", msg + "\n");
+            File.AppendAllText(Path.Combine(Main.Database_Path, "log.txt"), msg + "\n");
         }
 
         public static void error(string format, params object[] args)
@@ -68,9 +66,8 @@ namespace SteamAccountCreateHelper.Utils
             Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionStart = Main._Form1.txtConsole.Text.Length));
             Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.ScrollToCaret()));
 
-            File.AppendAllText("log.txt", msg + "\n");
-            File.AppendAllText("error.txt", msg + "\n" + e.StackTrace + "\n");
-
+            File.AppendAllText(Path.Combine(Main.Database_Path, "log.txt"), msg + "\n");
+            File.AppendAllText(Path.Combine(Main.Database_Path, "error.txt"), msg + "\n" + e.StackTrace + "\n");
 
         }
     }
