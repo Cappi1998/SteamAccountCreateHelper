@@ -9,11 +9,12 @@ using MimeKit;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Drawing;
-using SteamAccountCreateSelenium.Models;
-using SteamAccountCreateSelenium.Utils;
 using System.Diagnostics;
+using SteamAccountCreateHelper.Models;
+using SteamAccountCreateHelper.Utils;
+using SteamAccountCreateHelper;
 
-namespace SteamAccountCreateSelenium
+namespace SteamAccountCreateHelper
 {
     class AccessEmailPop3Client
     {

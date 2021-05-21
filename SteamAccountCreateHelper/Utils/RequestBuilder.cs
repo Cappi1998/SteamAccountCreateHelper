@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using RestSharp;
 
-namespace BitskinsSellTF2
+namespace SteamAccountCreateHelper
 {
 
     class RequestBuilder

@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Steam_ACC_Create;
 using SteamAccountCreateHelper.Models;
-using SteamAccountCreateSelenium.Models;
-using SteamAccountCreateSelenium.Utils;
+using SteamAccountCreateHelper.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +13,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static SteamAccountCreateSelenium.ManageEmails;
+using static SteamAccountCreateHelper.ManageEmails;
 
-namespace SteamAccountCreateSelenium
+namespace SteamAccountCreateHelper
 {
     public partial class Main : Form
     {
@@ -366,6 +364,12 @@ namespace SteamAccountCreateSelenium
             myProcess.StartInfo.UseShellExecute = true;
             myProcess.StartInfo.FileName = path;
             myProcess.Start();
+        }
+
+        private void btn_OpenFormAddedDomain_Click(object sender, EventArgs e)
+        {
+            frm_AddDomain frm = new frm_AddDomain();
+            frm.ShowDialog();
         }
     }
 }

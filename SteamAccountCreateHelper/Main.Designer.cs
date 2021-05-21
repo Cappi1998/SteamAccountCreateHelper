@@ -1,5 +1,5 @@
 ﻿
-namespace SteamAccountCreateSelenium
+namespace SteamAccountCreateHelper
 {
     partial class Main
     {
@@ -31,9 +31,9 @@ namespace SteamAccountCreateSelenium
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.btn_OpenFormAddedDomain = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Open_Email_File = new System.Windows.Forms.Button();
@@ -94,42 +94,44 @@ namespace SteamAccountCreateSelenium
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.btn_OpenFormAddedDomain);
             this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(6, 91);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(329, 64);
+            this.groupBox2.Size = new System.Drawing.Size(329, 77);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "supported domains";
+            this.groupBox2.Text = "Supported Domains";
             // 
-            // label15
+            // btn_OpenFormAddedDomain
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(165, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(70, 15);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "@yandex.ru";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(88, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 15);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "@rambler.ru";
+            this.btn_OpenFormAddedDomain.Location = new System.Drawing.Point(201, 22);
+            this.btn_OpenFormAddedDomain.Name = "btn_OpenFormAddedDomain";
+            this.btn_OpenFormAddedDomain.Size = new System.Drawing.Size(122, 23);
+            this.btn_OpenFormAddedDomain.TabIndex = 18;
+            this.btn_OpenFormAddedDomain.Text = "Added new Domain";
+            this.btn_OpenFormAddedDomain.UseVisualStyleBackColor = true;
+            this.btn_OpenFormAddedDomain.Click += new System.EventHandler(this.btn_OpenFormAddedDomain_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 19);
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(148, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 15);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "@gmail.com";
+            this.label10.Size = new System.Drawing.Size(13, 15);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(19, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(123, 15);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Total Domains Added:";
             // 
             // label4
             // 
@@ -570,13 +572,13 @@ namespace SteamAccountCreateSelenium
         public System.Windows.Forms.CheckBox ck_Set_NickNameRandom;
         public System.Windows.Forms.CheckBox ck_GameAndInventory_Public;
         public System.Windows.Forms.GroupBox gp_box_avatar;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btn_OpenCriationPage;
         public System.Windows.Forms.Button btn_SaveAcc;
         public System.Windows.Forms.Button btn_GetEmail;
         public System.Windows.Forms.Button btn_ConfirLink;
+        private System.Windows.Forms.Button btn_OpenFormAddedDomain;
+        public System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label14;
     }
 }
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SteamAccountCreateSelenium
+namespace SteamAccountCreateHelper
 {
     class CreationID_DB
     {

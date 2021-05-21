@@ -1,4 +1,4 @@
-﻿namespace Steam_ACC_Create
+﻿namespace SteamAccountCreateHelper
 {
     using System;
 

@@ -1,12 +1,11 @@
-﻿using BitskinsSellTF2;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Steam_ACC_Create
+namespace SteamAccountCreateHelper
 {
     public class Get_Random
     {

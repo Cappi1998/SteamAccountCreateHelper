@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SteamAccountCreateHelper.Models
 {
-    public class E_Mail
-    {
-        public string EMAIL { get; set; }
-
-        public string PASS { get; set; }
-    }
+   public  class Pop3
+   {
+        public string PoP3Server { get; set; }
+        public List<string> SuportedDomains { get; set; }
+   }
 }

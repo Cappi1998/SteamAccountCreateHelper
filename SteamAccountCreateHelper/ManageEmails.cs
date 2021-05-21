@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Steam_ACC_Create;
-using SteamAccountCreateSelenium.Models;
-using SteamAccountCreateSelenium.Utils;
+using SteamAccountCreateHelper.Models;
+using SteamAccountCreateHelper.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SteamAccountCreateSelenium
+namespace SteamAccountCreateHelper
 {
     class ManageEmails
     {

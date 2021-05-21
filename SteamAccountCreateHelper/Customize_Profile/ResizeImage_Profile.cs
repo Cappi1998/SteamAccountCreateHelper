@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Steam_ACC_Create
+namespace SteamAccountCreateHelper
 {
     class ResizeImage_Profile
     {
