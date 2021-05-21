@@ -32,7 +32,7 @@ namespace SteamAccountCreateHelper
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_OpenFormAddedDomain = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbl_TotalDomainsConfig = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -95,7 +95,7 @@ namespace SteamAccountCreateHelper
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btn_OpenFormAddedDomain);
-            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.lbl_TotalDomainsConfig);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(6, 91);
             this.groupBox2.Name = "groupBox2";
@@ -114,15 +114,15 @@ namespace SteamAccountCreateHelper
             this.btn_OpenFormAddedDomain.UseVisualStyleBackColor = true;
             this.btn_OpenFormAddedDomain.Click += new System.EventHandler(this.btn_OpenFormAddedDomain_Click);
             // 
-            // label10
+            // lbl_TotalDomainsConfig
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(148, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(13, 15);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "0";
+            this.lbl_TotalDomainsConfig.AutoSize = true;
+            this.lbl_TotalDomainsConfig.ForeColor = System.Drawing.Color.Red;
+            this.lbl_TotalDomainsConfig.Location = new System.Drawing.Point(148, 26);
+            this.lbl_TotalDomainsConfig.Name = "lbl_TotalDomainsConfig";
+            this.lbl_TotalDomainsConfig.Size = new System.Drawing.Size(13, 15);
+            this.lbl_TotalDomainsConfig.TabIndex = 6;
+            this.lbl_TotalDomainsConfig.Text = "0";
             // 
             // label14
             // 
@@ -577,7 +577,7 @@ namespace SteamAccountCreateHelper
         public System.Windows.Forms.Button btn_GetEmail;
         public System.Windows.Forms.Button btn_ConfirLink;
         private System.Windows.Forms.Button btn_OpenFormAddedDomain;
-        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label lbl_TotalDomainsConfig;
         private System.Windows.Forms.Label label14;
     }
 }

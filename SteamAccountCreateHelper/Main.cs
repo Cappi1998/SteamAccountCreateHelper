@@ -24,11 +24,14 @@ namespace SteamAccountCreateHelper
         public static string Database_Path = AppDomain.CurrentDomain.BaseDirectory + "Database\\";
         public static string Used_Mail_DB_Path = Database_Path + "Used_Email_DB.json";
         public static string creationid_DB_READ = Database_Path + "CreationID_DB.json";
+        public static string Pop3Domains_Path = Database_Path + "Pop3Domains.json";
         public static string Acc_Create_Path = Database_Path + "Created_Accounts\\";
 
         public static Pais paises = JsonConvert.DeserializeObject<Pais>(File.ReadAllText(Database_Path + "\\Steam_Country.json"));
         public static string[] Names = File.ReadAllLines(Database_Path + "Names_DataBase.txt");
         public static List<string> Avatar_URL_List = new List<string>();
+        public static List<Pop3> pop3s = JsonConvert.DeserializeObject<List<Pop3>>(File.ReadAllText(Main.Pop3Domains_Path));
+
 
         public static int Max_Acc_Por_Email = 10;
         public static List<E_Mail> EMAIl_LIST = new List<E_Mail>();
@@ -106,22 +109,14 @@ namespace SteamAccountCreateHelper
                 File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(usedEmailDatabase, Formatting.Indented));
             }
 
-            if (!File.Exists(creationid_DB_READ))
+            if (!File.Exists(Pop3Domains_Path))
             {
-                List<string> tete = new List<string> { "123", "1234" };
-                creationid_DB Creationid_DB = new creationid_DB { Creationid = tete };
-
-                File.WriteAllText(creationid_DB_READ, JsonConvert.SerializeObject(Creationid_DB, Formatting.Indented));
+                List<Pop3> pop3 = new List<Pop3>();
+                File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
             }
 
             #endregion
 
-            Process[] procs = Process.GetProcessesByName("chromedriver");
-            foreach (Process p in procs)
-            {
-                p.Kill();
-                Log.info($"{p} process Kill");
-            }
 
             LoadConfig();
 
