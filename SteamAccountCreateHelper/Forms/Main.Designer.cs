@@ -183,9 +183,9 @@ namespace SteamAccountCreateHelper
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(461, 206);
+            this.txtConsole.Location = new System.Drawing.Point(461, 196);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(341, 391);
+            this.txtConsole.Size = new System.Drawing.Size(341, 290);
             this.txtConsole.TabIndex = 2;
             this.txtConsole.Text = "";
             // 
@@ -193,7 +193,7 @@ namespace SteamAccountCreateHelper
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(461, 183);
+            this.label2.Location = new System.Drawing.Point(461, 173);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 3;
@@ -508,7 +508,7 @@ namespace SteamAccountCreateHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 609);
+            this.ClientSize = new System.Drawing.Size(813, 498);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label2);
