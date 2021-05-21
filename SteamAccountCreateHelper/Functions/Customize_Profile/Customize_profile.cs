@@ -18,20 +18,20 @@ namespace SteamAccountCreateHelper
         {
             try
             {
-                UserLogin autoaccept = new UserLogin(username, pass);
+                UserLogin login = new UserLogin(username, pass);
 
                 LoginResult response = LoginResult.BadCredentials;
-                while ((response = autoaccept.DoLogin()) != LoginResult.LoginOkay)
+                while ((response = login.DoLogin()) != LoginResult.LoginOkay)
                 {
                     Log.info($"Login Response: {response} on Account: {username}");
                     switch (response)
                     {
                         
                         case LoginResult.NeedCaptcha:
-                            System.Diagnostics.Process.Start(APIEndpoints.COMMUNITY_BASE + "/public/captcha.php?gid=" + autoaccept.CaptchaGID); //Open a web browser to the captcha image
+                            System.Diagnostics.Process.Start(APIEndpoints.COMMUNITY_BASE + "/public/captcha.php?gid=" + login.CaptchaGID); //Open a web browser to the captcha image
                             Console.WriteLine("Please enter captcha text: ");
                             string captchaText = Console.ReadLine();
-                            autoaccept.CaptchaText = captchaText;
+                            login.CaptchaText = captchaText;
                             break;
 
                         default:
@@ -39,23 +39,23 @@ namespace SteamAccountCreateHelper
                     }
                 }
 
-                File.AppendAllText(path_to_save, "\nSteamID: " + autoaccept.Session.SteamID + "\n");
-                Log.info($"Save SteamID64: {autoaccept.Session.SteamID} on Account: {username}");
+                File.AppendAllText(path_to_save, "\nSteamID: " + login.Session.SteamID + "\n");
+                Log.info($"Save SteamID64: {login.Session.SteamID} on Account: {username}");
 
 
                 if (Main._Form1.ck_Set_NickNameRandom.Checked == true)
                 {
-                    Enable_Profile_Default(autoaccept.Session, username);
+                    Enable_Profile_Default(login.Session, username);
                 }
 
                 if (Main._Form1.ck_use_custom_avatar.Checked == true)
                 {
-                    Set_Custom_Avatar(autoaccept.Session);
+                    Set_Custom_Avatar(login.Session);
                 }
 
                 if (Main._Form1.ck_GameAndInventory_Public.Checked == true)
                 {
-                    Set_GameAndInventory_Public(autoaccept.Session);
+                    Set_GameAndInventory_Public(login.Session);
                 }
             }
             catch(Exception ex)
@@ -79,8 +79,8 @@ namespace SteamAccountCreateHelper
                  .AddHeader(HttpRequestHeader.Referer, page_edit)
                 .AddPOSTParam("sessionID", SessionData.SessionID)
                 .AddPOSTParam("type", "profileSave")
-                .AddPOSTParam("personaName", Main.Names[RandomUtils.GetRandomInt(0, Main.Names.Length)])
-                .AddPOSTParam("real_name", Main.Names[RandomUtils.GetRandomInt(0, Main.Names.Length)])
+                .AddPOSTParam("personaName", Get_Random.LatesNameFakeRequest.maiden_name)
+                .AddPOSTParam("real_name", Get_Random.LatesNameFakeRequest.name)
                 .AddPOSTParam("country", Main.paises.Country[RandomUtils.GetRandomInt(0, Main.paises.Country.Count)])
                 .AddPOSTParam("customURL", username)
                 .AddPOSTParam_int("favorite_badge_badgeid", 1)

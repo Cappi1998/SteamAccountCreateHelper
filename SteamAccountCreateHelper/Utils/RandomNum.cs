@@ -9,6 +9,8 @@ namespace SteamAccountCreateHelper
 {
     public class Get_Random
     {
+        public static Root LatesNameFakeRequest = new Root();
+
         public static int RandomNumber()
         {
             Random random = new Random();
@@ -29,7 +31,7 @@ namespace SteamAccountCreateHelper
             Root response = JsonConvert.DeserializeObject<Root>(request.Content);
             string name =  response.name.ToLower().Replace(".", " ").Replace(" ", "");
             name = $"{name}_{RandomNumPequeno()}";
-
+            LatesNameFakeRequest = response;
             return name;
         }
 

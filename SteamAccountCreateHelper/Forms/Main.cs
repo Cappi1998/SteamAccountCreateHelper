@@ -28,10 +28,8 @@ namespace SteamAccountCreateHelper
         public static string Acc_Create_Path = Database_Path + "Created_Accounts\\";
 
         public static Pais paises = JsonConvert.DeserializeObject<Pais>(File.ReadAllText(Database_Path + "\\Steam_Country.json"));
-        public static string[] Names = File.ReadAllLines(Database_Path + "Names_DataBase.txt");
         public static List<string> Avatar_URL_List = new List<string>();
         public static List<Pop3> pop3s = new List<Pop3>();
-
 
         public static int Max_Acc_Por_Email = 10;
         public static List<E_Mail> EMAIl_LIST = new List<E_Mail>();
