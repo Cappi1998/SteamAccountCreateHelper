@@ -81,7 +81,7 @@ namespace SteamAccountCreateHelper
                 .AddPOSTParam("type", "profileSave")
                 .AddPOSTParam("personaName", Get_Random.LatesNameFakeRequest.maiden_name)
                 .AddPOSTParam("real_name", Get_Random.LatesNameFakeRequest.name)
-                .AddPOSTParam("country", Main.paises.Country[RandomUtils.GetRandomInt(0, Main.paises.Country.Count)])
+                .AddPOSTParam("country", Main.countries[RandomUtils.GetRandomInt(0, Main.countries.Count)])
                 .AddPOSTParam("customURL", username)
                 .AddPOSTParam_int("favorite_badge_badgeid", 1)
                 .AddCookies(SessionData)
