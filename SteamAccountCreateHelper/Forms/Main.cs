@@ -108,8 +108,23 @@ namespace SteamAccountCreateHelper
 
             if (!File.Exists(Pop3Domains_Path))
             {
-                List<Pop3> pop3 = new List<Pop3>();
-                File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
+                try
+                {
+                    var response = new RequestBuilder("https://raw.githubusercontent.com/Cappi1998/SteamAccountCreateHelper/master/SteamAccountCreateHelper/DatabaseFiles/Pop3Domains.json").GET()
+                        .Execute();
+
+                    if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        List<Pop3> pop3 = JsonConvert.DeserializeObject<List<Pop3>>(response.Content);
+                        File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
+                        Log.info($"Pop3Domains.json automatically downloaded from the repository https://github.com/Cappi1998/SteamAccountCreateHelper");
+                    }
+                }
+                catch
+                {
+                    List<Pop3> pop3 = new List<Pop3>();
+                    File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
+                }
             }
 
             #endregion
