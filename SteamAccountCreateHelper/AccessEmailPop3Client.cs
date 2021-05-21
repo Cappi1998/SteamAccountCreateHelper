@@ -23,33 +23,29 @@ namespace SteamAccountCreateHelper
 
         public static bool CheckEmailAccess(E_Mail mail)
         {
-            string hostname = "pop.gmail.com";
+            string Pop3HostName = "";
+            var splittogetdomain = mail.EMAIL.Split('@');
+            string domainName = splittogetdomain[1];
 
-            var devide = mail.EMAIL.Split('@');
-
-            if (devide[1] == "rambler.ru")
+            var popconfig = Main.pop3s.Where(a => a.SuportedDomains.Contains(domainName)).FirstOrDefault();
+            
+            if(popconfig != null)
             {
-                hostname = "pop.rambler.ru";
+                Pop3HostName = popconfig.PoP3Server;
+            }
+            else
+            {
+                Log.error($"Pop3 HostName not defined for {domainName}");
+                return false;
             }
 
-            if (devide[1] == "ro.ru")
-            {
-                hostname = "pop.rambler.ru";
-            }
-
-            if (devide[1] == "yandex.ru")
-            {
-                hostname = "pop.yandex.com";
-            }
-
-            string username = mail.EMAIL;
-            string password = mail.PASS;
+            string username = mail.EMAIL, password = mail.PASS;
 
             using (var client = new Pop3Client())
             {
                 try
                 {
-                    client.Connect(hostname, 995, true);
+                    client.Connect(Pop3HostName, 995, true);
 
                     client.Authenticate(username, password);
 
@@ -79,36 +75,30 @@ namespace SteamAccountCreateHelper
 
             string Confirm_Link = "";
 
-            string hostname = "pop.gmail.com";
+            string Pop3HostName = "";
+            var splittogetdomain = mail.EMAIL.Split('@');
+            string domainName = splittogetdomain[1];
 
-            var devide = mail.EMAIL.Split('@');
+            var popconfig = Main.pop3s.Where(a => a.SuportedDomains.Contains(domainName)).FirstOrDefault();
 
-            if (devide[1] == "rambler.ru")
+            if (popconfig != null)
             {
-                hostname = "pop.rambler.ru";
+                Pop3HostName = popconfig.PoP3Server;
+            }
+            else
+            {
+                Log.error($"Pop3 HostName not defined for {domainName}");
+                return;
             }
 
-            if (devide[1] == "ro.ru")
-            {
-                hostname = "pop.rambler.ru";
-            }
-
-            if (devide[1] == "yandex.ru")
-            {
-                hostname = "pop.yandex.com";
-            }
-
-            string username = mail.EMAIL;
-            string password = mail.PASS;
+            string username = mail.EMAIL, password = mail.PASS;
 
 
             using (var client = new Pop3Client())
             {
-
-
                 try
                 {
-                    client.Connect(hostname, 995, true);
+                    client.Connect(Pop3HostName, 995, true);
 
                     client.Authenticate(username, password);
 

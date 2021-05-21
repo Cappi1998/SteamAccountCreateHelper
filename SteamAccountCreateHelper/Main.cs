@@ -86,7 +86,6 @@ namespace SteamAccountCreateHelper
             }
         }
 
-
         private void Main_Load(object sender, EventArgs e)
         {
             #region File_create_IfNoExist
