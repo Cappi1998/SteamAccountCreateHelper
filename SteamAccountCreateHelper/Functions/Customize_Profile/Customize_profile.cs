@@ -151,7 +151,7 @@ namespace SteamAccountCreateHelper
             var edit = new RequestBuilder("https://steamcommunity.com/profiles/" + SessionData.SteamID + "/ajaxsetprivacy").POST()
                  .AddHeader(HttpRequestHeader.Referer, page_edit)
                 .AddPOSTParam("sessionid", SessionData.SessionID)
-                .AddPOSTParam("Privacy", File.ReadAllText(Main.Database_Path + "PrivacyProfile_Config.json"))
+                .AddPOSTParam("Privacy", "{\"PrivacyProfile\":3,\"PrivacyInventory\":3,\"PrivacyInventoryGifts\":3,\"PrivacyOwnedGames\":3,\"PrivacyPlaytime\":3,\"PrivacyFriendsList\":2}")
                 .AddPOSTParam_int("eCommentPermission", 0)
                 .AddCookies(SessionData)
                 .Execute();
