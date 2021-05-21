@@ -29,6 +29,7 @@ namespace SteamAccountCreateHelper
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_OpenFormAddedDomain = new System.Windows.Forms.Button();
@@ -514,6 +515,7 @@ namespace SteamAccountCreateHelper
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Steam Account Create Helper";
