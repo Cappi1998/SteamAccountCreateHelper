@@ -30,7 +30,7 @@ namespace SteamAccountCreateHelper
         public static Pais paises = JsonConvert.DeserializeObject<Pais>(File.ReadAllText(Database_Path + "\\Steam_Country.json"));
         public static string[] Names = File.ReadAllLines(Database_Path + "Names_DataBase.txt");
         public static List<string> Avatar_URL_List = new List<string>();
-        public static List<Pop3> pop3s = JsonConvert.DeserializeObject<List<Pop3>>(File.ReadAllText(Main.Pop3Domains_Path));
+        public static List<Pop3> pop3s = new List<Pop3>();
 
 
         public static int Max_Acc_Por_Email = 10;
@@ -348,6 +348,16 @@ namespace SteamAccountCreateHelper
                 {
                     Log.error($"Error to load Config: {ex.Message}");
                 }
+            }
+
+            if (File.Exists(Pop3Domains_Path))
+            {
+                pop3s = JsonConvert.DeserializeObject<List<Pop3>>(File.ReadAllText(Main.Pop3Domains_Path));
+
+                Main._Form1.lbl_TotalDomainsConfig.Text = pop3s.Count().ToString();
+
+                if(pop3s.Count() > 0)
+                  Main._Form1.lbl_TotalDomainsConfig.ForeColor = Color.DarkGreen;
             }
         }
 

@@ -117,6 +117,7 @@ namespace SteamAccountCreateHelper
             // lbl_TotalDomainsConfig
             // 
             this.lbl_TotalDomainsConfig.AutoSize = true;
+            this.lbl_TotalDomainsConfig.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbl_TotalDomainsConfig.ForeColor = System.Drawing.Color.Red;
             this.lbl_TotalDomainsConfig.Location = new System.Drawing.Point(148, 26);
             this.lbl_TotalDomainsConfig.Name = "lbl_TotalDomainsConfig";
