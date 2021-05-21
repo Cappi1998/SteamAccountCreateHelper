@@ -1,0 +1,21 @@
+[
+  {
+    "PoP3Server": "pop.gmail.com",
+    "SuportedDomains": [
+      "gmail.com"
+    ]
+  },
+  {
+    "PoP3Server": "pop.rambler.ru",
+    "SuportedDomains": [
+      "rambler.ru",
+      "ro.ru"
+    ]
+  },
+  {
+    "PoP3Server": "pop.yandex.com",
+    "SuportedDomains": [
+      "yandex.ru"
+    ]
+  }
+]
