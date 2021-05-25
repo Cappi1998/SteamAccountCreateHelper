@@ -23,6 +23,7 @@ namespace SteamAccountCreateHelper
             if(avaliableemails.Count == 0)
             {
                 MessageBox.Show($"No email available, all emails already have the maximum number of accounts => {MaxAccInEmail}", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Main._Form1.Invoke(new Action(() => Main._Form1.btn_GetEmail.Enabled = true));
                 return;
             }
 
