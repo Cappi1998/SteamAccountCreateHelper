@@ -13,41 +13,13 @@ namespace SteamAccountCreateHelper
     class ManageEmails
     {
         private static readonly object locker = new object();
-        public static int Check_amount_accs_on_Email(string e_mail)
-        {
 
-            UsedEmailDatabase mAIL_DATABASE = JsonConvert.DeserializeObject<UsedEmailDatabase>(File.ReadAllText(Main.Used_Mail_DB_Path));
-
-            if (mAIL_DATABASE.AlreadyUsed == null)
-            {
-                return 0;
-            }
-
-            AlreadyUsed UsedMail = mAIL_DATABASE.AlreadyUsed.Where(a => a.EMAIL == e_mail).FirstOrDefault();
-
-            if(UsedMail != null)
-            {
-                return UsedMail.BINDING_ACCS;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        public static void Get_Mail(int max_acc_Por_Email)
+        public static void Get_Mail(int MaxAccInEmail)
         {
             inicio:
-            E_Mail mail = Main.EMAIl_LIST[RandomUtils.GetRandomInt(0, Main.EMAIl_LIST.Count)];
+            var avaliableemails = Main.EMAIl_LIST.Where(a => a.LinkedAccounts < MaxAccInEmail).ToList();
 
-            int contas_Vinculada = ManageEmails.Check_amount_accs_on_Email(mail.EMAIL);
-
-            while (contas_Vinculada > max_acc_Por_Email)
-            {
-                // TODO - Atention Infinite Loop Error
-                mail = Main.EMAIl_LIST[RandomUtils.GetRandomInt(0, Main.EMAIl_LIST.Count)];
-                contas_Vinculada = ManageEmails.Check_amount_accs_on_Email(mail.EMAIL);
-            }
+            E_Mail mail = avaliableemails[RandomUtils.GetRandomInt(0, avaliableemails.Count)];
 
             bool working = AccessEmailPop3Client.CheckEmailAccess(mail);
 
@@ -75,28 +47,20 @@ namespace SteamAccountCreateHelper
 
                 if(UsedMail != null)
                 {
-                    UsedMail.BINDING_ACCS ++;
+                    UsedMail.LinkedAccounts++;
                 }
                 else
                 {
-                    AlreadyUsed Used = new AlreadyUsed { BINDING_ACCS = 1, EMAIL = mail };
+                    AlreadyUsed Used = new AlreadyUsed { LinkedAccounts = 1, EMAIL = mail };
                     mAIL_DATABASE.AlreadyUsed.Add(Used);
                 }
                 File.WriteAllText(Main.Used_Mail_DB_Path, JsonConvert.SerializeObject(mAIL_DATABASE, Formatting.Indented));
-            }
-        }
 
-        public static string Get_Mail_Pass(string mail)
-        {
-            E_Mail e_Mail =  Main.EMAIl_LIST.Where(a => a.EMAIL == mail).FirstOrDefault();
-
-            if(e_Mail != null)
-            {
-                return e_Mail.PASS;
-            }
-            else
-            {
-                return null;
+                var ml = Main.EMAIl_LIST.Where(a => a.EMAIL == mail).FirstOrDefault();
+                if(ml != null)
+                {
+                    ml.LinkedAccounts++;
+                }
             }
         }
 
@@ -108,7 +72,7 @@ namespace SteamAccountCreateHelper
         {
             public string EMAIL { get; set; }
 
-            public int BINDING_ACCS { get; set; }
+            public int LinkedAccounts { get; set; }
         }
     }
 }

@@ -11,5 +11,7 @@ namespace SteamAccountCreateHelper.Models
         public string EMAIL { get; set; }
 
         public string PASS { get; set; }
+
+        public int LinkedAccounts { get; set; }
     }
 }

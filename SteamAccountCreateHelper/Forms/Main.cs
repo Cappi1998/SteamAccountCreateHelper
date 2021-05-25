@@ -74,6 +74,7 @@ namespace SteamAccountCreateHelper
                     lbl_Email_Load.Font = new Font("Arial", 10, FontStyle.Bold);
                     Log.info(EMAIl_LIST.Count + " E-Mails Load!");
                     SaveConfig();
+                    SynchronizeEmailListWithDatabase();
                 }
             }
             catch (Exception ex)
@@ -97,7 +98,7 @@ namespace SteamAccountCreateHelper
 
             if (!File.Exists(Used_Mail_DB_Path))
             {
-                AlreadyUsed usado = new AlreadyUsed { EMAIL = "No_delete@mail.cappi", BINDING_ACCS = 0 };
+                AlreadyUsed usado = new AlreadyUsed { EMAIL = "No_delete@mail.cappi", LinkedAccounts = 0 };
                 List<AlreadyUsed> usados = new List<AlreadyUsed>();
                 usados.Add(usado);
 
@@ -366,6 +367,7 @@ namespace SteamAccountCreateHelper
                         Main._Form1.lbl_Email_Load.ForeColor = Color.DarkCyan;
                         Main._Form1.lbl_Email_Load.Font = new Font("Arial", 10, FontStyle.Bold);
                         Log.info(EMAIl_LIST.Count + " E-Mails Load!");
+                        SynchronizeEmailListWithDatabase();
                     }
                 }
                 catch(Exception ex)
@@ -426,6 +428,21 @@ namespace SteamAccountCreateHelper
 
             }
 
+        }
+
+        public static void SynchronizeEmailListWithDatabase()
+        {
+            UsedEmailDatabase mAIL_DATABASE = JsonConvert.DeserializeObject<UsedEmailDatabase>(File.ReadAllText(Main.Used_Mail_DB_Path));
+
+            foreach (var usedmail in mAIL_DATABASE.AlreadyUsed)
+            {
+                var ml = Main.EMAIl_LIST.Where(a => a.EMAIL == usedmail.EMAIL).FirstOrDefault();
+
+                if (ml != null)
+                {
+                    ml.LinkedAccounts = usedmail.LinkedAccounts;
+                }
+            }
         }
     }
 }
