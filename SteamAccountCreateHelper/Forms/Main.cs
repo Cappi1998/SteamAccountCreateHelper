@@ -407,14 +407,6 @@ namespace SteamAccountCreateHelper
                         this.Close();
                         break;
                     }
-                case "das3":
-                    {
-                        Process myProcess = new Process();
-                        myProcess.StartInfo.UseShellExecute = true;
-                        myProcess.StartInfo.FileName = "";
-                        myProcess.Start();
-                        break;
-                    }
 
                 default: { break; }
 
