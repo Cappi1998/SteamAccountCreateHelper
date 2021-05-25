@@ -386,5 +386,40 @@ namespace SteamAccountCreateHelper
             frm_AddDomain frm = new frm_AddDomain();
             frm.ShowDialog();
         }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+            switch(e.ClickedItem.Name)
+            {
+
+                case "github":
+                    {
+                        Process myProcess = new Process();
+                        myProcess.StartInfo.UseShellExecute = true;
+                        myProcess.StartInfo.FileName = "https://github.com/Cappi1998/SteamAccountCreateHelper";
+                        myProcess.Start();
+                        break;
+                    }
+                case "restart":
+                    {
+                        System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
+                        this.Close();
+                        break;
+                    }
+                case "das3":
+                    {
+                        Process myProcess = new Process();
+                        myProcess.StartInfo.UseShellExecute = true;
+                        myProcess.StartInfo.FileName = "";
+                        myProcess.Start();
+                        break;
+                    }
+
+                default: { break; }
+
+            }
+
+        }
     }
 }

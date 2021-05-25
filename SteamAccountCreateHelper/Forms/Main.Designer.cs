@@ -71,11 +71,15 @@ namespace SteamAccountCreateHelper
             this.ck_use_custom_avatar = new System.Windows.Forms.CheckBox();
             this.ck_Set_NickNameRandom = new System.Windows.Forms.CheckBox();
             this.ck_GameAndInventory_Public = new System.Windows.Forms.CheckBox();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.github = new System.Windows.Forms.ToolStripMenuItem();
+            this.restart = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.gp_box_avatar.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,7 +90,7 @@ namespace SteamAccountCreateHelper
             this.groupBox1.Controls.Add(this.btn_Open_Email_File);
             this.groupBox1.Controls.Add(this.lbl_Email_Load);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(461, 12);
+            this.groupBox1.Location = new System.Drawing.Point(461, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(341, 161);
             this.groupBox1.TabIndex = 1;
@@ -184,7 +188,7 @@ namespace SteamAccountCreateHelper
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(461, 196);
+            this.txtConsole.Location = new System.Drawing.Point(461, 214);
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.Size = new System.Drawing.Size(341, 290);
             this.txtConsole.TabIndex = 2;
@@ -194,7 +198,7 @@ namespace SteamAccountCreateHelper
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(461, 173);
+            this.label2.Location = new System.Drawing.Point(461, 191);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 3;
@@ -230,7 +234,7 @@ namespace SteamAccountCreateHelper
             this.groupBox3.Controls.Add(this.lbl_Login);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 30);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(443, 249);
             this.groupBox3.TabIndex = 7;
@@ -400,7 +404,7 @@ namespace SteamAccountCreateHelper
             this.groupBox4.Controls.Add(this.ck_use_custom_avatar);
             this.groupBox4.Controls.Add(this.ck_Set_NickNameRandom);
             this.groupBox4.Controls.Add(this.ck_GameAndInventory_Public);
-            this.groupBox4.Location = new System.Drawing.Point(12, 267);
+            this.groupBox4.Location = new System.Drawing.Point(12, 285);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(437, 219);
             this.groupBox4.TabIndex = 8;
@@ -505,16 +509,45 @@ namespace SteamAccountCreateHelper
             this.ck_GameAndInventory_Public.Text = "Set Games And Inventory Public";
             this.ck_GameAndInventory_Public.UseVisualStyleBackColor = true;
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.github,
+            this.restart});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(813, 24);
+            this.menuStrip.TabIndex = 9;
+            this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
+            // 
+            // github
+            // 
+            this.github.Image = ((System.Drawing.Image)(resources.GetObject("github.Image")));
+            this.github.Name = "github";
+            this.github.Size = new System.Drawing.Size(122, 20);
+            this.github.Text = "Open On Github";
+            // 
+            // restart
+            // 
+            this.restart.CheckOnClick = true;
+            this.restart.Image = ((System.Drawing.Image)(resources.GetObject("restart.Image")));
+            this.restart.Name = "restart";
+            this.restart.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.restart.Size = new System.Drawing.Size(94, 20);
+            this.restart.Text = "Restart app";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 498);
+            this.ClientSize = new System.Drawing.Size(813, 515);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -531,6 +564,8 @@ namespace SteamAccountCreateHelper
             this.groupBox4.PerformLayout();
             this.gp_box_avatar.ResumeLayout(false);
             this.gp_box_avatar.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,6 +617,9 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.Button btn_OpenFormAddedDomain;
         public System.Windows.Forms.Label lbl_TotalDomainsConfig;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem github;
+        private System.Windows.Forms.ToolStripMenuItem restart;
     }
 }
 
