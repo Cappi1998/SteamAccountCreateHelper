@@ -176,7 +176,6 @@ namespace SteamAccountCreateHelper
             }
 
 
-
             if (EMAIl_LIST.Count == 0)
             {
                 MessageBox.Show("E-Mail List is empty!!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
