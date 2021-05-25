@@ -139,6 +139,7 @@ namespace SteamAccountCreateHelper
             this.Name = "frm_AddDomain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Domain";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
