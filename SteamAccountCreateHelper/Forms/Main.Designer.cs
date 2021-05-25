@@ -31,6 +31,8 @@ namespace SteamAccountCreateHelper
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_MaxAccInMail = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_OpenFormAddedDomain = new System.Windows.Forms.Button();
             this.lbl_TotalDomainsConfig = new System.Windows.Forms.Label();
@@ -84,6 +86,8 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_MaxAccInMail);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -92,17 +96,34 @@ namespace SteamAccountCreateHelper
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(461, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(341, 161);
+            this.groupBox1.Size = new System.Drawing.Size(341, 178);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "E-Mail Config";
+            // 
+            // txt_MaxAccInMail
+            // 
+            this.txt_MaxAccInMail.Location = new System.Drawing.Point(194, 25);
+            this.txt_MaxAccInMail.Name = "txt_MaxAccInMail";
+            this.txt_MaxAccInMail.Size = new System.Drawing.Size(34, 23);
+            this.txt_MaxAccInMail.TabIndex = 10;
+            this.txt_MaxAccInMail.Text = "10";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(173, 15);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Maximum accounts per e-mail:";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btn_OpenFormAddedDomain);
             this.groupBox2.Controls.Add(this.lbl_TotalDomainsConfig);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Location = new System.Drawing.Point(6, 91);
+            this.groupBox2.Location = new System.Drawing.Point(6, 108);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(329, 64);
             this.groupBox2.TabIndex = 5;
@@ -142,7 +163,7 @@ namespace SteamAccountCreateHelper
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 71);
+            this.label4.Location = new System.Drawing.Point(59, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 15);
             this.label4.TabIndex = 4;
@@ -151,7 +172,7 @@ namespace SteamAccountCreateHelper
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 56);
+            this.label3.Location = new System.Drawing.Point(15, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 15);
             this.label3.TabIndex = 3;
@@ -159,9 +180,9 @@ namespace SteamAccountCreateHelper
             // 
             // btn_Open_Email_File
             // 
-            this.btn_Open_Email_File.Location = new System.Drawing.Point(171, 22);
+            this.btn_Open_Email_File.Location = new System.Drawing.Point(171, 75);
             this.btn_Open_Email_File.Name = "btn_Open_Email_File";
-            this.btn_Open_Email_File.Size = new System.Drawing.Size(164, 61);
+            this.btn_Open_Email_File.Size = new System.Drawing.Size(164, 30);
             this.btn_Open_Email_File.TabIndex = 2;
             this.btn_Open_Email_File.Text = "Load E-mail from File";
             this.btn_Open_Email_File.UseVisualStyleBackColor = true;
@@ -171,7 +192,7 @@ namespace SteamAccountCreateHelper
             // 
             this.lbl_Email_Load.AutoSize = true;
             this.lbl_Email_Load.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Email_Load.Location = new System.Drawing.Point(94, 32);
+            this.lbl_Email_Load.Location = new System.Drawing.Point(94, 51);
             this.lbl_Email_Load.Name = "lbl_Email_Load";
             this.lbl_Email_Load.Size = new System.Drawing.Size(27, 15);
             this.lbl_Email_Load.TabIndex = 1;
@@ -180,7 +201,7 @@ namespace SteamAccountCreateHelper
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 32);
+            this.label1.Location = new System.Drawing.Point(15, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 15);
             this.label1.TabIndex = 0;
@@ -188,9 +209,9 @@ namespace SteamAccountCreateHelper
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(461, 214);
+            this.txtConsole.Location = new System.Drawing.Point(461, 234);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(341, 290);
+            this.txtConsole.Size = new System.Drawing.Size(341, 270);
             this.txtConsole.TabIndex = 2;
             this.txtConsole.Text = "";
             // 
@@ -198,7 +219,7 @@ namespace SteamAccountCreateHelper
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(461, 191);
+            this.label2.Location = new System.Drawing.Point(461, 211);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 3;
@@ -206,7 +227,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_ConfirLink
             // 
-            this.btn_ConfirLink.Location = new System.Drawing.Point(225, 181);
+            this.btn_ConfirLink.Location = new System.Drawing.Point(225, 171);
             this.btn_ConfirLink.Name = "btn_ConfirLink";
             this.btn_ConfirLink.Size = new System.Drawing.Size(109, 47);
             this.btn_ConfirLink.TabIndex = 4;
@@ -243,7 +264,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_OpenCriationPage
             // 
-            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 181);
+            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 171);
             this.btn_OpenCriationPage.Name = "btn_OpenCriationPage";
             this.btn_OpenCriationPage.Size = new System.Drawing.Size(109, 47);
             this.btn_OpenCriationPage.TabIndex = 18;
@@ -284,7 +305,7 @@ namespace SteamAccountCreateHelper
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 231);
+            this.label9.Location = new System.Drawing.Point(6, 226);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 15);
             this.label9.TabIndex = 14;
@@ -293,7 +314,7 @@ namespace SteamAccountCreateHelper
             // lbl_OpenAccFile
             // 
             this.lbl_OpenAccFile.AutoSize = true;
-            this.lbl_OpenAccFile.Location = new System.Drawing.Point(97, 231);
+            this.lbl_OpenAccFile.Location = new System.Drawing.Point(97, 226);
             this.lbl_OpenAccFile.Name = "lbl_OpenAccFile";
             this.lbl_OpenAccFile.Size = new System.Drawing.Size(60, 15);
             this.lbl_OpenAccFile.TabIndex = 13;
@@ -305,7 +326,7 @@ namespace SteamAccountCreateHelper
             // btn_SaveAcc
             // 
             this.btn_SaveAcc.Enabled = false;
-            this.btn_SaveAcc.Location = new System.Drawing.Point(340, 181);
+            this.btn_SaveAcc.Location = new System.Drawing.Point(340, 171);
             this.btn_SaveAcc.Name = "btn_SaveAcc";
             this.btn_SaveAcc.Size = new System.Drawing.Size(97, 47);
             this.btn_SaveAcc.TabIndex = 12;
@@ -623,6 +644,8 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem github;
         private System.Windows.Forms.ToolStripMenuItem restart;
+        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.TextBox txt_MaxAccInMail;
     }
 }
 

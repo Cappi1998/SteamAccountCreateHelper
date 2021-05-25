@@ -31,7 +31,7 @@ namespace SteamAccountCreateHelper
         public static List<string> Avatar_URL_List = new List<string>();
         public static List<Pop3> pop3s = new List<Pop3>();
 
-        public static int Max_Acc_Por_Email = 10;
+        public static int MaxAccInEmail = 10;
         public static List<E_Mail> EMAIl_LIST = new List<E_Mail>();
 
         public string AvatarImageFilePath = "";
@@ -162,6 +162,20 @@ namespace SteamAccountCreateHelper
 
         private void btn_GetEmail_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int _MaxAccInEmail = Convert.ToInt32(txt_MaxAccInMail.Text);
+                MaxAccInEmail = _MaxAccInEmail;
+            }
+            catch(Exception ex)
+            {
+                Log.error(ex.Message);
+                MessageBox.Show("Maximum accounts per e-mail input is invalid!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+
             if (EMAIl_LIST.Count == 0)
             {
                 MessageBox.Show("E-Mail List is empty!!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -169,7 +183,7 @@ namespace SteamAccountCreateHelper
             }
             btn_GetEmail.Enabled = false;
 
-            Thread th = new Thread(() => ManageEmails.Get_Mail(Main.Max_Acc_Por_Email));
+            Thread th = new Thread(() => ManageEmails.Get_Mail(Main.MaxAccInEmail));
             th.IsBackground = true;
             th.Start();
         }
