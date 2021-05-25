@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SteamAccountCreateHelper
 {
@@ -18,6 +19,12 @@ namespace SteamAccountCreateHelper
         {
             inicio:
             var avaliableemails = Main.EMAIl_LIST.Where(a => a.LinkedAccounts < MaxAccInEmail).ToList();
+
+            if(avaliableemails.Count == 0)
+            {
+                MessageBox.Show($"No email available, all emails already have the maximum number of accounts => {MaxAccInEmail}", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             E_Mail mail = avaliableemails[RandomUtils.GetRandomInt(0, avaliableemails.Count)];
 
