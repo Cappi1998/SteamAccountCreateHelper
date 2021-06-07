@@ -76,6 +76,7 @@ namespace SteamAccountCreateHelper
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.github = new System.Windows.Forms.ToolStripMenuItem();
             this.restart = new System.Windows.Forms.ToolStripMenuItem();
+            this.ck_OpenDefaultdw = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -237,6 +238,7 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ck_OpenDefaultdw);
             this.groupBox3.Controls.Add(this.btn_OpenCriationPage);
             this.groupBox3.Controls.Add(this.btn_CopyEmail);
             this.groupBox3.Controls.Add(this.btn_CopyPass);
@@ -558,6 +560,16 @@ namespace SteamAccountCreateHelper
             this.restart.Size = new System.Drawing.Size(94, 20);
             this.restart.Text = "Restart app";
             // 
+            // ck_OpenDefaultdw
+            // 
+            this.ck_OpenDefaultdw.AutoSize = true;
+            this.ck_OpenDefaultdw.Location = new System.Drawing.Point(219, 222);
+            this.ck_OpenDefaultdw.Name = "ck_OpenDefaultdw";
+            this.ck_OpenDefaultdw.Size = new System.Drawing.Size(218, 19);
+            this.ck_OpenDefaultdw.TabIndex = 19;
+            this.ck_OpenDefaultdw.Text = "open confirm link in default browser";
+            this.ck_OpenDefaultdw.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -646,6 +658,7 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.ToolStripMenuItem restart;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txt_MaxAccInMail;
+        public System.Windows.Forms.CheckBox ck_OpenDefaultdw;
     }
 }
 

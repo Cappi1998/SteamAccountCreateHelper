@@ -239,12 +239,20 @@ namespace SteamAccountCreateHelper
 
         private void lbl_OpenAccFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string path = Path.Combine(Main.Acc_Create_Path, lbl_OpenAccFile.Text);
+            try
+            {
+                string path = Path.Combine(Main.Acc_Create_Path, lbl_OpenAccFile.Text);
 
-            Process myProcess = new Process();
-            myProcess.StartInfo.UseShellExecute = true;
-            myProcess.StartInfo.FileName = path;
-            myProcess.Start();
+                Process myProcess = new Process();
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = path;
+                myProcess.Start();
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void btn_CopyLogin_Click(object sender, EventArgs e)

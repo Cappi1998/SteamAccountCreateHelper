@@ -136,12 +136,21 @@ namespace SteamAccountCreateHelper
                             {
                                 Confirm_Link = $"https://store.steampowered.com/account/newaccountverification?stoken={stoken}&creationid={creationid}";
 
-                                Process myProcess = new Process();
-                                myProcess.StartInfo.UseShellExecute = true;
-                                myProcess.StartInfo.FileName = Confirm_Link;
-                                myProcess.Start();
 
-                                Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+                                if (Main._Form1.ck_OpenDefaultdw.Checked)
+                                {
+                                    Process myProcess = new Process();
+                                    myProcess.StartInfo.UseShellExecute = true;
+                                    myProcess.StartInfo.FileName = Confirm_Link;
+                                    myProcess.Start();
+
+                                    Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+                                }
+                                else
+                                {
+                                    var request = new RequestBuilder(Confirm_Link).GET().Execute();
+                                    Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+                                }
                                 
                                 lock (locker)
                                 {
