@@ -209,7 +209,7 @@ namespace SteamAccountCreateHelper
                 StreamWriter sw;
                 sw = File.AppendText(path_to_save);
 
-                sw.WriteLine(Main.Login + ":" + Main.Pass +
+                sw.WriteLine(Main._Form1.lbl_Login + ":" + Main._Form1.lbl_Pass +
                     "\r\n\r\nEmail: " + Main.email.EMAIL +
                     "\r\nEMail Password: " + Main.email.PASS);
 
