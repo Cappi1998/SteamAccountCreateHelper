@@ -220,7 +220,11 @@ namespace SteamAccountCreateHelper
             lbl_OpenAccFile.Text = $"{Main._Form1.lbl_Login.Text}.txt";
             lbl_OpenAccFile.Visible = true;
 
-            Thread th = new Thread(() => Customize_profile.Login_An_Customize(path_to_save, Main._Form1.lbl_Login.Text, Main._Form1.lbl_Pass.Text));
+            string login = Main._Form1.lbl_Login.Text;
+            string pass = Main._Form1.lbl_Pass.Text;
+
+
+            Thread th = new Thread(() => Customize_profile.Login_An_Customize(path_to_save, login, pass));
             th.IsBackground = true;
             th.Start();
 
