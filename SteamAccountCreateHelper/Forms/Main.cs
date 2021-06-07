@@ -217,23 +217,23 @@ namespace SteamAccountCreateHelper
                 sw.Dispose();
             }
 
-            Log.info("Account Create: " + Main.Login);
+            Log.info("Account Create: " + Main._Form1.lbl_Login.Text);
 
             ManageEmails.Add_Mail_To_DB(Main.email.EMAIL);
+
+
+            lbl_OpenAccFile.Text = $"{Main._Form1.lbl_Login.Text}.txt";
+            lbl_OpenAccFile.Visible = true;
+
+            Thread th = new Thread(() => Customize_profile.Login_An_Customize(path_to_save, Main._Form1.lbl_Login.Text, Main._Form1.lbl_Pass.Text));
+            th.IsBackground = true;
+            th.Start();
 
             lbl_Email.Text = "";
             lbl_EmailPass.Text = "";
 
             lbl_Login.Text = "";
             lbl_Pass.Text = "";
-
-            lbl_OpenAccFile.Text = $"{Main.Login}.txt";
-            lbl_OpenAccFile.Visible = true;
-
-            Thread th = new Thread(() => Customize_profile.Login_An_Customize(path_to_save, Main.Login,Main.Pass));
-            th.IsBackground = true;
-            th.Start();
-
             btn_SaveAcc.Enabled = false;
         }
 
