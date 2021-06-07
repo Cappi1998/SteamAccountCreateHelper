@@ -37,8 +37,6 @@ namespace SteamAccountCreateHelper
         public string AvatarImageFilePath = "";
         public string EmailFilePath = "";
 
-        public static string Login = "";
-        public static string Pass = "";
         public static E_Mail email = null;
 
         public Main()
@@ -154,11 +152,8 @@ namespace SteamAccountCreateHelper
 
         private void btn_GenLoginPass_Click(object sender, EventArgs e)
         {
-            Main.Login = Get_Random.RandomLogin();
-            Main.Pass = Get_Random.RandomPassword();
-
-            lbl_Login.Text = Main.Login;
-            lbl_Pass.Text = Main.Pass;
+            lbl_Login.Text = Get_Random.RandomLogin();
+            lbl_Pass.Text = Get_Random.RandomPassword();
         }
 
         private void btn_GetEmail_Click(object sender, EventArgs e)
@@ -190,15 +185,15 @@ namespace SteamAccountCreateHelper
 
         private void btn_SaveAcc_Click(object sender, EventArgs e)
         {
-            string path_to_save = Path.Combine(Main.Acc_Create_Path, $"{Main.Login}.txt");
+            string path_to_save = Path.Combine(Main.Acc_Create_Path, $"{Main._Form1.lbl_Login.Text}.txt");
 
-            if (string.IsNullOrWhiteSpace(Main.Login))
+            if (string.IsNullOrWhiteSpace(Main._Form1.lbl_Login.Text))
             {
                 MessageBox.Show("Login is empty!!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(Main.Pass))
+            if (string.IsNullOrWhiteSpace(Main._Form1.lbl_Pass.Text))
             {
                 MessageBox.Show("Pass is empty!!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
