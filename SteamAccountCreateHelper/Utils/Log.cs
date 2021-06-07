@@ -21,7 +21,7 @@ namespace SteamAccountCreateHelper.Utils
             {
                 msg = DateTime.Now + " - " + msg;
 
-                Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionColor = Color.Lime));
+                Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionColor = Color.DarkGreen));
                 Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.AppendText(msg + Environment.NewLine)));
                 Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionColor = Main._Form1.txtConsole.ForeColor));
                 Main._Form1.txtConsole.Invoke(new Action(() => Main._Form1.txtConsole.SelectionStart = Main._Form1.txtConsole.Text.Length));
