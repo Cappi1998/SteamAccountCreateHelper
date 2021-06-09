@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using Newtonsoft.Json;
 using SteamAccountCreateHelper.Models;
 using SteamAccountCreateHelper.Utils;
 using System;
@@ -39,11 +41,111 @@ namespace SteamAccountCreateHelper
 
         public static E_Mail email = null;
 
+        public static ChromiumWebBrowser chrome;
+        public static CefSettings settings = new CefSettings();
+        public static ProxyOptions proxy;
+        public static bool ProxySet = false;
+
         public Main()
         {
             _Form1 = this; 
             InitializeComponent();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            #region File_create_IfNoExist
+
+            if (!Directory.Exists(Database_Path))
+            {
+                Directory.CreateDirectory(Database_Path);
+                Directory.CreateDirectory(Database_Path + "Created_Accounts");
+            }
+
+
+            if (!File.Exists(Used_Mail_DB_Path))
+            {
+                AlreadyUsed usado = new AlreadyUsed { EMAIL = "No_delete@mail.cappi", LinkedAccounts = 0 };
+                List<AlreadyUsed> usados = new List<AlreadyUsed>();
+                usados.Add(usado);
+
+                UsedEmailDatabase usedEmailDatabase = new UsedEmailDatabase { AlreadyUsed = usados };
+
+                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(usedEmailDatabase, Formatting.Indented));
+            }
+
+            if (!File.Exists(Pop3Domains_Path))
+            {
+                try
+                {
+                    var response = new RequestBuilder("https://raw.githubusercontent.com/Cappi1998/SteamAccountCreateHelper/master/SteamAccountCreateHelper/DatabaseFiles/Pop3Domains.json").GET()
+                        .Execute();
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        List<Pop3> pop3 = JsonConvert.DeserializeObject<List<Pop3>>(response.Content);
+                        File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
+                        Log.info($"Pop3Domains.json automatically downloaded from the repository https://github.com/Cappi1998/SteamAccountCreateHelper");
+                    }
+                }
+                catch
+                {
+                    List<Pop3> pop3 = new List<Pop3>();
+                    File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
+                }
+            }
+
+            #endregion
+
+            LoadConfig();
+
+            settings.IgnoreCertificateErrors = true;
+            var tete = Cef.Initialize(settings);
+            txtUrl.Text = "meuip.com";
+            chrome = new ChromiumWebBrowser(txtUrl.Text);
+            this.panel1.Controls.Add(chrome);
+            chrome.Dock = DockStyle.Fill;
+            chrome.AddressChanged += Chrome_AddressChanged;
+        }
+
+        private void Chrome_AddressChanged(object sender, AddressChangedEventArgs e)
+        {
+            this.Invoke(new MethodInvoker(() =>
+            {
+                txtUrl.Text = e.Address;
+            }));
+        }
+
+        void ChangerProxy(string URL)
+        {
+            
+            if (!ProxySet)
+            {
+                if (ckUseSingleProxy.Checked)
+                {
+                    if (string.IsNullOrWhiteSpace(Main._Form1.txt_SingleProxy.Text))
+                    {
+                        MessageBox.Show("Proxy is null! Please enter proxy", "Proxy Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    var split = txt_SingleProxy.Text.Split(':');
+                    proxy = new ProxyOptions(split[0], split[1], split[2], split[3]);
+
+                    CefSharpSettings.Proxy = proxy;
+                    var rc = chrome.GetBrowser().GetHost().RequestContext;
+
+                    Cef.UIThreadTaskFactory.StartNew(delegate {
+                        rc.SetProxy($"{proxy.IP}:{proxy.Port}", out var error);
+                    });
+
+                    ProxySet = true;
+                }
+            }
+
+            chrome.Load(URL);
+        }
+
 
         private void btn_Open_Email_File_Click(object sender, EventArgs e)
         {
@@ -83,53 +185,7 @@ namespace SteamAccountCreateHelper
             }
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-            #region File_create_IfNoExist
 
-            if (!Directory.Exists(Database_Path))
-            {
-                Directory.CreateDirectory(Database_Path);
-                    Directory.CreateDirectory(Database_Path + "Created_Accounts");
-            }
-
-
-            if (!File.Exists(Used_Mail_DB_Path))
-            {
-                AlreadyUsed usado = new AlreadyUsed { EMAIL = "No_delete@mail.cappi", LinkedAccounts = 0 };
-                List<AlreadyUsed> usados = new List<AlreadyUsed>();
-                usados.Add(usado);
-
-                UsedEmailDatabase usedEmailDatabase = new UsedEmailDatabase { AlreadyUsed = usados };
-
-                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(usedEmailDatabase, Formatting.Indented));
-            }
-
-            if (!File.Exists(Pop3Domains_Path))
-            {
-                try
-                {
-                    var response = new RequestBuilder("https://raw.githubusercontent.com/Cappi1998/SteamAccountCreateHelper/master/SteamAccountCreateHelper/DatabaseFiles/Pop3Domains.json").GET()
-                        .Execute();
-
-                    if(response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        List<Pop3> pop3 = JsonConvert.DeserializeObject<List<Pop3>>(response.Content);
-                        File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
-                        Log.info($"Pop3Domains.json automatically downloaded from the repository https://github.com/Cappi1998/SteamAccountCreateHelper");
-                    }
-                }
-                catch
-                {
-                    List<Pop3> pop3 = new List<Pop3>();
-                    File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
-                }
-            }
-
-            #endregion
-
-            LoadConfig();
-        }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -323,6 +379,8 @@ namespace SteamAccountCreateHelper
             Config config = new Config();
             config.AvatarImageFilePath = Main._Form1.AvatarImageFilePath;
             config.EmailFilePath = Main._Form1.EmailFilePath;
+            config.SingleProxyChecked = Main._Form1.ckUseSingleProxy.Checked;
+            config.SingleProxyText = Main._Form1.txt_SingleProxy.Text;
 
             System.IO.File.WriteAllText(Database_Path + "Config.json", JsonConvert.SerializeObject(config, Formatting.Indented));//salvar o arquivo appids atualizado
 
@@ -375,6 +433,16 @@ namespace SteamAccountCreateHelper
                         Log.info(EMAIl_LIST.Count + " E-Mails Load!");
                         SynchronizeEmailListWithDatabase();
                     }
+                    if (config.SingleProxyChecked)
+                    {
+                        Main._Form1.ckUseSingleProxy.Checked = config.SingleProxyChecked;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(config.SingleProxyText))
+                    {
+                        Main._Form1.txt_SingleProxy.Text = config.SingleProxyText;
+                    }
+
                 }
                 catch(Exception ex)
                 {
@@ -396,11 +464,7 @@ namespace SteamAccountCreateHelper
         private void btn_OpenCriationPage_Click(object sender, EventArgs e)
         {
             string path = "https://store.steampowered.com/join/?l=english";
-
-            Process myProcess = new Process();
-            myProcess.StartInfo.UseShellExecute = true;
-            myProcess.StartInfo.FileName = path;
-            myProcess.Start();
+            ChangerProxy(path);
         }
 
         private void btn_OpenFormAddedDomain_Click(object sender, EventArgs e)
@@ -449,6 +513,16 @@ namespace SteamAccountCreateHelper
                     ml.LinkedAccounts = usedmail.LinkedAccounts;
                 }
             }
+        }
+
+        private void ckUseSingleProxy_Click(object sender, EventArgs e)
+        {
+            SaveConfig();
+        }
+
+        private void txt_SingleProxy_Leave(object sender, EventArgs e)
+        {
+            SaveConfig();
         }
     }
 }

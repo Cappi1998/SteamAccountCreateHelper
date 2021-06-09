@@ -46,6 +46,7 @@ namespace SteamAccountCreateHelper
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ConfirLink = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ck_OpenDefaultdw = new System.Windows.Forms.CheckBox();
             this.btn_OpenCriationPage = new System.Windows.Forms.Button();
             this.btn_CopyEmail = new System.Windows.Forms.Button();
             this.btn_CopyPass = new System.Windows.Forms.Button();
@@ -76,13 +77,21 @@ namespace SteamAccountCreateHelper
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.github = new System.Windows.Forms.ToolStripMenuItem();
             this.restart = new System.Windows.Forms.ToolStripMenuItem();
-            this.ck_OpenDefaultdw = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txt_SingleProxy = new System.Windows.Forms.TextBox();
+            this.ckUseSingleProxy = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.gp_box_avatar.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -95,7 +104,7 @@ namespace SteamAccountCreateHelper
             this.groupBox1.Controls.Add(this.btn_Open_Email_File);
             this.groupBox1.Controls.Add(this.lbl_Email_Load);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(461, 30);
+            this.groupBox1.Location = new System.Drawing.Point(1326, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(341, 178);
             this.groupBox1.TabIndex = 1;
@@ -210,7 +219,7 @@ namespace SteamAccountCreateHelper
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(461, 234);
+            this.txtConsole.Location = new System.Drawing.Point(1326, 231);
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.Size = new System.Drawing.Size(341, 270);
             this.txtConsole.TabIndex = 2;
@@ -220,7 +229,7 @@ namespace SteamAccountCreateHelper
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(461, 211);
+            this.label2.Location = new System.Drawing.Point(1326, 208);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 3;
@@ -257,12 +266,22 @@ namespace SteamAccountCreateHelper
             this.groupBox3.Controls.Add(this.lbl_Login);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(12, 30);
+            this.groupBox3.Location = new System.Drawing.Point(877, 27);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(443, 249);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acc Info";
+            // 
+            // ck_OpenDefaultdw
+            // 
+            this.ck_OpenDefaultdw.AutoSize = true;
+            this.ck_OpenDefaultdw.Location = new System.Drawing.Point(219, 222);
+            this.ck_OpenDefaultdw.Name = "ck_OpenDefaultdw";
+            this.ck_OpenDefaultdw.Size = new System.Drawing.Size(218, 19);
+            this.ck_OpenDefaultdw.TabIndex = 19;
+            this.ck_OpenDefaultdw.Text = "open confirm link in default browser";
+            this.ck_OpenDefaultdw.UseVisualStyleBackColor = true;
             // 
             // btn_OpenCriationPage
             // 
@@ -427,7 +446,7 @@ namespace SteamAccountCreateHelper
             this.groupBox4.Controls.Add(this.ck_use_custom_avatar);
             this.groupBox4.Controls.Add(this.ck_Set_NickNameRandom);
             this.groupBox4.Controls.Add(this.ck_GameAndInventory_Public);
-            this.groupBox4.Location = new System.Drawing.Point(12, 285);
+            this.groupBox4.Location = new System.Drawing.Point(877, 282);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(437, 219);
             this.groupBox4.TabIndex = 8;
@@ -539,7 +558,7 @@ namespace SteamAccountCreateHelper
             this.restart});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(813, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1676, 24);
             this.menuStrip.TabIndex = 9;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -560,21 +579,88 @@ namespace SteamAccountCreateHelper
             this.restart.Size = new System.Drawing.Size(94, 20);
             this.restart.Text = "Restart app";
             // 
-            // ck_OpenDefaultdw
+            // panel1
             // 
-            this.ck_OpenDefaultdw.AutoSize = true;
-            this.ck_OpenDefaultdw.Location = new System.Drawing.Point(219, 222);
-            this.ck_OpenDefaultdw.Name = "ck_OpenDefaultdw";
-            this.ck_OpenDefaultdw.Size = new System.Drawing.Size(218, 19);
-            this.ck_OpenDefaultdw.TabIndex = 19;
-            this.ck_OpenDefaultdw.Text = "open confirm link in default browser";
-            this.ck_OpenDefaultdw.UseVisualStyleBackColor = true;
+            this.panel1.Location = new System.Drawing.Point(12, 32);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(859, 640);
+            this.panel1.TabIndex = 10;
+            // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(102, 22);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(335, 23);
+            this.txtUrl.TabIndex = 11;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(26, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 15);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "Browser Url:";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.txt_SingleProxy);
+            this.groupBox5.Controls.Add(this.ckUseSingleProxy);
+            this.groupBox5.Controls.Add(this.txtUrl);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Location = new System.Drawing.Point(877, 510);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(790, 162);
+            this.groupBox5.TabIndex = 13;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "groupBox5";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(61, 132);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(124, 15);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "IP:Port:Username:Pass";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(17, 117);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(96, 15);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Format Example:";
+            // 
+            // txt_SingleProxy
+            // 
+            this.txt_SingleProxy.Location = new System.Drawing.Point(17, 91);
+            this.txt_SingleProxy.Name = "txt_SingleProxy";
+            this.txt_SingleProxy.Size = new System.Drawing.Size(274, 23);
+            this.txt_SingleProxy.TabIndex = 14;
+            this.txt_SingleProxy.Leave += new System.EventHandler(this.txt_SingleProxy_Leave);
+            // 
+            // ckUseSingleProxy
+            // 
+            this.ckUseSingleProxy.AutoSize = true;
+            this.ckUseSingleProxy.Location = new System.Drawing.Point(17, 66);
+            this.ckUseSingleProxy.Name = "ckUseSingleProxy";
+            this.ckUseSingleProxy.Size = new System.Drawing.Size(113, 19);
+            this.ckUseSingleProxy.TabIndex = 13;
+            this.ckUseSingleProxy.Text = "Use Single Proxy";
+            this.ckUseSingleProxy.UseVisualStyleBackColor = true;
+            this.ckUseSingleProxy.Click += new System.EventHandler(this.ckUseSingleProxy_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 515);
+            this.ClientSize = new System.Drawing.Size(1676, 684);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label2);
@@ -602,6 +688,8 @@ namespace SteamAccountCreateHelper
             this.gp_box_avatar.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,6 +747,14 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txt_MaxAccInMail;
         public System.Windows.Forms.CheckBox ck_OpenDefaultdw;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        public System.Windows.Forms.TextBox txt_SingleProxy;
+        private System.Windows.Forms.CheckBox ckUseSingleProxy;
     }
 }
 

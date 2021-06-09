@@ -10,5 +10,8 @@ namespace SteamAccountCreateHelper.Models
     {
         public string EmailFilePath { get; set; }
         public string AvatarImageFilePath { get; set; }
+
+        public string SingleProxyText { get; set; }
+        public bool SingleProxyChecked { get; set; }
     }
 }
