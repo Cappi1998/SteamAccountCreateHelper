@@ -114,6 +114,7 @@ namespace SteamAccountCreateHelper
 
         private void Chrome_AddressChanged(object sender, AddressChangedEventArgs e)
         {
+
             this.Invoke(new MethodInvoker(() =>
             {
                 txtUrl.Text = e.Address;
@@ -158,6 +159,20 @@ namespace SteamAccountCreateHelper
             Main.chrome.ExecuteScriptAsync($"document.getElementById('i_agree_check').checked = 'True'");
         }
 
+        public async static void CheckExistingAccountOnEmail()
+        {
+
+            var myScript = "(() => { var element = document.getElementsByClassName('create_newaccount_intro'); return element[0].innerText; })();";
+            var task = chrome.EvaluateScriptAsync(myScript);
+            var response = await task;
+
+            if (response.Result.ToString() == "If you prefer, you can make a new, separate Steam account.")
+            {
+                Main.chrome.ExecuteScriptAsync($"EmailConfirmedVerified(0);");
+            }
+        }
+
+
 
         private void btn_Open_Email_File_Click(object sender, EventArgs e)
         {
@@ -184,7 +199,7 @@ namespace SteamAccountCreateHelper
                     lbl_Email_Load.Text = EMAIl_LIST.Count.ToString();
                     lbl_Email_Load.ForeColor = Color.DarkCyan;
                     lbl_Email_Load.Font = new Font("Arial", 10, FontStyle.Bold);
-                    Log.info(EMAIl_LIST.Count + " E-Mails Load!");
+                    Log.info($"{EMAIl_LIST.Count} E-Mails Load!");
                     SaveConfig();
                     SynchronizeEmailListWithDatabase();
                 }

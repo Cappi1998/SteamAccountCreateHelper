@@ -145,11 +145,24 @@ namespace SteamAccountCreateHelper
                                     myProcess.Start();
 
                                     Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+
+                                    Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
+                                    th.IsBackground = true;
+                                    th.Start();
+
+                                    
                                 }
                                 else
                                 {
                                     var request = new RequestBuilder(Confirm_Link).GET().Execute();
+
+                                    Main.CheckExistingAccountOnEmail();
+
                                     Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+
+                                    Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
+                                    th.IsBackground = true;
+                                    th.Start();
                                 }
                                 
                                 lock (locker)
