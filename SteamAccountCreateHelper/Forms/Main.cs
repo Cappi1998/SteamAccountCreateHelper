@@ -100,6 +100,10 @@ namespace SteamAccountCreateHelper
             LoadConfig();
 
             settings.IgnoreCertificateErrors = true;
+            settings.CachePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"cache");
+            settings.CefCommandLineArgs.Add("disable-application-cache", "1");
+            settings.CefCommandLineArgs.Add("disable-session-storage", "1");
+
             var tete = Cef.Initialize(settings);
             txtUrl.Text = "meuip.com";
             chrome = new ChromiumWebBrowser(txtUrl.Text);
