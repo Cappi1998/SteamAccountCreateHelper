@@ -11,10 +11,14 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="CefSharp.WinForms" Version="90.6.70" />
-    <PackageReference Include="MailKit" Version="2.11.1" />
-    <PackageReference Include="MimeKit" Version="2.11.0" />
+    <PackageReference Include="MailKit" Version="2.12.0" />
+    <PackageReference Include="MimeKit" Version="2.12.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="SteamAuth" Version="3.0.0" />
