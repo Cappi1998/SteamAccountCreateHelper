@@ -29,7 +29,7 @@ namespace SteamAccountCreateHelper
             var request = new RequestBuilder("https://api.namefake.com/").GET()
                        .Execute();
             Root response = JsonConvert.DeserializeObject<Root>(request.Content);
-            string name =  response.name.ToLower().Replace(".", " ").Replace(" ", "");
+            string name =  response.name.ToLower().Replace(".", " ").Replace("'", " ").Replace(" ", "");
             name = $"{name}_{RandomNumPequeno()}";
             LatesNameFakeRequest = response;
             return name;

@@ -105,7 +105,7 @@ namespace SteamAccountCreateHelper
             settings.CefCommandLineArgs.Add("disable-session-storage", "1");
 
             var tete = Cef.Initialize(settings);
-            txtUrl.Text = "meuip.com";
+            txtUrl.Text = "store.steampowered.com/join/?l=english";
             chrome = new ChromiumWebBrowser(txtUrl.Text);
             this.panel1.Controls.Add(chrome);
             chrome.Dock = DockStyle.Fill;
@@ -114,6 +114,10 @@ namespace SteamAccountCreateHelper
 
         private void Chrome_AddressChanged(object sender, AddressChangedEventArgs e)
         {
+            if(e.Address.ToString() == "https://store.steampowered.com/?created_account=1")
+            {
+                SaveAccountInfo();
+            }
 
             this.Invoke(new MethodInvoker(() =>
             {
@@ -152,13 +156,6 @@ namespace SteamAccountCreateHelper
         }
 
         
-        public static void AddedEmail(string Email)
-        {
-            Main.chrome.ExecuteScriptAsync($"document.getElementById('email').value = '{Email}'");
-            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_email').value = '{Email}'");
-            Main.chrome.ExecuteScriptAsync($"document.getElementById('i_agree_check').checked = 'True'");
-        }
-
         public async static void CheckExistingAccountOnEmail()
         {
 
@@ -249,6 +246,18 @@ namespace SteamAccountCreateHelper
             Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').value = '{lbl_Pass.Text}'");
             Thread.Sleep(500);
             Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').onkeyup();");
+
+            Thread.Sleep(800);
+            Main.chrome.ExecuteScriptAsync($"CompleteCreateAccount();");
+        }
+
+        public static void AddedEmail(string Email)
+        {
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('email').value = '{Email}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_email').value = '{Email}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('i_agree_check').checked = 'True'");
+            Thread.Sleep(250);
+            Main.chrome.ExecuteScriptAsync($"CreateAccount()");
         }
 
         private void btn_GetEmail_Click(object sender, EventArgs e)
@@ -279,6 +288,11 @@ namespace SteamAccountCreateHelper
         }
 
         private void btn_SaveAcc_Click(object sender, EventArgs e)
+        {
+            SaveAccountInfo();
+        }
+
+        public static void SaveAccountInfo()
         {
             string path_to_save = Path.Combine(Main.Acc_Create_Path, $"{Main._Form1.lbl_Login.Text}.txt");
 
@@ -312,24 +326,31 @@ namespace SteamAccountCreateHelper
             ManageEmails.Add_Mail_To_DB(Main.email.EMAIL);
 
 
-            lbl_OpenAccFile.Text = $"{Main._Form1.lbl_Login.Text}.txt";
-            lbl_OpenAccFile.Visible = true;
+            Main._Form1.Invoke(new Action(() => {
 
-            string login = Main._Form1.lbl_Login.Text;
-            string pass = Main._Form1.lbl_Pass.Text;
+                Main._Form1.lbl_OpenAccFile.Text = $"{Main._Form1.lbl_Login.Text}.txt";
+                Main._Form1.lbl_OpenAccFile.Visible = true;
+
+                string login = Main._Form1.lbl_Login.Text;
+                string pass = Main._Form1.lbl_Pass.Text;
 
 
-            Thread th = new Thread(() => Customize_profile.Login_An_Customize(path_to_save, login, pass));
-            th.IsBackground = true;
-            th.Start();
+                Thread th = new Thread(() => Customize_profile.Login_An_Customize(path_to_save, login, pass));
+                th.IsBackground = true;
+                th.Start();
 
-            lbl_Email.Text = "";
-            lbl_EmailPass.Text = "";
+                Main._Form1.lbl_Email.Text = "";
+                Main._Form1.lbl_EmailPass.Text = "";
 
-            lbl_Login.Text = "";
-            lbl_Pass.Text = "";
-            btn_SaveAcc.Enabled = false;
+                Main._Form1.lbl_Login.Text = "";
+                Main._Form1.lbl_Pass.Text = "";
+                Main._Form1.btn_SaveAcc.Enabled = false;
+
+                Main._Form1.ChangerProxy("https://store.steampowered.com/join/?l=english");
+            }));
+
         }
+
 
         private void lbl_OpenAccFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -502,8 +523,15 @@ namespace SteamAccountCreateHelper
 
         private void btn_OpenCriationPage_Click(object sender, EventArgs e)
         {
-            string path = "https://store.steampowered.com/join/?l=english";
-            ChangerProxy(path);
+            if (chrome.IsLoading)
+            {
+                MessageBox.Show($"Wait WebBrowser is loading a page...\r\n\r\n{chrome.Address}", "Wait...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                ChangerProxy("https://store.steampowered.com/join/?l=english");
+            }
         }
 
         private void btn_OpenFormAddedDomain_Click(object sender, EventArgs e)

@@ -130,7 +130,7 @@ namespace SteamAccountCreateHelper
 
                             if (ja_usado == true)
                             {
-                                continue;
+                                goto INICIO;
                             }
                             else
                             {

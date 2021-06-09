@@ -238,7 +238,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_ConfirLink
             // 
-            this.btn_ConfirLink.Location = new System.Drawing.Point(225, 171);
+            this.btn_ConfirLink.Location = new System.Drawing.Point(225, 154);
             this.btn_ConfirLink.Name = "btn_ConfirLink";
             this.btn_ConfirLink.Size = new System.Drawing.Size(109, 47);
             this.btn_ConfirLink.TabIndex = 4;
@@ -277,16 +277,16 @@ namespace SteamAccountCreateHelper
             // ck_OpenDefaultdw
             // 
             this.ck_OpenDefaultdw.AutoSize = true;
-            this.ck_OpenDefaultdw.Location = new System.Drawing.Point(219, 222);
+            this.ck_OpenDefaultdw.Location = new System.Drawing.Point(211, 204);
             this.ck_OpenDefaultdw.Name = "ck_OpenDefaultdw";
-            this.ck_OpenDefaultdw.Size = new System.Drawing.Size(218, 19);
+            this.ck_OpenDefaultdw.Size = new System.Drawing.Size(220, 19);
             this.ck_OpenDefaultdw.TabIndex = 19;
-            this.ck_OpenDefaultdw.Text = "open confirm link in default browser";
+            this.ck_OpenDefaultdw.Text = "Open confirm link in default browser";
             this.ck_OpenDefaultdw.UseVisualStyleBackColor = true;
             // 
             // btn_OpenCriationPage
             // 
-            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 171);
+            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 154);
             this.btn_OpenCriationPage.Name = "btn_OpenCriationPage";
             this.btn_OpenCriationPage.Size = new System.Drawing.Size(109, 47);
             this.btn_OpenCriationPage.TabIndex = 18;
@@ -348,7 +348,7 @@ namespace SteamAccountCreateHelper
             // btn_SaveAcc
             // 
             this.btn_SaveAcc.Enabled = false;
-            this.btn_SaveAcc.Location = new System.Drawing.Point(340, 171);
+            this.btn_SaveAcc.Location = new System.Drawing.Point(340, 154);
             this.btn_SaveAcc.Name = "btn_SaveAcc";
             this.btn_SaveAcc.Size = new System.Drawing.Size(97, 47);
             this.btn_SaveAcc.TabIndex = 12;
