@@ -55,9 +55,10 @@ namespace SteamAccountCreateHelper
         public static string RandomPassword()
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(RandomString(4, true));
+            builder.Append(RandomString(6, true));
             builder.Append(RandomNumber());
-            builder.Append(RandomString(2, false));
+            builder.Append(RandomString(4, false));
+            builder.Append(RandomString(1, true));
             return builder.ToString();
         }
     }

@@ -221,9 +221,15 @@ namespace SteamAccountCreateHelper
 
             Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').value = '{lbl_Login.Text}'");
             Thread.Sleep(500);
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').onchange();");
+
             Main.chrome.ExecuteScriptAsync($"document.getElementById('password').value = '{lbl_Pass.Text}'");
             Thread.Sleep(500);
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('password').onkeyup();");
+
             Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').value = '{lbl_Pass.Text}'");
+            Thread.Sleep(500);
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').onkeyup();");
         }
 
         private void btn_GetEmail_Click(object sender, EventArgs e)
