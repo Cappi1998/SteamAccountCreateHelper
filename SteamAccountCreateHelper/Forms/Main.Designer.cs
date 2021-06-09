@@ -81,11 +81,11 @@ namespace SteamAccountCreateHelper
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btn_GoToUrl = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_SingleProxy = new System.Windows.Forms.TextBox();
             this.ckUseSingleProxy = new System.Windows.Forms.CheckBox();
-            this.btn_GoToUrl = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -222,7 +222,7 @@ namespace SteamAccountCreateHelper
             // 
             this.txtConsole.Location = new System.Drawing.Point(1326, 231);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(341, 270);
+            this.txtConsole.Size = new System.Drawing.Size(341, 360);
             this.txtConsole.TabIndex = 2;
             this.txtConsole.Text = "";
             // 
@@ -449,7 +449,7 @@ namespace SteamAccountCreateHelper
             this.groupBox4.Controls.Add(this.ck_GameAndInventory_Public);
             this.groupBox4.Location = new System.Drawing.Point(877, 282);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(437, 219);
+            this.groupBox4.Size = new System.Drawing.Size(437, 309);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Accounts Information";
@@ -463,9 +463,9 @@ namespace SteamAccountCreateHelper
             this.gp_box_avatar.Controls.Add(this.lbl_Avatar_Load);
             this.gp_box_avatar.Controls.Add(this.label11);
             this.gp_box_avatar.Enabled = false;
-            this.gp_box_avatar.Location = new System.Drawing.Point(17, 108);
+            this.gp_box_avatar.Location = new System.Drawing.Point(6, 202);
             this.gp_box_avatar.Name = "gp_box_avatar";
-            this.gp_box_avatar.Size = new System.Drawing.Size(414, 101);
+            this.gp_box_avatar.Size = new System.Drawing.Size(425, 101);
             this.gp_box_avatar.TabIndex = 10;
             this.gp_box_avatar.TabStop = false;
             this.gp_box_avatar.Text = "Load Avatars";
@@ -584,7 +584,7 @@ namespace SteamAccountCreateHelper
             // 
             this.panel1.Location = new System.Drawing.Point(12, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 640);
+            this.panel1.Size = new System.Drawing.Size(859, 764);
             this.panel1.TabIndex = 10;
             // 
             // txtUrl
@@ -612,12 +612,22 @@ namespace SteamAccountCreateHelper
             this.groupBox5.Controls.Add(this.ckUseSingleProxy);
             this.groupBox5.Controls.Add(this.txtUrl);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Location = new System.Drawing.Point(877, 510);
+            this.groupBox5.Location = new System.Drawing.Point(877, 597);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(790, 162);
+            this.groupBox5.Size = new System.Drawing.Size(790, 199);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Browser Config";
+            // 
+            // btn_GoToUrl
+            // 
+            this.btn_GoToUrl.Location = new System.Drawing.Point(443, 22);
+            this.btn_GoToUrl.Name = "btn_GoToUrl";
+            this.btn_GoToUrl.Size = new System.Drawing.Size(51, 23);
+            this.btn_GoToUrl.TabIndex = 18;
+            this.btn_GoToUrl.Text = "Go";
+            this.btn_GoToUrl.UseVisualStyleBackColor = true;
+            this.btn_GoToUrl.Click += new System.EventHandler(this.btn_GoToUrl_Click);
             // 
             // label16
             // 
@@ -656,21 +666,11 @@ namespace SteamAccountCreateHelper
             this.ckUseSingleProxy.UseVisualStyleBackColor = true;
             this.ckUseSingleProxy.Click += new System.EventHandler(this.ckUseSingleProxy_Click);
             // 
-            // btn_GoToUrl
-            // 
-            this.btn_GoToUrl.Location = new System.Drawing.Point(443, 22);
-            this.btn_GoToUrl.Name = "btn_GoToUrl";
-            this.btn_GoToUrl.Size = new System.Drawing.Size(51, 23);
-            this.btn_GoToUrl.TabIndex = 18;
-            this.btn_GoToUrl.Text = "Go";
-            this.btn_GoToUrl.UseVisualStyleBackColor = true;
-            this.btn_GoToUrl.Click += new System.EventHandler(this.btn_GoToUrl_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1676, 684);
+            this.ClientSize = new System.Drawing.Size(1676, 808);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
