@@ -10,7 +10,11 @@
 
 ## Description
 
-Simple application that checks an email and obtains the automatic email code, also generates a login and password for the account, the only thing you need to do manually is to copy the information and resolve the CAPTCHA
+Simple application that checks an email and obtains the automatic email code, also generates a login and password for the account, the only thing you need to do manually is resolve the CAPTCHA
 
-
+New Interface V1.2
+![](Screenshots/Gui1.2.png) 
+---
+Old Interface V1.1
 ![](Screenshots/Gui.png) 
+---
