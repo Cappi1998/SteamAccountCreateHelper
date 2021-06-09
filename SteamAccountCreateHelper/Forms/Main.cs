@@ -146,6 +146,14 @@ namespace SteamAccountCreateHelper
             chrome.Load(URL);
         }
 
+        
+        public static void AddedEmail(string Email)
+        {
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('email').value = '{Email}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_email').value = '{Email}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('i_agree_check').checked = 'True'");
+        }
+
 
         private void btn_Open_Email_File_Click(object sender, EventArgs e)
         {
@@ -210,6 +218,12 @@ namespace SteamAccountCreateHelper
         {
             lbl_Login.Text = Get_Random.RandomLogin();
             lbl_Pass.Text = Get_Random.RandomPassword();
+
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').value = '{lbl_Login.Text}'");
+            Thread.Sleep(500);
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('password').value = '{lbl_Pass.Text}'");
+            Thread.Sleep(500);
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').value = '{lbl_Pass.Text}'");
         }
 
         private void btn_GetEmail_Click(object sender, EventArgs e)
@@ -523,6 +537,11 @@ namespace SteamAccountCreateHelper
         private void txt_SingleProxy_Leave(object sender, EventArgs e)
         {
             SaveConfig();
+        }
+
+        private void btn_GoToUrl_Click(object sender, EventArgs e)
+        {
+            ChangerProxy(txtUrl.Text);
         }
     }
 }

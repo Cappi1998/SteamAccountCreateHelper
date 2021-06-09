@@ -85,6 +85,7 @@ namespace SteamAccountCreateHelper
             this.label17 = new System.Windows.Forms.Label();
             this.txt_SingleProxy = new System.Windows.Forms.TextBox();
             this.ckUseSingleProxy = new System.Windows.Forms.CheckBox();
+            this.btn_GoToUrl = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -604,6 +605,7 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btn_GoToUrl);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.txt_SingleProxy);
@@ -615,7 +617,7 @@ namespace SteamAccountCreateHelper
             this.groupBox5.Size = new System.Drawing.Size(790, 162);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
+            this.groupBox5.Text = "Browser Config";
             // 
             // label16
             // 
@@ -653,6 +655,16 @@ namespace SteamAccountCreateHelper
             this.ckUseSingleProxy.Text = "Use Single Proxy";
             this.ckUseSingleProxy.UseVisualStyleBackColor = true;
             this.ckUseSingleProxy.Click += new System.EventHandler(this.ckUseSingleProxy_Click);
+            // 
+            // btn_GoToUrl
+            // 
+            this.btn_GoToUrl.Location = new System.Drawing.Point(443, 22);
+            this.btn_GoToUrl.Name = "btn_GoToUrl";
+            this.btn_GoToUrl.Size = new System.Drawing.Size(51, 23);
+            this.btn_GoToUrl.TabIndex = 18;
+            this.btn_GoToUrl.Text = "Go";
+            this.btn_GoToUrl.UseVisualStyleBackColor = true;
+            this.btn_GoToUrl.Click += new System.EventHandler(this.btn_GoToUrl_Click);
             // 
             // Main
             // 
@@ -755,6 +767,7 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.Label label17;
         public System.Windows.Forms.TextBox txt_SingleProxy;
         private System.Windows.Forms.CheckBox ckUseSingleProxy;
+        private System.Windows.Forms.Button btn_GoToUrl;
     }
 }
 
