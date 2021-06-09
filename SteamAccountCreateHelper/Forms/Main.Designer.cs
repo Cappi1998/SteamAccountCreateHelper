@@ -401,6 +401,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_GenLoginPass
             // 
+            this.btn_GenLoginPass.Enabled = false;
             this.btn_GenLoginPass.Location = new System.Drawing.Point(283, 28);
             this.btn_GenLoginPass.Name = "btn_GenLoginPass";
             this.btn_GenLoginPass.Size = new System.Drawing.Size(97, 47);
@@ -718,7 +719,6 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btn_GenLoginPass;
         public System.Windows.Forms.TextBox lbl_Pass;
         public System.Windows.Forms.TextBox lbl_Login;
         private System.Windows.Forms.Label label6;
@@ -768,6 +768,7 @@ namespace SteamAccountCreateHelper
         public System.Windows.Forms.TextBox txt_SingleProxy;
         private System.Windows.Forms.CheckBox ckUseSingleProxy;
         private System.Windows.Forms.Button btn_GoToUrl;
+        public System.Windows.Forms.Button btn_GenLoginPass;
     }
 }
 

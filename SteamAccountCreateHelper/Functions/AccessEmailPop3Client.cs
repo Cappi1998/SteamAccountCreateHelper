@@ -144,7 +144,10 @@ namespace SteamAccountCreateHelper
                                     myProcess.StartInfo.FileName = Confirm_Link;
                                     myProcess.Start();
 
-                                    Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+                                    Main._Form1.Invoke(new Action(() => {
+                                        Main._Form1.btn_SaveAcc.Enabled = true;
+                                        Main._Form1.btn_GenLoginPass.Enabled = true;
+                                    }));
 
                                     Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
                                     th.IsBackground = true;
@@ -154,7 +157,10 @@ namespace SteamAccountCreateHelper
                                 {
                                     var request = new RequestBuilder(Confirm_Link).GET().Execute();
 
-                                    Main._Form1.Invoke(new Action(() => Main._Form1.btn_SaveAcc.Enabled = true));
+                                    Main._Form1.Invoke(new Action(() => {
+                                        Main._Form1.btn_SaveAcc.Enabled = true;
+                                        Main._Form1.btn_GenLoginPass.Enabled = true;
+                                    }));
 
                                     Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
                                     th.IsBackground = true;

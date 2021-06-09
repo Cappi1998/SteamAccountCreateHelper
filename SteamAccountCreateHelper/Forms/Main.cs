@@ -345,6 +345,7 @@ namespace SteamAccountCreateHelper
                 Main._Form1.lbl_Login.Text = "";
                 Main._Form1.lbl_Pass.Text = "";
                 Main._Form1.btn_SaveAcc.Enabled = false;
+                Main._Form1.btn_GenLoginPass.Enabled = false;
 
                 Main._Form1.ChangerProxy("https://store.steampowered.com/join/?l=english");
             }));
