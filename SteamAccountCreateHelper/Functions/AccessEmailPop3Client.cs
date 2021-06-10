@@ -136,37 +136,19 @@ namespace SteamAccountCreateHelper
                             {
                                 Confirm_Link = $"https://store.steampowered.com/account/newaccountverification?stoken={stoken}&creationid={creationid}";
 
+                                var request = new RequestBuilder(Confirm_Link).GET().Execute();
 
-                                if (Main._Form1.ck_OpenDefaultdw.Checked)
-                                {
-                                    Process myProcess = new Process();
-                                    myProcess.StartInfo.UseShellExecute = true;
-                                    myProcess.StartInfo.FileName = Confirm_Link;
-                                    myProcess.Start();
+                                Log.info($"Link Successfully Found...");
 
-                                    Main._Form1.Invoke(new Action(() => {
-                                        //Main._Form1.btn_SaveAcc.Enabled = true;
-                                        Main._Form1.btn_GenLoginPass.Enabled = true;
-                                    }));
+                                Main._Form1.Invoke(new Action(() => {
+                                    //Main._Form1.btn_SaveAcc.Enabled = true;
+                                    Main._Form1.btn_GenLoginPass.Enabled = true;
+                                }));
 
-                                    Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
-                                    th.IsBackground = true;
-                                    th.Start();
-                                }
-                                else
-                                {
-                                    var request = new RequestBuilder(Confirm_Link).GET().Execute();
+                                Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
+                                th.IsBackground = true;
+                                th.Start();
 
-                                    Main._Form1.Invoke(new Action(() => {
-                                        //Main._Form1.btn_SaveAcc.Enabled = true;
-                                        Main._Form1.btn_GenLoginPass.Enabled = true;
-                                    }));
-
-                                    Thread th = new Thread(() => Main.CheckExistingAccountOnEmail());
-                                    th.IsBackground = true;
-                                    th.Start();
-                                }
-                                
                                 lock (locker)
                                 {
                                     CreationID_DB.ADD_TO_DB(creationid);

@@ -46,7 +46,7 @@ namespace SteamAccountCreateHelper
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ConfirLink = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ck_OpenDefaultdw = new System.Windows.Forms.CheckBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btn_CopyEmail = new System.Windows.Forms.Button();
             this.btn_CopyPass = new System.Windows.Forms.Button();
             this.btn_CopyLogin = new System.Windows.Forms.Button();
@@ -239,7 +239,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_ConfirLink
             // 
-            this.btn_ConfirLink.Location = new System.Drawing.Point(328, 154);
+            this.btn_ConfirLink.Location = new System.Drawing.Point(328, 284);
             this.btn_ConfirLink.Name = "btn_ConfirLink";
             this.btn_ConfirLink.Size = new System.Drawing.Size(109, 47);
             this.btn_ConfirLink.TabIndex = 4;
@@ -250,7 +250,7 @@ namespace SteamAccountCreateHelper
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
-            this.groupBox3.Controls.Add(this.ck_OpenDefaultdw);
+            this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.btn_CopyEmail);
             this.groupBox3.Controls.Add(this.btn_CopyPass);
             this.groupBox3.Controls.Add(this.btn_CopyLogin);
@@ -270,24 +270,23 @@ namespace SteamAccountCreateHelper
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox3.Location = new System.Drawing.Point(877, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(443, 249);
+            this.groupBox3.Size = new System.Drawing.Size(443, 337);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acc Info";
             // 
-            // ck_OpenDefaultdw
+            // groupBox6
             // 
-            this.ck_OpenDefaultdw.AutoSize = true;
-            this.ck_OpenDefaultdw.Location = new System.Drawing.Point(211, 204);
-            this.ck_OpenDefaultdw.Name = "ck_OpenDefaultdw";
-            this.ck_OpenDefaultdw.Size = new System.Drawing.Size(220, 19);
-            this.ck_OpenDefaultdw.TabIndex = 19;
-            this.ck_OpenDefaultdw.Text = "Open confirm link in default browser";
-            this.ck_OpenDefaultdw.UseVisualStyleBackColor = true;
+            this.groupBox6.Location = new System.Drawing.Point(18, 28);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(413, 100);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Login Generator Config";
             // 
             // btn_CopyEmail
             // 
-            this.btn_CopyEmail.Location = new System.Drawing.Point(283, 93);
+            this.btn_CopyEmail.Location = new System.Drawing.Point(283, 206);
             this.btn_CopyEmail.Name = "btn_CopyEmail";
             this.btn_CopyEmail.Size = new System.Drawing.Size(51, 23);
             this.btn_CopyEmail.TabIndex = 17;
@@ -297,7 +296,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_CopyPass
             // 
-            this.btn_CopyPass.Location = new System.Drawing.Point(282, 52);
+            this.btn_CopyPass.Location = new System.Drawing.Point(282, 165);
             this.btn_CopyPass.Name = "btn_CopyPass";
             this.btn_CopyPass.Size = new System.Drawing.Size(52, 23);
             this.btn_CopyPass.TabIndex = 16;
@@ -307,7 +306,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_CopyLogin
             // 
-            this.btn_CopyLogin.Location = new System.Drawing.Point(282, 29);
+            this.btn_CopyLogin.Location = new System.Drawing.Point(282, 142);
             this.btn_CopyLogin.Name = "btn_CopyLogin";
             this.btn_CopyLogin.Size = new System.Drawing.Size(52, 23);
             this.btn_CopyLogin.TabIndex = 15;
@@ -318,7 +317,7 @@ namespace SteamAccountCreateHelper
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 226);
+            this.label9.Location = new System.Drawing.Point(6, 316);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 15);
             this.label9.TabIndex = 14;
@@ -327,7 +326,7 @@ namespace SteamAccountCreateHelper
             // lbl_OpenAccFile
             // 
             this.lbl_OpenAccFile.AutoSize = true;
-            this.lbl_OpenAccFile.Location = new System.Drawing.Point(97, 226);
+            this.lbl_OpenAccFile.Location = new System.Drawing.Point(97, 316);
             this.lbl_OpenAccFile.Name = "lbl_OpenAccFile";
             this.lbl_OpenAccFile.Size = new System.Drawing.Size(60, 15);
             this.lbl_OpenAccFile.TabIndex = 13;
@@ -338,7 +337,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_GetEmail
             // 
-            this.btn_GetEmail.Location = new System.Drawing.Point(340, 91);
+            this.btn_GetEmail.Location = new System.Drawing.Point(340, 204);
             this.btn_GetEmail.Name = "btn_GetEmail";
             this.btn_GetEmail.Size = new System.Drawing.Size(97, 47);
             this.btn_GetEmail.TabIndex = 11;
@@ -351,7 +350,7 @@ namespace SteamAccountCreateHelper
             // lbl_EmailPass
             // 
             this.lbl_EmailPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.lbl_EmailPass.Location = new System.Drawing.Point(68, 117);
+            this.lbl_EmailPass.Location = new System.Drawing.Point(68, 230);
             this.lbl_EmailPass.Name = "lbl_EmailPass";
             this.lbl_EmailPass.PasswordChar = '*';
             this.lbl_EmailPass.Size = new System.Drawing.Size(209, 23);
@@ -360,7 +359,7 @@ namespace SteamAccountCreateHelper
             // lbl_Email
             // 
             this.lbl_Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.lbl_Email.Location = new System.Drawing.Point(68, 93);
+            this.lbl_Email.Location = new System.Drawing.Point(68, 206);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(209, 23);
             this.lbl_Email.TabIndex = 9;
@@ -368,7 +367,7 @@ namespace SteamAccountCreateHelper
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(29, 120);
+            this.label7.Location = new System.Drawing.Point(29, 233);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 15);
             this.label7.TabIndex = 8;
@@ -377,7 +376,7 @@ namespace SteamAccountCreateHelper
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 96);
+            this.label8.Location = new System.Drawing.Point(22, 209);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 15);
             this.label8.TabIndex = 7;
@@ -386,7 +385,7 @@ namespace SteamAccountCreateHelper
             // btn_GenLoginPass
             // 
             this.btn_GenLoginPass.Enabled = false;
-            this.btn_GenLoginPass.Location = new System.Drawing.Point(340, 28);
+            this.btn_GenLoginPass.Location = new System.Drawing.Point(340, 141);
             this.btn_GenLoginPass.Name = "btn_GenLoginPass";
             this.btn_GenLoginPass.Size = new System.Drawing.Size(97, 47);
             this.btn_GenLoginPass.TabIndex = 6;
@@ -399,7 +398,7 @@ namespace SteamAccountCreateHelper
             // lbl_Pass
             // 
             this.lbl_Pass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.lbl_Pass.Location = new System.Drawing.Point(68, 53);
+            this.lbl_Pass.Location = new System.Drawing.Point(68, 166);
             this.lbl_Pass.Name = "lbl_Pass";
             this.lbl_Pass.Size = new System.Drawing.Size(208, 23);
             this.lbl_Pass.TabIndex = 3;
@@ -407,7 +406,7 @@ namespace SteamAccountCreateHelper
             // lbl_Login
             // 
             this.lbl_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.lbl_Login.Location = new System.Drawing.Point(68, 29);
+            this.lbl_Login.Location = new System.Drawing.Point(68, 142);
             this.lbl_Login.Name = "lbl_Login";
             this.lbl_Login.Size = new System.Drawing.Size(208, 23);
             this.lbl_Login.TabIndex = 2;
@@ -415,7 +414,7 @@ namespace SteamAccountCreateHelper
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 56);
+            this.label6.Location = new System.Drawing.Point(29, 169);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 15);
             this.label6.TabIndex = 1;
@@ -424,7 +423,7 @@ namespace SteamAccountCreateHelper
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 32);
+            this.label5.Location = new System.Drawing.Point(22, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 15);
             this.label5.TabIndex = 0;
@@ -437,9 +436,9 @@ namespace SteamAccountCreateHelper
             this.groupBox4.Controls.Add(this.ck_use_custom_avatar);
             this.groupBox4.Controls.Add(this.ck_Set_NickNameRandom);
             this.groupBox4.Controls.Add(this.ck_GameAndInventory_Public);
-            this.groupBox4.Location = new System.Drawing.Point(877, 282);
+            this.groupBox4.Location = new System.Drawing.Point(877, 370);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(437, 309);
+            this.groupBox4.Size = new System.Drawing.Size(443, 221);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Accounts Information";
@@ -453,7 +452,7 @@ namespace SteamAccountCreateHelper
             this.gp_box_avatar.Controls.Add(this.lbl_Avatar_Load);
             this.gp_box_avatar.Controls.Add(this.label11);
             this.gp_box_avatar.Enabled = false;
-            this.gp_box_avatar.Location = new System.Drawing.Point(6, 202);
+            this.gp_box_avatar.Location = new System.Drawing.Point(6, 113);
             this.gp_box_avatar.Name = "gp_box_avatar";
             this.gp_box_avatar.Size = new System.Drawing.Size(425, 101);
             this.gp_box_avatar.TabIndex = 10;
@@ -510,7 +509,7 @@ namespace SteamAccountCreateHelper
             // ck_use_custom_avatar
             // 
             this.ck_use_custom_avatar.AutoSize = true;
-            this.ck_use_custom_avatar.Location = new System.Drawing.Point(22, 83);
+            this.ck_use_custom_avatar.Location = new System.Drawing.Point(18, 79);
             this.ck_use_custom_avatar.Name = "ck_use_custom_avatar";
             this.ck_use_custom_avatar.Size = new System.Drawing.Size(178, 19);
             this.ck_use_custom_avatar.TabIndex = 9;
@@ -523,7 +522,7 @@ namespace SteamAccountCreateHelper
             this.ck_Set_NickNameRandom.AutoSize = true;
             this.ck_Set_NickNameRandom.Checked = true;
             this.ck_Set_NickNameRandom.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ck_Set_NickNameRandom.Location = new System.Drawing.Point(22, 58);
+            this.ck_Set_NickNameRandom.Location = new System.Drawing.Point(18, 54);
             this.ck_Set_NickNameRandom.Name = "ck_Set_NickNameRandom";
             this.ck_Set_NickNameRandom.Size = new System.Drawing.Size(170, 19);
             this.ck_Set_NickNameRandom.TabIndex = 8;
@@ -535,7 +534,7 @@ namespace SteamAccountCreateHelper
             this.ck_GameAndInventory_Public.AutoSize = true;
             this.ck_GameAndInventory_Public.Checked = true;
             this.ck_GameAndInventory_Public.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ck_GameAndInventory_Public.Location = new System.Drawing.Point(22, 33);
+            this.ck_GameAndInventory_Public.Location = new System.Drawing.Point(18, 29);
             this.ck_GameAndInventory_Public.Name = "ck_GameAndInventory_Public";
             this.ck_GameAndInventory_Public.Size = new System.Drawing.Size(195, 19);
             this.ck_GameAndInventory_Public.TabIndex = 7;
@@ -749,7 +748,6 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.ToolStripMenuItem restart;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txt_MaxAccInMail;
-        public System.Windows.Forms.CheckBox ck_OpenDefaultdw;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.Label label15;
@@ -760,6 +758,7 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.CheckBox ckUseSingleProxy;
         private System.Windows.Forms.Button btn_GoToUrl;
         public System.Windows.Forms.Button btn_GenLoginPass;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 
