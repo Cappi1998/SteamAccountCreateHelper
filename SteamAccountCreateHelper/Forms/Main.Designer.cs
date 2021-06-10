@@ -47,13 +47,11 @@ namespace SteamAccountCreateHelper
             this.btn_ConfirLink = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ck_OpenDefaultdw = new System.Windows.Forms.CheckBox();
-            this.btn_OpenCriationPage = new System.Windows.Forms.Button();
             this.btn_CopyEmail = new System.Windows.Forms.Button();
             this.btn_CopyPass = new System.Windows.Forms.Button();
             this.btn_CopyLogin = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.lbl_OpenAccFile = new System.Windows.Forms.LinkLabel();
-            this.btn_SaveAcc = new System.Windows.Forms.Button();
             this.btn_GetEmail = new System.Windows.Forms.Button();
             this.lbl_EmailPass = new System.Windows.Forms.TextBox();
             this.lbl_Email = new System.Windows.Forms.TextBox();
@@ -241,7 +239,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_ConfirLink
             // 
-            this.btn_ConfirLink.Location = new System.Drawing.Point(225, 154);
+            this.btn_ConfirLink.Location = new System.Drawing.Point(328, 154);
             this.btn_ConfirLink.Name = "btn_ConfirLink";
             this.btn_ConfirLink.Size = new System.Drawing.Size(109, 47);
             this.btn_ConfirLink.TabIndex = 4;
@@ -253,14 +251,12 @@ namespace SteamAccountCreateHelper
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.groupBox3.Controls.Add(this.ck_OpenDefaultdw);
-            this.groupBox3.Controls.Add(this.btn_OpenCriationPage);
             this.groupBox3.Controls.Add(this.btn_CopyEmail);
             this.groupBox3.Controls.Add(this.btn_CopyPass);
             this.groupBox3.Controls.Add(this.btn_CopyLogin);
             this.groupBox3.Controls.Add(this.btn_ConfirLink);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.lbl_OpenAccFile);
-            this.groupBox3.Controls.Add(this.btn_SaveAcc);
             this.groupBox3.Controls.Add(this.btn_GetEmail);
             this.groupBox3.Controls.Add(this.lbl_EmailPass);
             this.groupBox3.Controls.Add(this.lbl_Email);
@@ -288,20 +284,6 @@ namespace SteamAccountCreateHelper
             this.ck_OpenDefaultdw.TabIndex = 19;
             this.ck_OpenDefaultdw.Text = "Open confirm link in default browser";
             this.ck_OpenDefaultdw.UseVisualStyleBackColor = true;
-            // 
-            // btn_OpenCriationPage
-            // 
-            this.btn_OpenCriationPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
-            this.btn_OpenCriationPage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 154);
-            this.btn_OpenCriationPage.Name = "btn_OpenCriationPage";
-            this.btn_OpenCriationPage.Size = new System.Drawing.Size(109, 47);
-            this.btn_OpenCriationPage.TabIndex = 18;
-            this.btn_OpenCriationPage.Text = "Open Create Page";
-            this.btn_OpenCriationPage.UseVisualStyleBackColor = false;
-            this.btn_OpenCriationPage.Click += new System.EventHandler(this.btn_OpenCriationPage_Click);
-            this.btn_OpenCriationPage.MouseLeave += new System.EventHandler(this.btn_OpenCriationPage_MouseLeave);
-            this.btn_OpenCriationPage.MouseHover += new System.EventHandler(this.btn_OpenCriationPage_MouseHover);
             // 
             // btn_CopyEmail
             // 
@@ -353,19 +335,6 @@ namespace SteamAccountCreateHelper
             this.lbl_OpenAccFile.Text = "linkLabel1";
             this.lbl_OpenAccFile.Visible = false;
             this.lbl_OpenAccFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_OpenAccFile_LinkClicked);
-            // 
-            // btn_SaveAcc
-            // 
-            this.btn_SaveAcc.Enabled = false;
-            this.btn_SaveAcc.Location = new System.Drawing.Point(340, 154);
-            this.btn_SaveAcc.Name = "btn_SaveAcc";
-            this.btn_SaveAcc.Size = new System.Drawing.Size(97, 47);
-            this.btn_SaveAcc.TabIndex = 12;
-            this.btn_SaveAcc.Text = "Save Account Information";
-            this.btn_SaveAcc.UseVisualStyleBackColor = false;
-            this.btn_SaveAcc.Click += new System.EventHandler(this.btn_SaveAcc_Click);
-            this.btn_SaveAcc.MouseLeave += new System.EventHandler(this.btn_SaveAcc_MouseLeave);
-            this.btn_SaveAcc.MouseHover += new System.EventHandler(this.btn_SaveAcc_MouseHover);
             // 
             // btn_GetEmail
             // 
@@ -770,8 +739,6 @@ namespace SteamAccountCreateHelper
         public System.Windows.Forms.CheckBox ck_Set_NickNameRandom;
         public System.Windows.Forms.CheckBox ck_GameAndInventory_Public;
         public System.Windows.Forms.GroupBox gp_box_avatar;
-        private System.Windows.Forms.Button btn_OpenCriationPage;
-        public System.Windows.Forms.Button btn_SaveAcc;
         public System.Windows.Forms.Button btn_GetEmail;
         public System.Windows.Forms.Button btn_ConfirLink;
         private System.Windows.Forms.Button btn_OpenFormAddedDomain;

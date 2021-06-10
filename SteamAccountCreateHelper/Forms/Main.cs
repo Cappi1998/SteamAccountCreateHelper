@@ -344,7 +344,6 @@ namespace SteamAccountCreateHelper
 
                 Main._Form1.lbl_Login.Text = "";
                 Main._Form1.lbl_Pass.Text = "";
-                Main._Form1.btn_SaveAcc.Enabled = false;
                 Main._Form1.btn_GenLoginPass.Enabled = false;
 
                 Main._Form1.ChangerProxy("https://store.steampowered.com/join/?l=english");
@@ -596,22 +595,6 @@ namespace SteamAccountCreateHelper
         private void btn_GoToUrl_Click(object sender, EventArgs e)
         {
             ChangerProxy(txtUrl.Text);
-        }
-
-        private void btn_OpenCriationPage_MouseHover(object sender, EventArgs e) {
-            btn_OpenCriationPage.BackColor = Color.FromArgb(117, 207, 255);
-        }
-
-        private void btn_OpenCriationPage_MouseLeave(object sender, EventArgs e) {
-            btn_OpenCriationPage.BackColor = Color.FromArgb(192, 194, 196);
-        }
-
-        private void btn_SaveAcc_MouseHover(object sender, EventArgs e) {
-             btn_SaveAcc.BackColor = Color.FromArgb(135, 250, 148);
-        }
-
-        private void btn_SaveAcc_MouseLeave(object sender, EventArgs e) {
-            btn_SaveAcc.BackColor = Color.FromArgb(192, 194, 196);
         }
 
         private void btn_GenLoginPass_MouseHover(object sender, EventArgs e) {

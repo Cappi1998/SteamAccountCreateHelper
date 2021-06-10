@@ -145,7 +145,7 @@ namespace SteamAccountCreateHelper
                                     myProcess.Start();
 
                                     Main._Form1.Invoke(new Action(() => {
-                                        Main._Form1.btn_SaveAcc.Enabled = true;
+                                        //Main._Form1.btn_SaveAcc.Enabled = true;
                                         Main._Form1.btn_GenLoginPass.Enabled = true;
                                     }));
 
@@ -158,7 +158,7 @@ namespace SteamAccountCreateHelper
                                     var request = new RequestBuilder(Confirm_Link).GET().Execute();
 
                                     Main._Form1.Invoke(new Action(() => {
-                                        Main._Form1.btn_SaveAcc.Enabled = true;
+                                        //Main._Form1.btn_SaveAcc.Enabled = true;
                                         Main._Form1.btn_GenLoginPass.Enabled = true;
                                     }));
 
