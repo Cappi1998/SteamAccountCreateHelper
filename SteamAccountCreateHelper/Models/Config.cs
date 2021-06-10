@@ -13,5 +13,8 @@ namespace SteamAccountCreateHelper.Models
 
         public string SingleProxyText { get; set; }
         public bool SingleProxyChecked { get; set; }
+
+        public string LoginGeneratorCustomFormat { get; set; }
+        public bool UseCustomLoginGenerator { get; set; }
     }
 }

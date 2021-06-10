@@ -1,6 +1,7 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
 using Newtonsoft.Json;
+using SteamAccountCreateHelper.Forms;
 using SteamAccountCreateHelper.Models;
 using SteamAccountCreateHelper.Utils;
 using System;
@@ -232,7 +233,16 @@ namespace SteamAccountCreateHelper
 
         private void btn_GenLoginPass_Click(object sender, EventArgs e)
         {
-            lbl_Login.Text = RandomUtils.RandomLogin();
+            if (ck_GenRandoLoginNameFake.Checked)
+            {
+                lbl_Login.Text = RandomUtils.RandomLoginUsingNamefake();
+            }
+            else
+            {
+                lbl_Login.Text = RandomUtils.RandomLoginCustomFormat(txt_CustomLoginGeneratorFormat.Text);
+            }
+
+            
             lbl_Pass.Text = RandomUtils.RandomPassword();
 
             Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').value = '{lbl_Login.Text}'");
@@ -441,6 +451,8 @@ namespace SteamAccountCreateHelper
             config.EmailFilePath = Main._Form1.EmailFilePath;
             config.SingleProxyChecked = Main._Form1.ckUseSingleProxy.Checked;
             config.SingleProxyText = Main._Form1.txt_SingleProxy.Text;
+            config.LoginGeneratorCustomFormat = Main._Form1.txt_CustomLoginGeneratorFormat.Text;
+            config.UseCustomLoginGenerator = Main._Form1.ck_GenerateUseCustomFormat.Checked;
 
             System.IO.File.WriteAllText(Database_Path + "Config.json", JsonConvert.SerializeObject(config, Formatting.Indented));//salvar o arquivo appids atualizado
 
@@ -501,6 +513,20 @@ namespace SteamAccountCreateHelper
                     if (!string.IsNullOrWhiteSpace(config.SingleProxyText))
                     {
                         Main._Form1.txt_SingleProxy.Text = config.SingleProxyText;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(config.LoginGeneratorCustomFormat))
+                    {
+                        Main._Form1.txt_CustomLoginGeneratorFormat.Text = config.LoginGeneratorCustomFormat;
+                    }
+
+                    if (config.UseCustomLoginGenerator)
+                    {
+                        Main._Form1.ck_GenerateUseCustomFormat.Checked = true;
+                    }
+                    else
+                    {
+                        Main._Form1.ck_GenRandoLoginNameFake.Checked = true;
                     }
 
                 }
@@ -604,6 +630,25 @@ namespace SteamAccountCreateHelper
             {
                 ChangerProxy(txtUrl.Text);
             }
+        }
+        private void btn_ConfigureCustomFormat_Click(object sender, EventArgs e)
+        {
+            frm_customLoginConfigure frm = new frm_customLoginConfigure();
+            frm.ShowDialog();
+        }
+        private void txt_CustomLoginGeneratorFormat_Leave(object sender, EventArgs e)
+        {
+            SaveConfig();
+        }
+
+        private void ck_GenRandoLoginNameFake_Click(object sender, EventArgs e)
+        {
+            SaveConfig();
+        }
+
+        private void ckGenerateUseCustomFormat_Click(object sender, EventArgs e)
+        {
+            SaveConfig();
         }
 
         private void btn_GenLoginPass_MouseHover(object sender, EventArgs e) {

@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.Text;
 
     class RandomUtils
@@ -18,12 +19,17 @@
             return random.Next(1234, 314123423);
         }
 
+        public static int RandomSingleNumber()
+        {
+            return random.Next(0, 9);
+        }
+
         public static int RandomNumberSmall()
         {
             return random.Next(1930, 2040);
         }
 
-        public static string RandomLogin()//Using api.namefake.com 
+        public static string RandomLoginUsingNamefake()//Using api.namefake.com 
         {
             var request = new RequestBuilder("https://api.namefake.com/").GET()
                        .Execute();
@@ -32,6 +38,88 @@
             name = $"{name}_{RandomNumberSmall()}{RandomString(1, false)}";
             LatesNameFakeRequest = response;
             return name;
+        }
+
+        public static string RandomLoginCustomFormat(string Text)
+        {
+            try
+            {
+
+                List<LoginGenFormat> loginGenFormat = CreateGeneratorOrder(Text);
+
+
+                string LoginGenerated = "";
+
+
+                foreach(LoginGenFormat item in loginGenFormat)
+                {
+
+                    if(item.Type == "Text")
+                    {
+                        LoginGenerated += item.Text;
+                    }
+                    else
+                    {
+
+                        switch (item.Variable)
+                        {
+                            case "letter": 
+                                {
+                                    LoginGenerated += RandomString(1, true);
+                                    break;
+                                }
+                            case "singlenum":
+                                {
+                                    LoginGenerated += RandomSingleNumber();
+                                    break;
+                                }
+                            case "num":
+                                {
+                                    LoginGenerated += RandomNumber();
+                                    break;
+                                }
+                        }
+
+                    }
+
+                }
+
+                return LoginGenerated;
+            }
+            catch
+            {
+                return "Invalid Format";
+            }
+        }
+
+
+        public static List<LoginGenFormat> CreateGeneratorOrder(string Text)
+        {
+            List<string> AvailableVariables = new List<string> { "letter", "singlenum", "num" };
+
+            List<LoginGenFormat> loginGenFormat = new List<LoginGenFormat>();
+
+
+            var split = Text.Split('}', '{');
+
+            foreach (var item in split)
+            {
+                if (!string.IsNullOrWhiteSpace(item))
+                {
+                    if (AvailableVariables.Contains(item.ToString()))
+                    {
+                        LoginGenFormat loginGen = new LoginGenFormat { Type = "Variable", Variable = item };
+                        loginGenFormat.Add(loginGen);
+                    }
+                    else
+                    {
+                        LoginGenFormat loginGen = new LoginGenFormat { Type = "Text", Text = item };
+                        loginGenFormat.Add(loginGen);
+                    }
+                }
+
+            }
+            return loginGenFormat;
         }
 
         // Generate a random string with a given size
@@ -63,8 +151,17 @@
             return builder.ToString();
         }
 
+
+
     }
 
+    public class LoginGenFormat
+    {
+       public string Type { get; set; }
+        public string Text { get; set; }
+        public string Variable { get; set; }
+
+    }
 
     public class namefake_com
     {
