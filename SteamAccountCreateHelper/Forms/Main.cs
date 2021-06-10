@@ -26,7 +26,7 @@ namespace SteamAccountCreateHelper
 
         public static string Database_Path = AppDomain.CurrentDomain.BaseDirectory + "Database\\";
         public static string Used_Mail_DB_Path = Database_Path + "Used_Email_DB.json";
-        public static string creationid_DB_READ = Database_Path + "CreationID_DB.json";
+        public static string CreationidDB_Path = Database_Path + "CreationID_DB.json";
         public static string Pop3Domains_Path = Database_Path + "Pop3Domains.json";
         public static string Acc_Create_Path = Database_Path + "Created_Accounts\\";
 
@@ -74,6 +74,14 @@ namespace SteamAccountCreateHelper
 
                 File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(usedEmailDatabase, Formatting.Indented));
             }
+
+            if (!File.Exists(CreationidDB_Path))
+            {
+                creationid_DB creationid_DB = new creationid_DB { Creationid = new List<string>() };
+
+                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(creationid_DB, Formatting.Indented));
+            }
+
 
             if (!File.Exists(Pop3Domains_Path))
             {

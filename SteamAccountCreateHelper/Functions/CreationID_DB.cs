@@ -13,7 +13,7 @@ namespace SteamAccountCreateHelper
         private static readonly object locker = new object();
         public static bool Check_AlreadyUsed(string creationid)
         {
-            creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.creationid_DB_READ));
+            creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.CreationidDB_Path));
 
             if (creationid_DB.Creationid.Contains(creationid))
             {
@@ -29,11 +29,11 @@ namespace SteamAccountCreateHelper
         {
             lock (locker)
             {
-                creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.creationid_DB_READ));
+                creationid_DB creationid_DB = JsonConvert.DeserializeObject<creationid_DB>(File.ReadAllText(Main.CreationidDB_Path));
 
                 creationid_DB.Creationid.Add(creationid);
 
-                File.WriteAllText(Main.creationid_DB_READ, JsonConvert.SerializeObject(creationid_DB, Formatting.Indented));
+                File.WriteAllText(Main.CreationidDB_Path, JsonConvert.SerializeObject(creationid_DB, Formatting.Indented));
             }
         }
     }
