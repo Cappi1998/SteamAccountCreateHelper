@@ -39,7 +39,7 @@ namespace SteamAccountCreateHelper
                     }
                 }
 
-                File.AppendAllText(path_to_save, "\nSteamID: " + login.Session.SteamID + "\n");
+                File.AppendAllText(path_to_save, $"\nSteamID: {login.Session.SteamID}\nProfileLink: https://steamcommunity.com/profiles/{login.Session.SteamID}");
                 Log.info($"Save SteamID64: {login.Session.SteamID} on Account: {username}");
 
 
