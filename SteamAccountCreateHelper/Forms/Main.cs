@@ -232,8 +232,8 @@ namespace SteamAccountCreateHelper
 
         private void btn_GenLoginPass_Click(object sender, EventArgs e)
         {
-            lbl_Login.Text = Get_Random.RandomLogin();
-            lbl_Pass.Text = Get_Random.RandomPassword();
+            lbl_Login.Text = RandomUtils.RandomLogin();
+            lbl_Pass.Text = RandomUtils.RandomPassword();
 
             Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').value = '{lbl_Login.Text}'");
             Thread.Sleep(500);
