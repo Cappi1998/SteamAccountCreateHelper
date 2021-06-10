@@ -594,7 +594,16 @@ namespace SteamAccountCreateHelper
 
         private void btn_GoToUrl_Click(object sender, EventArgs e)
         {
-            ChangerProxy(txtUrl.Text);
+
+            if (chrome.IsLoading)
+            {
+                MessageBox.Show($"Wait WebBrowser is loading a page...\r\n\r\n{chrome.Address}", "Wait...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                ChangerProxy(txtUrl.Text);
+            }
         }
 
         private void btn_GenLoginPass_MouseHover(object sender, EventArgs e) {
