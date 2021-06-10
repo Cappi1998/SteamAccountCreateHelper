@@ -297,7 +297,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_CopyPass
             // 
-            this.btn_CopyPass.Location = new System.Drawing.Point(225, 52);
+            this.btn_CopyPass.Location = new System.Drawing.Point(282, 52);
             this.btn_CopyPass.Name = "btn_CopyPass";
             this.btn_CopyPass.Size = new System.Drawing.Size(52, 23);
             this.btn_CopyPass.TabIndex = 16;
@@ -307,7 +307,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_CopyLogin
             // 
-            this.btn_CopyLogin.Location = new System.Drawing.Point(225, 29);
+            this.btn_CopyLogin.Location = new System.Drawing.Point(282, 29);
             this.btn_CopyLogin.Name = "btn_CopyLogin";
             this.btn_CopyLogin.Size = new System.Drawing.Size(52, 23);
             this.btn_CopyLogin.TabIndex = 15;
@@ -386,7 +386,7 @@ namespace SteamAccountCreateHelper
             // btn_GenLoginPass
             // 
             this.btn_GenLoginPass.Enabled = false;
-            this.btn_GenLoginPass.Location = new System.Drawing.Point(283, 28);
+            this.btn_GenLoginPass.Location = new System.Drawing.Point(340, 28);
             this.btn_GenLoginPass.Name = "btn_GenLoginPass";
             this.btn_GenLoginPass.Size = new System.Drawing.Size(97, 47);
             this.btn_GenLoginPass.TabIndex = 6;
@@ -401,7 +401,7 @@ namespace SteamAccountCreateHelper
             this.lbl_Pass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.lbl_Pass.Location = new System.Drawing.Point(68, 53);
             this.lbl_Pass.Name = "lbl_Pass";
-            this.lbl_Pass.Size = new System.Drawing.Size(151, 23);
+            this.lbl_Pass.Size = new System.Drawing.Size(208, 23);
             this.lbl_Pass.TabIndex = 3;
             // 
             // lbl_Login
@@ -409,7 +409,7 @@ namespace SteamAccountCreateHelper
             this.lbl_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.lbl_Login.Location = new System.Drawing.Point(68, 29);
             this.lbl_Login.Name = "lbl_Login";
-            this.lbl_Login.Size = new System.Drawing.Size(151, 23);
+            this.lbl_Login.Size = new System.Drawing.Size(208, 23);
             this.lbl_Login.TabIndex = 2;
             // 
             // label6
