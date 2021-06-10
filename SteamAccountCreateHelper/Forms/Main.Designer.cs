@@ -97,6 +97,7 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.groupBox1.Controls.Add(this.txt_MaxAccInMail);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -114,6 +115,7 @@ namespace SteamAccountCreateHelper
             // 
             // txt_MaxAccInMail
             // 
+            this.txt_MaxAccInMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.txt_MaxAccInMail.Location = new System.Drawing.Point(194, 25);
             this.txt_MaxAccInMail.Name = "txt_MaxAccInMail";
             this.txt_MaxAccInMail.Size = new System.Drawing.Size(34, 23);
@@ -148,7 +150,7 @@ namespace SteamAccountCreateHelper
             this.btn_OpenFormAddedDomain.Size = new System.Drawing.Size(122, 23);
             this.btn_OpenFormAddedDomain.TabIndex = 18;
             this.btn_OpenFormAddedDomain.Text = "Added new Domain";
-            this.btn_OpenFormAddedDomain.UseVisualStyleBackColor = true;
+            this.btn_OpenFormAddedDomain.UseVisualStyleBackColor = false;
             this.btn_OpenFormAddedDomain.Click += new System.EventHandler(this.btn_OpenFormAddedDomain_Click);
             // 
             // lbl_TotalDomainsConfig
@@ -196,7 +198,7 @@ namespace SteamAccountCreateHelper
             this.btn_Open_Email_File.Size = new System.Drawing.Size(164, 30);
             this.btn_Open_Email_File.TabIndex = 2;
             this.btn_Open_Email_File.Text = "Load E-mail from File";
-            this.btn_Open_Email_File.UseVisualStyleBackColor = true;
+            this.btn_Open_Email_File.UseVisualStyleBackColor = false;
             this.btn_Open_Email_File.Click += new System.EventHandler(this.btn_Open_Email_File_Click);
             // 
             // lbl_Email_Load
@@ -220,9 +222,10 @@ namespace SteamAccountCreateHelper
             // 
             // txtConsole
             // 
+            this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.txtConsole.Location = new System.Drawing.Point(1326, 231);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(341, 360);
+            this.txtConsole.Size = new System.Drawing.Size(341, 564);
             this.txtConsole.TabIndex = 2;
             this.txtConsole.Text = "";
             // 
@@ -243,11 +246,12 @@ namespace SteamAccountCreateHelper
             this.btn_ConfirLink.Size = new System.Drawing.Size(109, 47);
             this.btn_ConfirLink.TabIndex = 4;
             this.btn_ConfirLink.Text = "Get Confirm Link From Email";
-            this.btn_ConfirLink.UseVisualStyleBackColor = true;
+            this.btn_ConfirLink.UseVisualStyleBackColor = false;
             this.btn_ConfirLink.Click += new System.EventHandler(this.btn_ConfirLink_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.groupBox3.Controls.Add(this.ck_OpenDefaultdw);
             this.groupBox3.Controls.Add(this.btn_OpenCriationPage);
             this.groupBox3.Controls.Add(this.btn_CopyEmail);
@@ -267,6 +271,7 @@ namespace SteamAccountCreateHelper
             this.groupBox3.Controls.Add(this.lbl_Login);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox3.Location = new System.Drawing.Point(877, 27);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(443, 249);
@@ -286,13 +291,17 @@ namespace SteamAccountCreateHelper
             // 
             // btn_OpenCriationPage
             // 
+            this.btn_OpenCriationPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
+            this.btn_OpenCriationPage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_OpenCriationPage.Location = new System.Drawing.Point(110, 154);
             this.btn_OpenCriationPage.Name = "btn_OpenCriationPage";
             this.btn_OpenCriationPage.Size = new System.Drawing.Size(109, 47);
             this.btn_OpenCriationPage.TabIndex = 18;
-            this.btn_OpenCriationPage.Text = "Open Criation Page";
-            this.btn_OpenCriationPage.UseVisualStyleBackColor = true;
+            this.btn_OpenCriationPage.Text = "Open Create Page";
+            this.btn_OpenCriationPage.UseVisualStyleBackColor = false;
             this.btn_OpenCriationPage.Click += new System.EventHandler(this.btn_OpenCriationPage_Click);
+            this.btn_OpenCriationPage.MouseLeave += new System.EventHandler(this.btn_OpenCriationPage_MouseLeave);
+            this.btn_OpenCriationPage.MouseHover += new System.EventHandler(this.btn_OpenCriationPage_MouseHover);
             // 
             // btn_CopyEmail
             // 
@@ -301,7 +310,7 @@ namespace SteamAccountCreateHelper
             this.btn_CopyEmail.Size = new System.Drawing.Size(51, 23);
             this.btn_CopyEmail.TabIndex = 17;
             this.btn_CopyEmail.Text = "Copy";
-            this.btn_CopyEmail.UseVisualStyleBackColor = true;
+            this.btn_CopyEmail.UseVisualStyleBackColor = false;
             this.btn_CopyEmail.Click += new System.EventHandler(this.btn_CopyEmail_Click);
             // 
             // btn_CopyPass
@@ -311,7 +320,7 @@ namespace SteamAccountCreateHelper
             this.btn_CopyPass.Size = new System.Drawing.Size(52, 23);
             this.btn_CopyPass.TabIndex = 16;
             this.btn_CopyPass.Text = "Copy";
-            this.btn_CopyPass.UseVisualStyleBackColor = true;
+            this.btn_CopyPass.UseVisualStyleBackColor = false;
             this.btn_CopyPass.Click += new System.EventHandler(this.btn_CopyPass_Click);
             // 
             // btn_CopyLogin
@@ -321,7 +330,7 @@ namespace SteamAccountCreateHelper
             this.btn_CopyLogin.Size = new System.Drawing.Size(52, 23);
             this.btn_CopyLogin.TabIndex = 15;
             this.btn_CopyLogin.Text = "Copy";
-            this.btn_CopyLogin.UseVisualStyleBackColor = true;
+            this.btn_CopyLogin.UseVisualStyleBackColor = false;
             this.btn_CopyLogin.Click += new System.EventHandler(this.btn_CopyLogin_Click);
             // 
             // label9
@@ -353,8 +362,10 @@ namespace SteamAccountCreateHelper
             this.btn_SaveAcc.Size = new System.Drawing.Size(97, 47);
             this.btn_SaveAcc.TabIndex = 12;
             this.btn_SaveAcc.Text = "Save Account Information";
-            this.btn_SaveAcc.UseVisualStyleBackColor = true;
+            this.btn_SaveAcc.UseVisualStyleBackColor = false;
             this.btn_SaveAcc.Click += new System.EventHandler(this.btn_SaveAcc_Click);
+            this.btn_SaveAcc.MouseLeave += new System.EventHandler(this.btn_SaveAcc_MouseLeave);
+            this.btn_SaveAcc.MouseHover += new System.EventHandler(this.btn_SaveAcc_MouseHover);
             // 
             // btn_GetEmail
             // 
@@ -363,11 +374,14 @@ namespace SteamAccountCreateHelper
             this.btn_GetEmail.Size = new System.Drawing.Size(97, 47);
             this.btn_GetEmail.TabIndex = 11;
             this.btn_GetEmail.Text = "Get Email";
-            this.btn_GetEmail.UseVisualStyleBackColor = true;
+            this.btn_GetEmail.UseVisualStyleBackColor = false;
             this.btn_GetEmail.Click += new System.EventHandler(this.btn_GetEmail_Click);
+            this.btn_GetEmail.MouseLeave += new System.EventHandler(this.btn_GetEmail_MouseLeave);
+            this.btn_GetEmail.MouseHover += new System.EventHandler(this.btn_GetEmail_MouseHover);
             // 
             // lbl_EmailPass
             // 
+            this.lbl_EmailPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.lbl_EmailPass.Location = new System.Drawing.Point(68, 117);
             this.lbl_EmailPass.Name = "lbl_EmailPass";
             this.lbl_EmailPass.PasswordChar = '*';
@@ -376,6 +390,7 @@ namespace SteamAccountCreateHelper
             // 
             // lbl_Email
             // 
+            this.lbl_Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.lbl_Email.Location = new System.Drawing.Point(68, 93);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(209, 23);
@@ -406,11 +421,14 @@ namespace SteamAccountCreateHelper
             this.btn_GenLoginPass.Size = new System.Drawing.Size(97, 47);
             this.btn_GenLoginPass.TabIndex = 6;
             this.btn_GenLoginPass.Text = "Generate";
-            this.btn_GenLoginPass.UseVisualStyleBackColor = true;
+            this.btn_GenLoginPass.UseVisualStyleBackColor = false;
             this.btn_GenLoginPass.Click += new System.EventHandler(this.btn_GenLoginPass_Click);
+            this.btn_GenLoginPass.MouseLeave += new System.EventHandler(this.btn_GenLoginPass_MouseLeave);
+            this.btn_GenLoginPass.MouseHover += new System.EventHandler(this.btn_GenLoginPass_MouseHover);
             // 
             // lbl_Pass
             // 
+            this.lbl_Pass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.lbl_Pass.Location = new System.Drawing.Point(68, 53);
             this.lbl_Pass.Name = "lbl_Pass";
             this.lbl_Pass.Size = new System.Drawing.Size(151, 23);
@@ -418,6 +436,7 @@ namespace SteamAccountCreateHelper
             // 
             // lbl_Login
             // 
+            this.lbl_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
             this.lbl_Login.Location = new System.Drawing.Point(68, 29);
             this.lbl_Login.Name = "lbl_Login";
             this.lbl_Login.Size = new System.Drawing.Size(151, 23);
@@ -443,6 +462,7 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.groupBox4.Controls.Add(this.gp_box_avatar);
             this.groupBox4.Controls.Add(this.ck_use_custom_avatar);
             this.groupBox4.Controls.Add(this.ck_Set_NickNameRandom);
@@ -456,7 +476,7 @@ namespace SteamAccountCreateHelper
             // 
             // gp_box_avatar
             // 
-            this.gp_box_avatar.BackColor = System.Drawing.SystemColors.Control;
+            this.gp_box_avatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.gp_box_avatar.Controls.Add(this.label12);
             this.gp_box_avatar.Controls.Add(this.label13);
             this.gp_box_avatar.Controls.Add(this.btn_open_File_avatarURL);
@@ -495,7 +515,7 @@ namespace SteamAccountCreateHelper
             this.btn_open_File_avatarURL.Size = new System.Drawing.Size(140, 38);
             this.btn_open_File_avatarURL.TabIndex = 5;
             this.btn_open_File_avatarURL.Text = "Load Avatars from .txt";
-            this.btn_open_File_avatarURL.UseVisualStyleBackColor = true;
+            this.btn_open_File_avatarURL.UseVisualStyleBackColor = false;
             this.btn_open_File_avatarURL.Click += new System.EventHandler(this.btn_open_File_avatarURL_Click);
             // 
             // lbl_Avatar_Load
@@ -589,7 +609,8 @@ namespace SteamAccountCreateHelper
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(102, 22);
+            this.txtUrl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
+            this.txtUrl.Location = new System.Drawing.Point(29, 52);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(335, 23);
             this.txtUrl.TabIndex = 11;
@@ -605,6 +626,7 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox5
             // 
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.groupBox5.Controls.Add(this.btn_GoToUrl);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label17);
@@ -612,27 +634,27 @@ namespace SteamAccountCreateHelper
             this.groupBox5.Controls.Add(this.ckUseSingleProxy);
             this.groupBox5.Controls.Add(this.txtUrl);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Location = new System.Drawing.Point(877, 597);
+            this.groupBox5.Location = new System.Drawing.Point(877, 596);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(790, 199);
+            this.groupBox5.Size = new System.Drawing.Size(443, 199);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Browser Config";
             // 
             // btn_GoToUrl
             // 
-            this.btn_GoToUrl.Location = new System.Drawing.Point(443, 22);
+            this.btn_GoToUrl.Location = new System.Drawing.Point(370, 52);
             this.btn_GoToUrl.Name = "btn_GoToUrl";
             this.btn_GoToUrl.Size = new System.Drawing.Size(51, 23);
             this.btn_GoToUrl.TabIndex = 18;
             this.btn_GoToUrl.Text = "Go";
-            this.btn_GoToUrl.UseVisualStyleBackColor = true;
+            this.btn_GoToUrl.UseVisualStyleBackColor = false;
             this.btn_GoToUrl.Click += new System.EventHandler(this.btn_GoToUrl_Click);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(61, 132);
+            this.label16.Location = new System.Drawing.Point(61, 173);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(124, 15);
             this.label16.TabIndex = 16;
@@ -641,7 +663,7 @@ namespace SteamAccountCreateHelper
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(17, 117);
+            this.label17.Location = new System.Drawing.Point(17, 158);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(96, 15);
             this.label17.TabIndex = 15;
@@ -649,7 +671,8 @@ namespace SteamAccountCreateHelper
             // 
             // txt_SingleProxy
             // 
-            this.txt_SingleProxy.Location = new System.Drawing.Point(17, 91);
+            this.txt_SingleProxy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
+            this.txt_SingleProxy.Location = new System.Drawing.Point(17, 132);
             this.txt_SingleProxy.Name = "txt_SingleProxy";
             this.txt_SingleProxy.Size = new System.Drawing.Size(274, 23);
             this.txt_SingleProxy.TabIndex = 14;
@@ -658,7 +681,7 @@ namespace SteamAccountCreateHelper
             // ckUseSingleProxy
             // 
             this.ckUseSingleProxy.AutoSize = true;
-            this.ckUseSingleProxy.Location = new System.Drawing.Point(17, 66);
+            this.ckUseSingleProxy.Location = new System.Drawing.Point(17, 107);
             this.ckUseSingleProxy.Name = "ckUseSingleProxy";
             this.ckUseSingleProxy.Size = new System.Drawing.Size(113, 19);
             this.ckUseSingleProxy.TabIndex = 13;
@@ -670,6 +693,7 @@ namespace SteamAccountCreateHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1676, 808);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panel1);

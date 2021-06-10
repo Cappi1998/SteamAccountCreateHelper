@@ -596,5 +596,37 @@ namespace SteamAccountCreateHelper
         {
             ChangerProxy(txtUrl.Text);
         }
+
+        private void btn_OpenCriationPage_MouseHover(object sender, EventArgs e) {
+            btn_OpenCriationPage.BackColor = Color.FromArgb(117, 207, 255);
+        }
+
+        private void btn_OpenCriationPage_MouseLeave(object sender, EventArgs e) {
+            btn_OpenCriationPage.BackColor = Color.FromArgb(192, 194, 196);
+        }
+
+        private void btn_SaveAcc_MouseHover(object sender, EventArgs e) {
+             btn_SaveAcc.BackColor = Color.FromArgb(135, 250, 148);
+        }
+
+        private void btn_SaveAcc_MouseLeave(object sender, EventArgs e) {
+            btn_SaveAcc.BackColor = Color.FromArgb(192, 194, 196);
+        }
+
+        private void btn_GenLoginPass_MouseHover(object sender, EventArgs e) {
+            btn_GenLoginPass.BackColor = Color.FromArgb(117, 207, 255);
+        }
+
+        private void btn_GenLoginPass_MouseLeave(object sender, EventArgs e) {
+            btn_GenLoginPass.BackColor = Color.FromArgb(192, 194, 196);
+        }
+
+        private void btn_GetEmail_MouseHover(object sender, EventArgs e) {
+            btn_GetEmail.BackColor = Color.FromArgb(117, 207, 255);
+        }
+
+        private void btn_GetEmail_MouseLeave(object sender, EventArgs e) {
+            btn_GetEmail.BackColor = Color.FromArgb(192, 194, 196);
+        }
     }
 }
