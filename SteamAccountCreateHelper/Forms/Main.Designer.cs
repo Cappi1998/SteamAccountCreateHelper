@@ -46,6 +46,8 @@ namespace SteamAccountCreateHelper
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ConfirLink = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl_AmoutAccsCreated = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.ck_U = new System.Windows.Forms.GroupBox();
             this.ck_GenerateUseCustomFormat = new System.Windows.Forms.RadioButton();
             this.ck_GenRandoLoginNameFake = new System.Windows.Forms.RadioButton();
@@ -255,6 +257,8 @@ namespace SteamAccountCreateHelper
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
+            this.groupBox3.Controls.Add(this.lbl_AmoutAccsCreated);
+            this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.ck_U);
             this.groupBox3.Controls.Add(this.btn_CopyEmail);
             this.groupBox3.Controls.Add(this.btn_CopyPass);
@@ -279,6 +283,26 @@ namespace SteamAccountCreateHelper
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acc Info";
+            // 
+            // lbl_AmoutAccsCreated
+            // 
+            this.lbl_AmoutAccsCreated.AutoSize = true;
+            this.lbl_AmoutAccsCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lbl_AmoutAccsCreated.Location = new System.Drawing.Point(399, 316);
+            this.lbl_AmoutAccsCreated.Name = "lbl_AmoutAccsCreated";
+            this.lbl_AmoutAccsCreated.Size = new System.Drawing.Size(17, 15);
+            this.lbl_AmoutAccsCreated.TabIndex = 22;
+            this.lbl_AmoutAccsCreated.Text = "--";
+            this.lbl_AmoutAccsCreated.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(311, 316);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(82, 15);
+            this.label18.TabIndex = 21;
+            this.label18.Text = "Accs Created: ";
             // 
             // ck_U
             // 
@@ -818,6 +842,8 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.Button btn_ConfigureCustomFormat;
         private System.Windows.Forms.RadioButton ck_GenerateUseCustomFormat;
         public System.Windows.Forms.RadioButton ck_GenRandoLoginNameFake;
+        private System.Windows.Forms.Label lbl_AmoutAccsCreated;
+        private System.Windows.Forms.Label label18;
     }
 }
 
