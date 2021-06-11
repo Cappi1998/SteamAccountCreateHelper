@@ -234,6 +234,7 @@ namespace SteamAccountCreateHelper
             }
 
             btn_ConfirLink.Enabled = false;
+            btn_GetEmail.Enabled = false;
             Thread th = new Thread(() => AccessEmailPop3Client.Get_URL_Confirm(Main.email));
             th.IsBackground = true;
             th.Start();
@@ -369,6 +370,7 @@ namespace SteamAccountCreateHelper
                 Main._Form1.lbl_Login.Text = "";
                 Main._Form1.lbl_Pass.Text = "";
                 Main._Form1.btn_GenLoginPass.Enabled = false;
+                Main._Form1.btn_GetEmail.Enabled = true;
 
                 Main._Form1.ChangerProxy("https://store.steampowered.com/join/?l=english");
             }));
