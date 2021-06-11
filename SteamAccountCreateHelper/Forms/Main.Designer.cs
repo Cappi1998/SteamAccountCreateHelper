@@ -246,11 +246,11 @@ namespace SteamAccountCreateHelper
             // 
             // btn_ConfirLink
             // 
-            this.btn_ConfirLink.Location = new System.Drawing.Point(257, 209);
+            this.btn_ConfirLink.Location = new System.Drawing.Point(334, 209);
             this.btn_ConfirLink.Name = "btn_ConfirLink";
-            this.btn_ConfirLink.Size = new System.Drawing.Size(174, 33);
+            this.btn_ConfirLink.Size = new System.Drawing.Size(97, 33);
             this.btn_ConfirLink.TabIndex = 4;
-            this.btn_ConfirLink.Text = "Get Confirm Link From Email";
+            this.btn_ConfirLink.Text = "Confirm Email";
             this.btn_ConfirLink.UseVisualStyleBackColor = false;
             this.btn_ConfirLink.Click += new System.EventHandler(this.btn_ConfirLink_Click);
             // 
