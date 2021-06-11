@@ -349,7 +349,7 @@ namespace SteamAccountCreateHelper
                 Main._Form1.lbl_OpenAccFile.Text = $"{Main._Form1.lbl_Login.Text}.txt";
                 Main._Form1.lbl_OpenAccFile.Visible = true;
 
-                DirectoryInfo di = new DirectoryInfo(Database_Path + "Created_Accounts");
+                DirectoryInfo di = new DirectoryInfo(Main.Acc_Create_Path);
                 FileInfo[] accsCreated = di.GetFiles("*.txt");
 
                 Main._Form1.lbl_AmoutAccsCreated.Text = $"{accsCreated.Count()}";
