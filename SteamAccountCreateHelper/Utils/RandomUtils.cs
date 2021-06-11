@@ -34,7 +34,7 @@
             var request = new RequestBuilder("https://api.namefake.com/").GET()
                        .Execute();
             namefake_com response = JsonConvert.DeserializeObject<namefake_com>(request.Content);
-            string name = response.name.ToLower().Replace(".", " ").Replace("'", " ").Replace(" ", "");
+            string name = response.name.ToLower().Replace(".", " ").Replace(" ", "").Remove('\'');
             name = $"{name}_{RandomNumberSmall()}{RandomString(1, false)}";
             LatesNameFakeRequest = response;
             return name;
