@@ -288,7 +288,7 @@ namespace SteamAccountCreateHelper
             // 
             this.lbl_AmoutAccsCreated.AutoSize = true;
             this.lbl_AmoutAccsCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.lbl_AmoutAccsCreated.Location = new System.Drawing.Point(399, 316);
+            this.lbl_AmoutAccsCreated.Location = new System.Drawing.Point(415, 316);
             this.lbl_AmoutAccsCreated.Name = "lbl_AmoutAccsCreated";
             this.lbl_AmoutAccsCreated.Size = new System.Drawing.Size(17, 15);
             this.lbl_AmoutAccsCreated.TabIndex = 22;
@@ -298,7 +298,7 @@ namespace SteamAccountCreateHelper
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(311, 316);
+            this.label18.Location = new System.Drawing.Point(327, 316);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(82, 15);
             this.label18.TabIndex = 21;

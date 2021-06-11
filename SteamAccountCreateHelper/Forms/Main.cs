@@ -372,7 +372,6 @@ namespace SteamAccountCreateHelper
 
                 Main._Form1.ChangerProxy("https://store.steampowered.com/join/?l=english");
             }));
-
         }
 
 
