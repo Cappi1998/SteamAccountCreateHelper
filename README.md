@@ -18,3 +18,6 @@ New Interface V1.2.2
 Old Interface V1.1
 ![](Screenshots/Gui.png) 
 ---
+
+## DISCLAIMER
+This project is provided on AS-IS basis, without any guarantee at all. Author is not responsible for any harm, direct or indirect, that may be caused by using this plugin. You use this plugin at your own risk.
