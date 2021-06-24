@@ -56,6 +56,7 @@ namespace SteamAccountCreateHelper
 
         private void Main_Load(object sender, EventArgs e)
         {
+            CheckDiretoryOnStartup.CheckDiretory();
             LoadConfig();
 
             settings.IgnoreCertificateErrors = true;

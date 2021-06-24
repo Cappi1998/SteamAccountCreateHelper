@@ -36,7 +36,7 @@ namespace SteamAccountCreateHelper.Utils
             {
                 creationid_DB creationid_DB = new creationid_DB { Creationid = new List<string>() };
 
-                File.WriteAllText(Main.Used_Mail_DB_Path, JsonConvert.SerializeObject(creationid_DB, Formatting.Indented));
+                File.WriteAllText(Main.CreationidDB_Path, JsonConvert.SerializeObject(creationid_DB, Formatting.Indented));
             }
 
 
