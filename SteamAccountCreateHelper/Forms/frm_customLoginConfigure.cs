@@ -27,7 +27,6 @@ namespace SteamAccountCreateHelper.Forms
             }
 
             Thread th = new Thread(() => GenVariables());
-            th.IsBackground = true;
             th.Start();
         }
 
@@ -46,6 +45,7 @@ namespace SteamAccountCreateHelper.Forms
 
                 try
                 {
+                    
                     frm_customLoginConfigure.frm.Invoke(new Action(() =>
                     {
                         lbl_GenResult.Text = RandomUtils.RandomLoginCustomFormat(txtFormat.Text);

@@ -56,57 +56,6 @@ namespace SteamAccountCreateHelper
 
         private void Main_Load(object sender, EventArgs e)
         {
-            #region File_create_IfNoExist
-
-            if (!Directory.Exists(Database_Path))
-            {
-                Directory.CreateDirectory(Database_Path);
-                Directory.CreateDirectory(Database_Path + "Created_Accounts");
-            }
-
-
-            if (!File.Exists(Used_Mail_DB_Path))
-            {
-                AlreadyUsed usado = new AlreadyUsed { EMAIL = "No_delete@mail.cappi", LinkedAccounts = 0 };
-                List<AlreadyUsed> usados = new List<AlreadyUsed>();
-                usados.Add(usado);
-
-                UsedEmailDatabase usedEmailDatabase = new UsedEmailDatabase { AlreadyUsed = usados };
-
-                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(usedEmailDatabase, Formatting.Indented));
-            }
-
-            if (!File.Exists(CreationidDB_Path))
-            {
-                creationid_DB creationid_DB = new creationid_DB { Creationid = new List<string>() };
-
-                File.WriteAllText(Used_Mail_DB_Path, JsonConvert.SerializeObject(creationid_DB, Formatting.Indented));
-            }
-
-
-            if (!File.Exists(Pop3Domains_Path))
-            {
-                try
-                {
-                    var response = new RequestBuilder("https://raw.githubusercontent.com/Cappi1998/SteamAccountCreateHelper/master/SteamAccountCreateHelper/DatabaseFiles/Pop3Domains.json").GET()
-                        .Execute();
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        List<Pop3> pop3 = JsonConvert.DeserializeObject<List<Pop3>>(response.Content);
-                        File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
-                        Log.info($"Pop3Domains.json automatically downloaded from the repository https://github.com/Cappi1998/SteamAccountCreateHelper");
-                    }
-                }
-                catch
-                {
-                    List<Pop3> pop3 = new List<Pop3>();
-                    File.WriteAllText(Pop3Domains_Path, JsonConvert.SerializeObject(pop3, Formatting.Indented));
-                }
-            }
-
-            #endregion
-
             LoadConfig();
 
             settings.IgnoreCertificateErrors = true;

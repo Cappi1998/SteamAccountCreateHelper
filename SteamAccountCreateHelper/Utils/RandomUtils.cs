@@ -8,7 +8,7 @@
     class RandomUtils
     {
         private static Random random = new Random();
-        public static namefake_com LatesNameFakeRequest = new namefake_com();
+        public static namefake_com LatesNameFakeRequest = null;
         public static int GetRandomInt(int minBound, int maxBound)
         {
             return random.Next(minBound, maxBound);

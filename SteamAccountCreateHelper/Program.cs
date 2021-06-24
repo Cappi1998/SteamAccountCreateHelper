@@ -1,3 +1,4 @@
+using SteamAccountCreateHelper.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SteamAccountCreateHelper
         [STAThread]
         static void Main()
         {
+            CheckDiretoryOnStartup.CheckDiretory();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

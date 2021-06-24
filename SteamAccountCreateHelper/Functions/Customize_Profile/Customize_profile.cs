@@ -65,9 +65,10 @@ namespace SteamAccountCreateHelper
             }
         }
 
-
         public static void Enable_Profile_Default(SteamAuth.SessionData SessionData, string username)
         {
+            RandomUtils.RandomLoginUsingNamefake();
+
             var Enable_Profile = new RequestBuilder("https://steamcommunity.com/profiles/" + SessionData.SteamID + "/edit?welcomed=1")
                     .GET()
                     .AddCookies(SessionData)
