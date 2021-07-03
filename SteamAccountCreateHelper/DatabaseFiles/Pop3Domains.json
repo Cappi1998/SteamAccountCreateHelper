@@ -6,16 +6,29 @@
     ]
   },
   {
-    "PoP3Server": "pop.rambler.ru",
+    "PoP3Server": "pop.yandex.ru",
     "SuportedDomains": [
-      "rambler.ru",
-      "ro.ru"
+      "yandex.ru"
     ]
   },
   {
-    "PoP3Server": "pop.yandex.com",
+    "PoP3Server": "pop.mail.ru",
     "SuportedDomains": [
-      "yandex.ru"
+      "mail.ru",
+      "bk.ru",
+      "inbox.ru",
+      "list.ru",
+      "mail.ua"
+    ]
+  },
+  {
+    "PoP3Server": "pop.rambler.ru",
+    "SuportedDomains": [
+      "rambler.ru",
+      "ro.ru",
+      "myrambler.ru",
+      "lenta.ru",
+      "autorambler.ru"
     ]
   }
 ]
