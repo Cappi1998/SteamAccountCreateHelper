@@ -17,7 +17,18 @@ namespace SteamAccountCreateHelper
 
         public static void Get_Mail(int MaxAccInEmail)
         {
+            int trycount = 0;
+            string OldEmailChecked = "";
             inicio:
+
+            if(trycount >= 5)
+            {
+                Main._Form1.ShowMessageBox($"NO EMAIL AVAILABLE\r\n", "NO EMAIL AVAILABLE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AddedEmailToForm(new E_Mail { EMAIL = "NO EMAIL AVAILABLE" }, false);
+                return;
+            }
+                
+
             var avaliableemails = Main.EMAIl_LIST.Where(a => a.LinkedAccounts < MaxAccInEmail).ToList();
 
             if(avaliableemails.Count == 0)
@@ -33,22 +44,27 @@ namespace SteamAccountCreateHelper
 
             if(working == true)
             {
-                Main._Form1.Invoke(new Action(() => Main.email = mail));
-
-                Main._Form1.Invoke(new Action(() => Main._Form1.lbl_Email.Text = mail.EMAIL));
-                Main._Form1.Invoke(new Action(() => Main._Form1.lbl_EmailPass.Text = mail.PASS));
-                Main._Form1.Invoke(new Action(() => Main._Form1.btn_GetEmail.Enabled = true));
-                Main._Form1.Invoke(new Action(() => Main._Form1.btn_ConfirLink.Enabled = true));
-
-
-                Main.AddedEmail(mail.EMAIL);
-
-
+                AddedEmailToForm(mail, true);
             }
             else
             {
+                if(OldEmailChecked == mail.EMAIL) trycount++;
+
+                OldEmailChecked = mail.EMAIL;
                 goto inicio;
             }
+        }
+
+        public static void AddedEmailToForm(E_Mail mail, bool InputEmailInBrowser)
+        {
+            Main._Form1.Invoke(new Action(() => Main.email = mail));
+
+            Main._Form1.Invoke(new Action(() => Main._Form1.lbl_Email.Text = mail.EMAIL));
+            Main._Form1.Invoke(new Action(() => Main._Form1.lbl_EmailPass.Text = mail.PASS));
+            Main._Form1.Invoke(new Action(() => Main._Form1.btn_GetEmail.Enabled = true));
+            Main._Form1.Invoke(new Action(() => Main._Form1.btn_ConfirLink.Enabled = true));
+
+            if(InputEmailInBrowser) Main.AddedEmail(mail.EMAIL);
         }
 
         public static void Add_Mail_To_DB(string mail)

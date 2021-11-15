@@ -6,15 +6,12 @@ using SteamAccountCreateHelper.Models;
 using SteamAccountCreateHelper.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SteamAccountCreateHelper.ManageEmails;
 
@@ -436,20 +433,27 @@ namespace SteamAccountCreateHelper
                     Config config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(Database_Path + "Config.json"));
                     if (config.AvatarImageFilePath != "")
                     {
-                        Main._Form1.AvatarImageFilePath = config.AvatarImageFilePath;
-
-                        Avatar_URL_List.Clear();
-                        var lista = File.ReadAllLines(config.AvatarImageFilePath);
-                        foreach (var email in lista)
+                        if (!File.Exists(config.AvatarImageFilePath))
                         {
-                            Avatar_URL_List.Add(email);
+                            Log.error($"Could not find a part of the path {config.AvatarImageFilePath}");
                         }
+                        else
+                        {
+                            Main._Form1.AvatarImageFilePath = config.AvatarImageFilePath;
 
-                        Main._Form1.lbl_Avatar_Load.Text = Avatar_URL_List.Count.ToString();
-                        Main._Form1.lbl_Avatar_Load.ForeColor = Color.DarkCyan;
-                        Main._Form1.lbl_Avatar_Load.Font = new Font("Arial", 10, FontStyle.Bold);
-                        Log.info(Avatar_URL_List.Count + " Avatars Load!");
-                        Main._Form1.ck_use_custom_avatar.Checked = true;
+                            Avatar_URL_List.Clear();
+                            var lista = File.ReadAllLines(config.AvatarImageFilePath);
+                            foreach (var email in lista)
+                            {
+                                Avatar_URL_List.Add(email);
+                            }
+
+                            Main._Form1.lbl_Avatar_Load.Text = Avatar_URL_List.Count.ToString();
+                            Main._Form1.lbl_Avatar_Load.ForeColor = Color.DarkCyan;
+                            Main._Form1.lbl_Avatar_Load.Font = new Font("Arial", 10, FontStyle.Bold);
+                            Log.info(Avatar_URL_List.Count + " Avatars Load!");
+                            Main._Form1.ck_use_custom_avatar.Checked = true;
+                        }
                     }
 
                     if (config.EmailFilePath != "")
@@ -591,7 +595,7 @@ namespace SteamAccountCreateHelper
 
             if (chrome.IsLoading)
             {
-                MessageBox.Show($"Wait WebBrowser is loading a page...\r\n\r\n{chrome.Address}", "Wait...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowMessageBox($"Wait WebBrowser is loading a page...\r\n\r\n{chrome.Address}", "Wait...", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -633,6 +637,11 @@ namespace SteamAccountCreateHelper
 
         private void btn_GetEmail_MouseLeave(object sender, EventArgs e) {
             btn_GetEmail.BackColor = Color.FromArgb(192, 194, 196);
+        }
+
+        public void ShowMessageBox(string msg, string title, MessageBoxButtons messageBoxButtons, MessageBoxIcon messageBoxIcon)
+        {
+            MessageBox.Show(msg, title, messageBoxButtons, messageBoxIcon);
         }
     }
 }
