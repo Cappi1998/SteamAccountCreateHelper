@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SteamAccountCreateHelper
@@ -39,7 +40,9 @@ namespace SteamAccountCreateHelper
                     }
                 }
 
-                File.AppendAllText(path_to_save, $"\nSteamID: {login.Session.SteamID}\nProfileLink: https://steamcommunity.com/profiles/{login.Session.SteamID}\nCreation Date:{DateTime.Now.ToShortDateString()}");
+                string Region = GetAccountRegion(login.Session);
+
+                File.AppendAllText(path_to_save, $"\nSteamID: {login.Session.SteamID}\nProfileLink: https://steamcommunity.com/profiles/{login.Session.SteamID}\nCreation Date:{DateTime.Now.ToShortDateString()}\nRegion:{Region}");
                 Log.info($"Save SteamID64: {login.Session.SteamID} on Account: {username}");
 
 
@@ -153,9 +156,23 @@ namespace SteamAccountCreateHelper
                  .AddHeader(HttpRequestHeader.Referer, page_edit)
                 .AddPOSTParam("sessionid", SessionData.SessionID)
                 .AddPOSTParam("Privacy", "{\"PrivacyProfile\":3,\"PrivacyInventory\":3,\"PrivacyInventoryGifts\":3,\"PrivacyOwnedGames\":3,\"PrivacyPlaytime\":3,\"PrivacyFriendsList\":2}")
-                .AddPOSTParam_int("eCommentPermission", 0)
+                .AddPOSTParam("eCommentPermission", "0")
                 .AddCookies(SessionData)
                 .Execute();
+        }
+
+        public static string GetAccountRegion(SteamAuth.SessionData SessionData)
+        {
+            var Request = new RequestBuilder("https://store.steampowered.com/account/").GET()
+                 .AddHeader(HttpRequestHeader.Referer, "https://store.steampowered.com/")
+                .AddPOSTParam("sessionid", SessionData.SessionID)
+                .AddCookies(SessionData)
+                .Execute();
+
+            var RegionRegex = new Regex("(?<=account_data_field\">).*(?=<\\/span>)");
+            var RegionFinal = RegionRegex.Match(Request.Content);
+
+            return Convert.ToString(RegionFinal.Value);
         }
 
         public static byte[] converterDemo(Image x)
