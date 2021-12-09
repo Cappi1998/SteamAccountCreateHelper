@@ -149,6 +149,10 @@ namespace SteamAccountCreateHelper
                                 th.IsBackground = true;
                                 th.Start();
 
+                                Thread th1 = new Thread(() => Main.GenLoginAndPassAutomatic());
+                                th1.IsBackground = true;
+                                th1.Start();
+
                                 lock (locker)
                                 {
                                     CreationID_DB.ADD_TO_DB(creationid);
@@ -172,5 +176,8 @@ namespace SteamAccountCreateHelper
                 client.Disconnect(true);
             }
         }
+
+
+        
     }
 }

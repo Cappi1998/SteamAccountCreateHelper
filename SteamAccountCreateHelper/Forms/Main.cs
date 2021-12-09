@@ -67,6 +67,24 @@ namespace SteamAccountCreateHelper
             this.panel1.Controls.Add(chrome);
             chrome.Dock = DockStyle.Fill;
             chrome.AddressChanged += Chrome_AddressChanged;
+
+
+            Thread th = new Thread(() => ChangerProxyOnStartup());
+            th.IsBackground = true;
+            th.Start();
+        }
+
+        void ChangerProxyOnStartup()
+        {
+            while (true)
+            {
+                if (ckUseSingleProxy.Checked && !string.IsNullOrWhiteSpace(txt_SingleProxy.Text) && chrome.IsBrowserInitialized)
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                    ChangerProxy(txtUrl.Text);
+                    break;
+                }
+            }
         }
 
         private void Chrome_AddressChanged(object sender, AddressChangedEventArgs e)
@@ -112,7 +130,6 @@ namespace SteamAccountCreateHelper
             chrome.Load(URL);
         }
 
-        
         public async static void CheckExistingAccountOnEmail()
         {
 
@@ -126,7 +143,24 @@ namespace SteamAccountCreateHelper
             }
         }
 
+        public async static void CheckConfirmEmailDialog()
+        {
+            while (true)
+            {
+               
+                var myScript = "(() => { var element = document.getElementsByClassName('newmodal'); return element[0].innerText; })();";
+                var task = chrome.EvaluateScriptAsync(myScript);
+                var response = await task;
 
+                if (response.Success == true && response.Result.ToString().Contains("VERIFY YOUR EMAIL"))
+                {
+                    Thread.Sleep(200);
+                    Main._Form1.btn_ConfirLink.Invoke(new Action(() => Main._Form1.btn_ConfirLink.PerformClick()));
+                    break;
+                }else Thread.Sleep(100);
+            }
+            
+        }
 
         private void btn_Open_Email_File_Click(object sender, EventArgs e)
         {
@@ -166,8 +200,6 @@ namespace SteamAccountCreateHelper
             }
         }
 
-
-
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(Environment.ExitCode);
@@ -190,27 +222,31 @@ namespace SteamAccountCreateHelper
 
         private void btn_GenLoginPass_Click(object sender, EventArgs e)
         {
-            if (ck_GenRandoLoginNameFake.Checked)
+            GenLoginPassFuction();
+        }
+
+        public static void GenLoginPassFuction()
+        {
+            if (Main._Form1.ck_GenRandoLoginNameFake.Checked)
             {
-                lbl_Login.Text = RandomUtils.RandomLoginUsingNamefake();
+                Main._Form1.lbl_Login.Invoke(new Action(() => Main._Form1.lbl_Login.Text = RandomUtils.RandomLoginUsingNamefake()));
             }
             else
             {
-                lbl_Login.Text = RandomUtils.RandomLoginCustomFormat(txt_CustomLoginGeneratorFormat.Text);
+                Main._Form1.lbl_Login.Invoke(new Action(() => Main._Form1.lbl_Login.Text = RandomUtils.RandomLoginCustomFormat(Main._Form1.txt_CustomLoginGeneratorFormat.Text)));
             }
 
-            
-            lbl_Pass.Text = RandomUtils.RandomPassword();
+            Main._Form1.lbl_Pass.Invoke(new Action(() => Main._Form1.lbl_Pass.Text = RandomUtils.RandomPassword()));
 
-            Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').value = '{lbl_Login.Text}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').value = '{Main._Form1.lbl_Login.Text}'");
             Thread.Sleep(500);
             Main.chrome.ExecuteScriptAsync($"document.getElementById('accountname').onchange();");
 
-            Main.chrome.ExecuteScriptAsync($"document.getElementById('password').value = '{lbl_Pass.Text}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('password').value = '{Main._Form1.lbl_Pass.Text}'");
             Thread.Sleep(500);
             Main.chrome.ExecuteScriptAsync($"document.getElementById('password').onkeyup();");
 
-            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').value = '{lbl_Pass.Text}'");
+            Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').value = '{Main._Form1.lbl_Pass.Text}'");
             Thread.Sleep(500);
             Main.chrome.ExecuteScriptAsync($"document.getElementById('reenter_password').onkeyup();");
 
@@ -647,6 +683,24 @@ namespace SteamAccountCreateHelper
         public void ShowMessageBox(string msg, string title, MessageBoxButtons messageBoxButtons, MessageBoxIcon messageBoxIcon)
         {
             MessageBox.Show(msg, title, messageBoxButtons, messageBoxIcon);
+        }
+
+        public static void GenLoginAndPassAutomatic()
+        {
+            while (true)
+            {
+                if (chrome.Address.Contains("store.steampowered.com/join/completesignup"))
+                {
+                    if (!chrome.IsLoading)
+                    {
+                        Main._Form1.btn_GenLoginPass.Invoke(new Action(() => Main._Form1.btn_GenLoginPass.Enabled = false));
+                        GenLoginPassFuction();
+                        Main._Form1.btn_GenLoginPass.Invoke(new Action(() => Main._Form1.btn_GenLoginPass.Enabled = false));
+                        break;
+                    }
+                    else Thread.Sleep(100);
+                }
+            }
         }
     }
 }

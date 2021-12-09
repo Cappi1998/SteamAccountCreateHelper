@@ -1,10 +1,11 @@
-﻿namespace SteamAccountCreateHelper
-{
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
 
+namespace SteamAccountCreateHelper
+{
     class RandomUtils
     {
         private static Random random = new Random();
@@ -33,6 +34,13 @@
         {
             var request = new RequestBuilder("https://api.namefake.com/").GET()
                        .Execute();
+
+            if(request.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Main._Form1.ShowMessageBox($"Erro to Request Name...\r\n\r\nStatusCode:{request.StatusCode}", "api.namefake.com", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
+
             namefake_com response = JsonConvert.DeserializeObject<namefake_com>(request.Content);
             string name = response.name.ToLower().Replace(".", " ").Replace(" ", "").Replace("\'", "");
             name = $"{name}_{RandomNumberSmall()}{RandomString(1, true)}";
