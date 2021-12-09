@@ -16,5 +16,7 @@ namespace SteamAccountCreateHelper.Models
 
         public string LoginGeneratorCustomFormat { get; set; }
         public bool UseCustomLoginGenerator { get; set; }
+
+        public int AccountPerEmail { get; set; }
     }
 }

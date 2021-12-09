@@ -419,6 +419,8 @@ namespace SteamAccountCreateHelper
             config.LoginGeneratorCustomFormat = Main._Form1.txt_CustomLoginGeneratorFormat.Text;
             config.UseCustomLoginGenerator = Main._Form1.ck_GenerateUseCustomFormat.Checked;
 
+            try { config.AccountPerEmail = Convert.ToInt32(Main._Form1.txt_MaxAccInMail.Text); } catch { }
+
             System.IO.File.WriteAllText(Database_Path + "Config.json", JsonConvert.SerializeObject(config, Formatting.Indented));//salvar o arquivo appids atualizado
 
             Log.info("Config Save..");
@@ -431,6 +433,9 @@ namespace SteamAccountCreateHelper
                 try
                 {
                     Config config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(Database_Path + "Config.json"));
+
+                    if (config.AccountPerEmail != 0) Main._Form1.txt_MaxAccInMail.Text = config.AccountPerEmail.ToString();
+
                     if (config.AvatarImageFilePath != "")
                     {
                         if (!File.Exists(config.AvatarImageFilePath))

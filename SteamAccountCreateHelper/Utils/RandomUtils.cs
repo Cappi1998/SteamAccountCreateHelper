@@ -35,7 +35,7 @@
                        .Execute();
             namefake_com response = JsonConvert.DeserializeObject<namefake_com>(request.Content);
             string name = response.name.ToLower().Replace(".", " ").Replace(" ", "").Replace("\'", "");
-            name = $"{name}_{RandomNumberSmall()}{RandomString(1, false)}";
+            name = $"{name}_{RandomNumberSmall()}{RandomString(1, true)}";
             LatesNameFakeRequest = response;
             return name;
         }
