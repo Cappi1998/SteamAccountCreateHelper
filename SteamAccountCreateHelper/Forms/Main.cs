@@ -741,15 +741,22 @@ namespace SteamAccountCreateHelper
 
         private void btn_ChangerProxy_Click(object sender, EventArgs e)
         {
-            txt_SingleProxy.Text = Proxy_URL_List[0];
-            Proxy_URL_List.RemoveAt(0);
-            ProxySet = false;
+            if(Proxy_URL_List.Count == 0)
+            {
+                MessageBox.Show("No Proxy List Loaded!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txt_SingleProxy.Text = Proxy_URL_List[0];
+                Proxy_URL_List.RemoveAt(0);
+                ProxySet = false;
 
-            lbl_ProxyCount.Text = Proxy_URL_List.Count.ToString();
-            lbl_ProxyCount.ForeColor = Color.DarkCyan;
-            lbl_ProxyCount.Font = new Font("Arial", 10, FontStyle.Bold);
+                lbl_ProxyCount.Text = Proxy_URL_List.Count.ToString();
+                lbl_ProxyCount.ForeColor = Color.DarkCyan;
+                lbl_ProxyCount.Font = new Font("Arial", 10, FontStyle.Bold);
 
-            ChangerProxy(txtUrl.Text);
+                ChangerProxy(txtUrl.Text);
+            }
         }
     }
 }

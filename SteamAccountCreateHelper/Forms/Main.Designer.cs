@@ -92,6 +92,7 @@ namespace SteamAccountCreateHelper
             this.label17 = new System.Windows.Forms.Label();
             this.txt_SingleProxy = new System.Windows.Forms.TextBox();
             this.ckUseSingleProxy = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -100,6 +101,7 @@ namespace SteamAccountCreateHelper
             this.gp_box_avatar.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -114,9 +116,9 @@ namespace SteamAccountCreateHelper
             this.groupBox1.Controls.Add(this.btn_Open_Email_File);
             this.groupBox1.Controls.Add(this.lbl_Email_Load);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(1323, 32);
+            this.groupBox1.Location = new System.Drawing.Point(451, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(346, 167);
+            this.groupBox1.Size = new System.Drawing.Size(345, 183);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "E-Mail Config";
@@ -232,9 +234,9 @@ namespace SteamAccountCreateHelper
             // 
             this.txtConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.txtConsole.Location = new System.Drawing.Point(1323, 243);
+            this.txtConsole.Location = new System.Drawing.Point(451, 214);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(341, 553);
+            this.txtConsole.Size = new System.Drawing.Size(346, 558);
             this.txtConsole.TabIndex = 2;
             this.txtConsole.Text = "";
             // 
@@ -243,7 +245,7 @@ namespace SteamAccountCreateHelper
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1323, 207);
+            this.label2.Location = new System.Drawing.Point(451, 191);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 3;
@@ -281,7 +283,7 @@ namespace SteamAccountCreateHelper
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox3.Location = new System.Drawing.Point(875, 32);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(442, 328);
             this.groupBox3.TabIndex = 7;
@@ -493,15 +495,17 @@ namespace SteamAccountCreateHelper
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
             this.groupBox4.Controls.Add(this.gp_box_avatar);
             this.groupBox4.Controls.Add(this.ck_use_custom_avatar);
             this.groupBox4.Controls.Add(this.ck_Set_NickNameRandom);
             this.groupBox4.Controls.Add(this.ck_GameAndInventory_Public);
-            this.groupBox4.Location = new System.Drawing.Point(875, 366);
+            this.groupBox4.Location = new System.Drawing.Point(3, 337);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(442, 216);
+            this.groupBox4.Size = new System.Drawing.Size(442, 220);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Accounts Information";
@@ -634,11 +638,10 @@ namespace SteamAccountCreateHelper
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.AutoSize = true;
             this.panel1.Location = new System.Drawing.Point(12, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 764);
+            this.panel1.Size = new System.Drawing.Size(857, 775);
             this.panel1.TabIndex = 10;
             // 
             // txtUrl
@@ -673,7 +676,7 @@ namespace SteamAccountCreateHelper
             this.groupBox5.Controls.Add(this.ckUseSingleProxy);
             this.groupBox5.Controls.Add(this.txtUrl);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Location = new System.Drawing.Point(875, 586);
+            this.groupBox5.Location = new System.Drawing.Point(3, 563);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(442, 209);
             this.groupBox5.TabIndex = 13;
@@ -767,21 +770,30 @@ namespace SteamAccountCreateHelper
             this.ckUseSingleProxy.UseVisualStyleBackColor = true;
             this.ckUseSingleProxy.Click += new System.EventHandler(this.ckUseSingleProxy_Click);
             // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.groupBox3);
+            this.panel2.Controls.Add(this.groupBox4);
+            this.panel2.Controls.Add(this.groupBox5);
+            this.panel2.Controls.Add(this.txtConsole);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Location = new System.Drawing.Point(875, 32);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(801, 775);
+            this.panel2.TabIndex = 0;
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1676, 808);
-            this.Controls.Add(this.txtConsole);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1676, 807);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.menuStrip);
-            this.Controls.Add(this.groupBox5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -805,6 +817,8 @@ namespace SteamAccountCreateHelper
             this.menuStrip.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -879,6 +893,7 @@ namespace SteamAccountCreateHelper
         public System.Windows.Forms.Label lbl_ProxyCount;
         private System.Windows.Forms.Label label20;
         public System.Windows.Forms.Button btn_ChangerProxy;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
