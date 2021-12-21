@@ -122,9 +122,9 @@ namespace SteamAccountCreateHelper
                         {
                             var message1 = client.GetMessage(client.Count - 1);
 
-                            var creationid = new Regex("creationid=(\\d+)").Match(message1.Body.ToString()).Groups[1].Value;
+                            var creationid = new Regex("creationid=(\\d+)").Match(message1.HtmlBody.ToString()).Groups[1].Value;
 
-                            var stoken = new Regex("(?<=stoken\\=)\\w+").Match(message1.Body.ToString()).Value;
+                            var stoken = new Regex("(?<=stoken\\=)\\w+").Match(message1.HtmlBody.ToString()).Value;
 
                             bool ja_usado = CreationID_DB.Check_AlreadyUsed(creationid);
 

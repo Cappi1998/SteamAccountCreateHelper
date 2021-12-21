@@ -49,8 +49,6 @@ namespace SteamAccountCreateHelper
         public Main()
         {
             _Form1 = this;
-
-            this.MinimumSize = new Size(300, 300);
             InitializeComponent();
         }
 
@@ -756,6 +754,7 @@ namespace SteamAccountCreateHelper
                 lbl_ProxyCount.Font = new Font("Arial", 10, FontStyle.Bold);
 
                 ChangerProxy(txtUrl.Text);
+                btn_GetEmail.Enabled = true;
             }
         }
     }
