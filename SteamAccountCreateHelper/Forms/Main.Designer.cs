@@ -460,6 +460,7 @@ namespace SteamAccountCreateHelper
             // 
             // btn_GenLoginPass
             // 
+            this.btn_GenLoginPass.Enabled = false;
             this.btn_GenLoginPass.Location = new System.Drawing.Point(334, 244);
             this.btn_GenLoginPass.Name = "btn_GenLoginPass";
             this.btn_GenLoginPass.Size = new System.Drawing.Size(97, 47);
