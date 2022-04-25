@@ -103,7 +103,6 @@ namespace SteamAccountCreateHelper
 
         void ChangerProxy(string URL)
         {
-            
             if (!ProxySet)
             {
                 if (ckUseSingleProxy.Checked)
@@ -114,8 +113,16 @@ namespace SteamAccountCreateHelper
                         return;
                     }
 
-                    var split = txt_SingleProxy.Text.Split(':');
-                    proxy = new ProxyOptions(split[0], split[1], split[2], split[3]);
+                    try 
+                    {
+                        var split = txt_SingleProxy.Text.Split(':');
+                        proxy = new ProxyOptions(split[0], split[1], split[2], split[3]);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show($"Proxy doesn't seem to be in the correct format:{Environment.NewLine}{Environment.NewLine}IP:Port:Username:Pass {Environment.NewLine}{Environment.NewLine}{ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     CefSharpSettings.Proxy = proxy;
                     var rc = chrome.GetBrowser().GetHost().RequestContext;
@@ -148,17 +155,34 @@ namespace SteamAccountCreateHelper
         {
             while (true)
             {
-               
-                var myScript = "(() => { var element = document.getElementsByClassName('newmodal'); return element[0].innerText; })();";
-                var task = chrome.EvaluateScriptAsync(myScript);
-                var response = await task;
-
-                if (response.Success == true && response.Result.ToString().Contains("VERIFY YOUR EMAIL"))
+                try
                 {
-                    Thread.Sleep(200);
-                    Main._Form1.btn_ConfirLink.Invoke(new Action(() => Main._Form1.btn_ConfirLink.PerformClick()));
-                    break;
-                }else Thread.Sleep(100);
+                    var script = "(() => { var element = document.getElementById('error_display'); return element.innerText; })();";
+                    var task = chrome.EvaluateScriptAsync(script);
+                    var response = await task;
+
+                    if (response.Success == true && response.Result.ToString().Contains("Reference ID:"))
+                    {
+                        Main._Form1.Invoke(new Action(() => Main._Form1.ChangerProxy(Main._Form1.txtUrl.Text)));
+                        break;
+                    }
+
+                     var myScript = "(() => { var element = document.getElementsByClassName('newmodal'); return element[0].innerText; })();";
+                     task = chrome.EvaluateScriptAsync(myScript);
+                     response = await task;
+
+                    if (response.Success == true && response.Result.ToString().Contains("VERIFY YOUR EMAIL"))
+                    {
+                        Thread.Sleep(200);
+                        Main._Form1.btn_ConfirLink.Invoke(new Action(() => Main._Form1.btn_ConfirLink.PerformClick()));
+                        break;
+                    }
+                    else Thread.Sleep(100);
+                }
+                catch
+                {
+                    Thread.Sleep(100);
+                }
             }
             
         }
@@ -756,6 +780,11 @@ namespace SteamAccountCreateHelper
                 ChangerProxy(txtUrl.Text);
                 btn_GetEmail.Enabled = true;
             }
+        }
+
+        private void btn_saveAccount_Click(object sender, EventArgs e)
+        {
+            SaveAccountInfo();
         }
     }
 }

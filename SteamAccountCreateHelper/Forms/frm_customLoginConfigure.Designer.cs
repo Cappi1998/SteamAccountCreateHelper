@@ -32,6 +32,8 @@ namespace SteamAccountCreateHelper.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_customLoginConfigure));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_fakeNameApi = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lbl_GenNum = new System.Windows.Forms.Label();
             this.lbl_GenSingleNum = new System.Windows.Forms.Label();
             this.lbl_GenLetter = new System.Windows.Forms.Label();
@@ -42,6 +44,8 @@ namespace SteamAccountCreateHelper.Forms
             this.btn_Save = new System.Windows.Forms.Button();
             this.lbl_GenResult = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +60,8 @@ namespace SteamAccountCreateHelper.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_fakeNameApi);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lbl_GenNum);
             this.groupBox1.Controls.Add(this.lbl_GenSingleNum);
             this.groupBox1.Controls.Add(this.lbl_GenLetter);
@@ -64,10 +70,28 @@ namespace SteamAccountCreateHelper.Forms
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 117);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(458, 116);
+            this.groupBox1.Size = new System.Drawing.Size(458, 129);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Available Variables";
+            // 
+            // lbl_fakeNameApi
+            // 
+            this.lbl_fakeNameApi.AutoSize = true;
+            this.lbl_fakeNameApi.Location = new System.Drawing.Point(283, 105);
+            this.lbl_fakeNameApi.Name = "lbl_fakeNameApi";
+            this.lbl_fakeNameApi.Size = new System.Drawing.Size(122, 15);
+            this.lbl_fakeNameApi.TabIndex = 9;
+            this.lbl_fakeNameApi.Text = "kevinmedhurst_1931o";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(261, 15);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "{fake} = Random Name from namefake.com =>";
             // 
             // lbl_GenNum
             // 
@@ -133,7 +157,7 @@ namespace SteamAccountCreateHelper.Forms
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(305, 42);
+            this.btn_Save.Location = new System.Drawing.Point(305, 30);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(165, 44);
             this.btn_Save.TabIndex = 3;
@@ -159,11 +183,35 @@ namespace SteamAccountCreateHelper.Forms
             this.label3.TabIndex = 5;
             this.label3.Text = "Gen Result:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.IndianRed;
+            this.label7.Location = new System.Drawing.Point(12, 258);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(429, 16);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "if you use the {fake} variable, the example generation will be generated ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.IndianRed;
+            this.label8.Location = new System.Drawing.Point(12, 274);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(277, 16);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "every 3 seconds so as not to overload the api";
+            // 
             // frm_customLoginConfigure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 242);
+            this.ClientSize = new System.Drawing.Size(482, 311);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_GenResult);
             this.Controls.Add(this.btn_Save);
@@ -199,5 +247,9 @@ namespace SteamAccountCreateHelper.Forms
         public System.Windows.Forms.Label lbl_GenNum;
         public System.Windows.Forms.Label lbl_GenSingleNum;
         public System.Windows.Forms.Label lbl_GenLetter;
+        public System.Windows.Forms.Label lbl_fakeNameApi;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label label8;
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <StartupObject>SteamAccountCreateHelper.Program</StartupObject>
@@ -17,11 +17,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common" Version="95.7.141" />
-    <PackageReference Include="CefSharp.Common.NETCore" Version="95.7.141" />
-    <PackageReference Include="CefSharp.WinForms" Version="95.7.141" />
-    <PackageReference Include="MailKit" Version="2.15.0" />
-    <PackageReference Include="MimeKit" Version="2.15.1" />
+    <PackageReference Include="CefSharp.Common" Version="100.0.230" />
+    <PackageReference Include="CefSharp.Common.NETCore" Version="100.0.230" />
+    <PackageReference Include="CefSharp.WinForms" Version="100.0.230" />
+    <PackageReference Include="MailKit" Version="3.2.0" />
+    <PackageReference Include="MimeKit" Version="3.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.13.0" />
     <PackageReference Include="SteamAuth" Version="3.0.0" />
@@ -40,6 +40,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="100.0.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="100.0.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="100.0.23" />
   </ItemGroup>
 
 </Project>

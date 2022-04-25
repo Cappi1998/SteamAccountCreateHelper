@@ -86,6 +86,12 @@ namespace SteamAccountCreateHelper
                                     LoginGenerated += RandomNumber();
                                     break;
                                 }
+
+                            case "fake":
+                                {
+                                    LoginGenerated += RandomLoginUsingNamefake();
+                                    break;
+                                }
                         }
 
                     }
@@ -103,7 +109,7 @@ namespace SteamAccountCreateHelper
 
         public static List<LoginGenFormat> CreateGeneratorOrder(string Text)
         {
-            List<string> AvailableVariables = new List<string> { "letter", "singlenum", "num" };
+            List<string> AvailableVariables = new List<string> { "letter", "singlenum", "num", "fake" };
 
             List<LoginGenFormat> loginGenFormat = new List<LoginGenFormat>();
 

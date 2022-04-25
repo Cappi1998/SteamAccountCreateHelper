@@ -46,6 +46,7 @@ namespace SteamAccountCreateHelper
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ConfirLink = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_saveAccount = new System.Windows.Forms.Button();
             this.lbl_AmoutAccsCreated = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.ck_U = new System.Windows.Forms.GroupBox();
@@ -265,6 +266,7 @@ namespace SteamAccountCreateHelper
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(194)))), ((int)(((byte)(196)))));
+            this.groupBox3.Controls.Add(this.btn_saveAccount);
             this.groupBox3.Controls.Add(this.lbl_AmoutAccsCreated);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.ck_U);
@@ -289,6 +291,16 @@ namespace SteamAccountCreateHelper
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Acc Info";
+            // 
+            // btn_saveAccount
+            // 
+            this.btn_saveAccount.Location = new System.Drawing.Point(6, 215);
+            this.btn_saveAccount.Name = "btn_saveAccount";
+            this.btn_saveAccount.Size = new System.Drawing.Size(141, 23);
+            this.btn_saveAccount.TabIndex = 23;
+            this.btn_saveAccount.Text = "Force Save Account";
+            this.btn_saveAccount.UseVisualStyleBackColor = false;
+            this.btn_saveAccount.Click += new System.EventHandler(this.btn_saveAccount_Click);
             // 
             // lbl_AmoutAccsCreated
             // 
@@ -448,7 +460,6 @@ namespace SteamAccountCreateHelper
             // 
             // btn_GenLoginPass
             // 
-            this.btn_GenLoginPass.Enabled = false;
             this.btn_GenLoginPass.Location = new System.Drawing.Point(334, 244);
             this.btn_GenLoginPass.Name = "btn_GenLoginPass";
             this.btn_GenLoginPass.Size = new System.Drawing.Size(97, 47);
@@ -894,6 +905,7 @@ namespace SteamAccountCreateHelper
         private System.Windows.Forms.Label label20;
         public System.Windows.Forms.Button btn_ChangerProxy;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn_saveAccount;
     }
 }
 
